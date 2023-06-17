@@ -89,15 +89,15 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        {account && chainId === ChainId.BSC && (
+        {/* {account && chainId === ChainId.BASE_GOERLI && (
           <UserBannerWrapper>
             <UserBanner />
           </UserBannerWrapper>
-        )}
+        )} */}
         <MultipleBanner />
         <Hero />
       </StyledHeroSection>
-      <PageSection
+      {/* <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         containerProps={{
           id: 'home-2',
@@ -106,7 +106,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         hasCurvedDivider={false}
       >
         <MetricsSection />
-      </PageSection>
+      </PageSection> */}
       <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
@@ -116,29 +116,9 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper top>
-            <WedgeTopLeft />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
         <SalesSection {...swapSectionData(t)} />
       </PageSection>
-      <PageSection
-        innerProps={{ style: HomeSectionContainerStyles }}
-        background={theme.colors.gradientCardHeader}
-        index={2}
-        hasCurvedDivider={false}
-      >
-        <OuterWedgeWrapper>
-          <InnerWedgeWrapper width="150%" top>
-            <WedgeTopRight />
-          </InnerWedgeWrapper>
-        </OuterWedgeWrapper>
-        <SalesSection {...earnSectionData(t)} />
-        {/* TODO: until we are enable fetch multi-chain farms */}
-        {chainId === ChainId.BSC && <FarmsPoolsRow />}
-      </PageSection>
-      <PageSection
+      {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         containerProps={{
           id: 'home-3',
@@ -164,7 +144,7 @@ const Home: React.FC<React.PropsWithChildren> = () => {
         hasCurvedDivider={false}
       >
         <Footer />
-      </PageSection>
+      </PageSection> */}
     </>
   )
 }
