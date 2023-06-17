@@ -1,6 +1,6 @@
 import { BinanceWalletConnector } from '@pancakeswap/wagmi/connectors/binanceWallet'
 import { BloctoConnector } from '@pancakeswap/wagmi/connectors/blocto'
-import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
+import { bsc, goerli, mainnet } from 'wagmi/chains'
 import { Chain } from '@wagmi/core';
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
