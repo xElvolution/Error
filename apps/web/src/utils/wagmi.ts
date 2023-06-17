@@ -1,6 +1,7 @@
 import { BinanceWalletConnector } from '@pancakeswap/wagmi/connectors/binanceWallet'
 import { BloctoConnector } from '@pancakeswap/wagmi/connectors/blocto'
 import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
+import { Chain } from '@wagmi/core';
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -11,7 +12,38 @@ import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from './safeConnector'
 
-const CHAINS = [bsc, mainnet, bscTestnet, goerli]
+const baseGoerli: Chain = {
+  id: 84531, // Replace with the actual ID of Base Goerli
+  name: 'Base Goerli',
+  network: 'base-goerli',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Base Goerli',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    public: { http: ['https://goerli.base.org'] },
+    default: { http: ['https://goerli.base.org'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'Base Goerli Explorer', url: 'https://goerli.basescan.org' },
+    default: { name: 'Base Goerli Explorer', url: 'https://goerli.basescan.org' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      blockCreated: 11_907_934,
+    },
+  },
+};
+
+const CHAINS = [
+  // bsc, 
+  // mainnet, 
+  // bscTestnet, 
+  baseGoerli,
+  goerli
+]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null

@@ -12,6 +12,7 @@ export type StableSwapPoolMap<TChainId extends number> = {
 export const poolMap: StableSwapPoolMap<ChainId> = {
   [ChainId.ETHEREUM]: ethereumPools,
   [ChainId.GOERLI]: [],
+  [ChainId.BASE_GOERLI]: [],
   [ChainId.BSC]: bscPools,
   [ChainId.BSC_TESTNET]: bscTestnetPools,
 }

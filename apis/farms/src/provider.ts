@@ -23,3 +23,11 @@ export const goerliProvider = new StaticJsonRpcProvider(
   },
   5,
 )
+
+export const baseGoerliProvider = new StaticJsonRpcProvider(
+  {
+    url: 'https://eth-goerli.nodereal.io/v1/8a4432e42df94dcca2814fde8aea2a2e',
+    skipFetchSetup: true,
+  },
+  5,
+)

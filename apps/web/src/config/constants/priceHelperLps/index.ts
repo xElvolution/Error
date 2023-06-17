@@ -4,6 +4,7 @@ import PoolsEthereumPriceHelper from './pools/1'
 import PoolsGoerliPriceHelper from './pools/5'
 import PoolsBscPriceHelper from './pools/56'
 import PoolsBscTestnetPriceHelper from './pools/97'
+import PoolsBaseGoerliPriceHelper from './pools/84531'
 
 export { getFarmsPriceHelperLpFiles }
 
@@ -17,6 +18,8 @@ export const getPoolsPriceHelperLpFiles = (chainId: ChainId) => {
       return PoolsEthereumPriceHelper
     case ChainId.GOERLI:
       return PoolsGoerliPriceHelper
+    case ChainId.BASE_GOERLI:
+      return PoolsBaseGoerliPriceHelper
     default:
       return []
   }

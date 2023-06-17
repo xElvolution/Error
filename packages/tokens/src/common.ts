@@ -52,6 +52,14 @@ export const USDC_GOERLI = new ERC20Token(
   'test USD Coin',
 )
 
+export const USDC_BASE_GOERLI = new ERC20Token(
+  ChainId.BASE_GOERLI,
+  '0x07865c6E87B9F70255377e024ace6630C1Eaa37F',
+  18,
+  'tUSDC',
+  'test USD Coin',
+)
+
 export const USDT_BSC = new ERC20Token(
   ChainId.BSC,
   '0x55d398326f99059fF775485246999027B3197955',
@@ -111,6 +119,8 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
+  [ChainId.BASE_GOERLI]: BUSD_GOERLI,
+
 }
 
 export const CAKE = {
@@ -123,6 +133,7 @@ export const USDC = {
   [ChainId.BSC_TESTNET]: USDC_TESTNET,
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
+  [ChainId.BASE_GOERLI]: USDC_BASE_GOERLI,
 }
 
 export const USDT = {
