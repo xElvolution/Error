@@ -2,8 +2,8 @@ import { TranslateFunction } from '@pancakeswap/localization'
 import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Trade anything. No registration, no hassle.'),
-  bodyText: t('Trade any token on BNB Smart Chain in seconds, just by connecting your wallet.'),
+  headingText: t('Trade any token in seconds on Base Goerli Chain.'),
+  bodyText: t('Embark on a celestial voyage - no registration, no hassle, just endless possibilities.'),
   reverse: false,
   primaryButton: {
     to: '/swap',
@@ -11,7 +11,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.pancakeswap.finance/',
+    to: 'https://docs.zodiacswap.finance/',
     text: t('Learn'),
     external: true,
   },

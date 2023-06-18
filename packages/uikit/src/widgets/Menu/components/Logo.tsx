@@ -22,7 +22,7 @@ const StyledLink = styled("a")`
     }
   }
   .desktop-icon {
-    width: 230px;
+    width: 160px;
     display: none;
     ${({ theme }) => theme.mediaQueries.lg} {
       display: block;
@@ -46,8 +46,8 @@ const Logo: React.FC<React.PropsWithChildren<Props>> = ({ href }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
     <>
-      <img alt="logo mobile" className="mobile-icon" src="/images/logo-dark.png" />
-      <img alt="logo desktop" className="desktop-icon" src="/images/logo-desktop-dark.svg" />
+      <img alt="logo mobile" className="mobile-icon" src="/images/logo.png" />
+      <img alt="logo desktop" className="desktop-icon" src="/images/logo-desktop.svg" />
     </>
   );
 

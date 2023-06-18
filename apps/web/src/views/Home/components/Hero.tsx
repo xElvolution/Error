@@ -105,8 +105,11 @@ const Hero = () => {
           <Heading scale="xxl" color="secondary" mb="24px">
             {t('Are you ready to unlock the mysteries of the zodiac?')}
           </Heading>
+          <Heading scale="md" >
+            {t('Zodiac Swap is a celestial marvel, a boundless realm of decentralized wonders awaiting exploration.')} 
+          </Heading>
           <Heading scale="md" mb="24px">
-            {t('Trade, earn, and win crypto on the most popular decentralized platform in the galaxy.')}
+            {t('Unlock the power of the zodiac as it aligns with decentralized finance, where celestial forces meet cutting-edge technology. ')}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}
