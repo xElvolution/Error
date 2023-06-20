@@ -71,7 +71,7 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
           name="description"
           content="Cheaper and faster than Uniswap? Discover ZodiacSwap, the leading DEX on Base Goerli Chain with the best farms in DeFi."
         />
-        <meta name="theme-color" content="#1FC7D4" />
+        <meta name="theme-color" content="#AA14F0" />
         <meta name="twitter:image" content="https://zodiacswap.finance/images/hero.png" />
         <meta
           name="twitter:description"

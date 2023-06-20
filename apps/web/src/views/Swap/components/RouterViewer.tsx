@@ -82,7 +82,7 @@ const CurrencyLogoWrapper = styled.div`
   height: 48px;
   width: 48px;
   padding: 2px;
-  background: linear-gradient(180deg, #53dee9 0%, #7645d9 76.22%);
+  background: linear-gradient(180deg, #53dee9 0%, #AA14F0 76.22%);
   border-radius: 50%;
   z-index: 2;
 `

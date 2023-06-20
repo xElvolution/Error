@@ -21,7 +21,7 @@ const FinishedCompetitions: React.FC<React.PropsWithChildren> = () => {
         <FinishedCompetitionBanner
           title={t('Binance Fan token Trading Competition')}
           imgSrc={FanTokenAllBunnies}
-          background="linear-gradient(#7645d9 0%, #452a7a 100%)"
+          background="linear-gradient(#AA14F0 0%, #452a7a 100%)"
           to="/competition/finished/fantoken"
         />
         <FinishedCompetitionBanner

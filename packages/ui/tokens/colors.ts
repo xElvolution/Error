@@ -2,9 +2,9 @@ export const baseColors = {
   white: 'white',
   failure: '#ED4B9E',
   failure33: '#ED4B9E33',
-  primary: '#1FC7D4',
-  primary0f: '#1FC7D40f',
-  primary3D: '#1FC7D43D',
+  primary: '#AA14F0',
+  primary0f: '#AA14F00f',
+  primary3D: '#AA14F03D',
   primaryBright: '#53DEE9',
   primaryDark: '#0098A1',
   success: '#31D0AA',
@@ -25,8 +25,8 @@ export const additionalColors = {
 export const lightColors = {
   ...baseColors,
   ...additionalColors,
-  secondary: '#7645D9',
-  secondary80: '#7645D980',
+  secondary: '#AA14F0',
+  secondary80: '#AA14F080',
   background: '#FAF9FA',
   backgroundDisabled: '#E9EAEB',
   backgroundAlt: '#FFFFFF',
@@ -51,14 +51,14 @@ export const lightColors = {
   gradientViolet: 'linear-gradient(180deg, #E2C9FB 0%, #CDB8FA 100%)',
   gradientVioletAlt: 'linear-gradient(180deg, #CBD7EF 0%, #9A9FD0 100%)',
   gradientGold: 'linear-gradient(180deg, #FFD800 0%, #FDAB32 100%)',
-  gradientBold: 'linear-gradient(#53DEE9, #7645D9)',
+  gradientBold: 'linear-gradient(#53DEE9, #AA14F0)',
 }
 
 export const darkColors = {
   ...baseColors,
   ...additionalColors,
-  secondary: '#f303dc',
-  secondary80: '#f303dc80',
+  secondary: '#AA14F0',
+  secondary80: '#AA14F080',
   background: '#08060B',
   backgroundDisabled: '#3c3742',
   backgroundAlt: '#000',
@@ -84,5 +84,5 @@ export const darkColors = {
   gradientViolet: 'linear-gradient(180deg, #6C4999 0%, #6D4DB2 100%)',
   gradientVioletAlt: 'linear-gradient(180deg, #434575 0%, #66578D 100%)',
   gradientGold: 'linear-gradient(180deg, #FFD800 0%, #FDAB32 100%)',
-  gradientBold: 'linear-gradient(#53DEE9, #f303dc)',
+  gradientBold: 'linear-gradient(#53DEE9, #AA14F0)',
 }
