@@ -18,9 +18,7 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'BNB', alt: t('BNB token') },
-      { src: 'BTC', alt: t('BTC token') },
-      { src: 'CAKE', alt: t('CAKE token') },
+      { src: 'Zodiac', alt: t('Zodiac token')},
     ],
   },
 })

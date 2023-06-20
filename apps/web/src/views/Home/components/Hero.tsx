@@ -4,7 +4,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@pancakeswap/localization'
 import Image from 'next/legacy/image'
 import styled, { keyframes } from 'styled-components'
-import bunnyImage from '../../../../public/images/home/lunar-bunny/astronaut-bunny.png'
+import celestialGoddess from '../../../../public/images/home/celestial/celestial-goddess1.png'
 import CompositeImage, { CompositeImageProps } from './CompositeImage'
 
 const flyingAnim = () => keyframes`
@@ -63,7 +63,7 @@ const StarsWrapper = styled.div`
 `
 
 const starsImage: CompositeImageProps = {
-  path: '/images/home/lunar-bunny/',
+  path: '/images/home/celestial/',
   attributes: [
     { src: 'star-l', alt: '3D Star' },
     { src: 'star-r', alt: '3D Star' },
@@ -122,11 +122,11 @@ const Hero = () => {
           height={['192px', null, null, '100%']}
           width={['192px', null, null, '100%']}
           flex={[null, null, null, '1']}
-          mb={['24px', null, null, '0']}
+          mb={['60px', null, null, '0']}
           position="relative"
         >
           <BunnyWrapper>
-            <Image src={bunnyImage} priority placeholder="blur" alt={t('Lunar bunny')} />
+            <Image src={celestialGoddess} priority placeholder="blur" alt={t('Celestial Goddess')} />
           </BunnyWrapper>
           <StarsWrapper>
             <CompositeImage {...starsImage} />
