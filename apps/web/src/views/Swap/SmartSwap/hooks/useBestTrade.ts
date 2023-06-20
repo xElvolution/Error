@@ -42,7 +42,7 @@ function createUseBestTrade<T>(key: string, getBestTrade: (options: TradeOptions
             tradeType,
             amount.currency.chainId,
             amount.currency.symbol,
-            currency.symbol,
+            // currency.symbol,
             deferQuotient,
             maxHops,
             allCommonPairs,
