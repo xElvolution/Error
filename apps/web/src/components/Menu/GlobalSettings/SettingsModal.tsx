@@ -133,7 +133,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                   }}
                 />
               </Flex>
-              <Flex justifyContent="space-between" alignItems="center" mb="24px">
+              {/* <Flex justifyContent="space-between" alignItems="center" mb="24px">
                 <Flex alignItems="center">
                   <Text>{t('Show username')}</Text>
                   <QuestionHelper
@@ -150,7 +150,7 @@ const SettingsModal: React.FC<React.PropsWithChildren<InjectedModalProps>> = ({ 
                     setUserUsernameVisibility(!userUsernameVisibility)
                   }}
                 />
-              </Flex>
+              </Flex> */}
               {chainId === ChainId.BSC && <GasSettings />}
             </Flex>
           </>
