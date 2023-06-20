@@ -53,7 +53,7 @@ export const LostSlice = styled(DefaultSlice)`
 `
 
 export const WonSlice = styled(DefaultSlice)`
-  stroke: #31d0aa;
+  stroke: #0052ff;
   stroke-dashoffset: ${(props) => -props.offset};
   animation: ${DrawAnimation} 1s ease, ${OffsetAnimation} 1s ease;
 `

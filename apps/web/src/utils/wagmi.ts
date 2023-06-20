@@ -31,7 +31,7 @@ const baseGoerli: Chain = {
   },
   contracts: {
     multicall3: {
-      address: '0xca11bde05977b3631167028862be2a173976ca11',
+      address: '0x24bfc6eB2F4679217aD4cA77f7C0AA210A6c831D',
       blockCreated: 11_907_934,
     },
   },

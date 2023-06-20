@@ -60,7 +60,7 @@ export const WETH9 = {
   ),
   [ChainId.BASE_GOERLI]: new ERC20Token(
     ChainId.BASE_GOERLI,
-    '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6',
+    '0x4200000000000000000000000000000000000006',
     18,
     'WETH',
     'Wrapped Ether',
