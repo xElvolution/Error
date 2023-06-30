@@ -7,12 +7,12 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Contact"),
-        href: "https://docs.zodiacswap.xyz/contact-us",
+        href: "https://docs.pancakeswap.finance/contact-us",
         isHighlighted: true,
       },
       {
         label: t("Brand"),
-        href: "https://docs.zodiacswap.xyz/brand",
+        href: "https://docs.pancakeswap.finance/brand",
       },
       {
         label: t("Blog"),
@@ -20,11 +20,11 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       },
       {
         label: t("Community"),
-        href: "https://docs.zodiacswap.xyz/contact-us/telegram",
+        href: "https://docs.pancakeswap.finance/contact-us/telegram",
       },
       {
         label: t("Litepaper"),
-        href: "https://v2litepaper.zodiacswap.xyz/",
+        href: "https://v2litepaper.pancakeswap.finance/",
       },
     ],
   },
@@ -33,15 +33,15 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
     items: [
       {
         label: t("Customer Support"),
-        href: "https://docs.zodiacswap.xyz/contact-us/customer-support",
+        href: "https://docs.pancakeswap.finance/contact-us/customer-support",
       },
       {
         label: t("Troubleshooting"),
-        href: "https://docs.zodiacswap.xyz/help/troubleshooting",
+        href: "https://docs.pancakeswap.finance/help/troubleshooting",
       },
       {
         label: t("Guides"),
-        href: "https://docs.zodiacswap.xyz/get-started",
+        href: "https://docs.pancakeswap.finance/get-started",
       },
     ],
   },
@@ -54,19 +54,19 @@ export const footerLinks: (t: ContextApi["t"]) => FooterLinkType[] = (t) => [
       },
       {
         label: t("Documentation"),
-        href: "https://docs.zodiacswap.xyz",
+        href: "https://docs.pancakeswap.finance",
       },
       {
         label: t("Bug Bounty"),
-        href: "https://docs.zodiacswap.xyz/code/bug-bounty",
+        href: "https://docs.pancakeswap.finance/code/bug-bounty",
       },
       {
         label: t("Audits"),
-        href: "https://docs.zodiacswap.xyz/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
+        href: "https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
       },
       {
         label: t("Careers"),
-        href: "https://docs.zodiacswap.xyz/hiring/become-a-chef",
+        href: "https://docs.pancakeswap.finance/hiring/become-a-chef",
       },
     ],
   },

@@ -1,8 +1,8 @@
 # ✨ Pancake Frontend
 
 <p align="center">
-  <a href="https://zodiacswap.xyz">
-      <img src="https://zodiacswap.xyz/logo.png" height="128">
+  <a href="https://pancakeswap.finance">
+      <img src="https://pancakeswap.finance/logo.png" height="128">
   </a>
 </p>
 

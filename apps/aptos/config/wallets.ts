@@ -65,17 +65,17 @@ export const wallets: WalletConfigV2<ConnectorNames>[] = [
   {
     id: 'trustWallet',
     title: 'Trust Wallet',
-    icon: 'https://zodiacswap.xyz/images/wallets/trust.png',
+    icon: 'https://pancakeswap.finance/images/wallets/trust.png',
     get installed() {
       return typeof window !== 'undefined' && Boolean(window.aptos) && Boolean((window.aptos as any)?.isTrust)
     },
-    deepLink: 'https://link.trustwallet.com/open_url?coin_id=637&url=https://aptos.zodiacswap.xyz/',
+    deepLink: 'https://link.trustwallet.com/open_url?coin_id=637&url=https://aptos.pancakeswap.finance/',
     connectorId: ConnectorNames.TrustWallet,
   },
   {
     id: 'safePal',
     title: 'SafePal',
-    icon: 'https://zodiacswap.xyz/images/wallets/safepal.png',
+    icon: 'https://pancakeswap.finance/images/wallets/safepal.png',
     get installed() {
       return typeof window !== 'undefined' && Boolean(window.safePal) && Boolean((window.safePal as any)?.sfpPlatform)
     },

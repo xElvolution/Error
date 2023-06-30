@@ -17,7 +17,7 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Contact",
-        href: "https://docs.zodiacswap.xyz/contact-us",
+        href: "https://docs.pancakeswap.finance/contact-us",
       },
       {
         label: "Blog",
@@ -25,11 +25,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Community",
-        href: "https://docs.zodiacswap.xyz/contact-us/telegram",
+        href: "https://docs.pancakeswap.finance/contact-us/telegram",
       },
       {
         label: "CAKE",
-        href: "https://docs.zodiacswap.xyz/tokenomics/cake",
+        href: "https://docs.pancakeswap.finance/tokenomics/cake",
       },
       {
         label: "—",
@@ -46,15 +46,15 @@ export const footerLinks: FooterLinkType[] = [
     items: [
       {
         label: "Customer",
-        href: "Support https://docs.zodiacswap.xyz/contact-us/customer-support",
+        href: "Support https://docs.pancakeswap.finance/contact-us/customer-support",
       },
       {
         label: "Troubleshooting",
-        href: "https://docs.zodiacswap.xyz/help/troubleshooting",
+        href: "https://docs.pancakeswap.finance/help/troubleshooting",
       },
       {
         label: "Guides",
-        href: "https://docs.zodiacswap.xyz/get-started",
+        href: "https://docs.pancakeswap.finance/get-started",
       },
     ],
   },
@@ -67,7 +67,7 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Documentation",
-        href: "https://docs.zodiacswap.xyz",
+        href: "https://docs.pancakeswap.finance",
       },
       {
         label: "Bug Bounty",
@@ -75,11 +75,11 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Audits",
-        href: "https://docs.zodiacswap.xyz/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
+        href: "https://docs.pancakeswap.finance/help/faq#is-pancakeswap-safe-has-pancakeswap-been-audited",
       },
       {
         label: "Careers",
-        href: "https://docs.zodiacswap.xyz/hiring/become-a-chef",
+        href: "https://docs.pancakeswap.finance/hiring/become-a-chef",
       },
     ],
   },

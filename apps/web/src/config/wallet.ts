@@ -42,9 +42,9 @@ const walletsConfig = ({
       icon: '/images/wallets/metamask.png',
       installed: typeof window !== 'undefined' && Boolean(window.ethereum?.isMetaMask) && metaMaskConnector.ready,
       connectorId: ConnectorNames.MetaMask,
-      deepLink: 'https://metamask.app.link/dapp/zodiacswap.xyz/',
+      deepLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
       qrCode,
-      downloadLink: 'https://metamask.app.link/dapp/zodiacswap.xyz/',
+      downloadLink: 'https://metamask.app.link/dapp/pancakeswap.finance/',
     },
     {
       id: 'binance',
@@ -76,7 +76,7 @@ const walletsConfig = ({
         typeof window !== 'undefined' &&
         !(window.ethereum as ExtendEthereum)?.isSafePal && // SafePal has isTrust flag
         (Boolean(window.ethereum?.isTrust) || Boolean((window.ethereum as ExtendEthereum)?.isTrustWallet)),
-      deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://zodiacswap.xyz/',
+      deepLink: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://pancakeswap.finance/',
       downloadLink: {
         desktop: 'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph/related',
       },
@@ -190,5 +190,5 @@ const docLangCodeMapping: Record<string, string> = {
 
 export const getDocLink = (code: string) =>
   docLangCodeMapping[code]
-    ? `https://docs.zodiacswap.xyz/v/${docLangCodeMapping[code]}/get-started/wallet-guide`
-    : `https://docs.zodiacswap.xyz/get-started/wallet-guide`
+    ? `https://docs.pancakeswap.finance/v/${docLangCodeMapping[code]}/get-started/wallet-guide`
+    : `https://docs.pancakeswap.finance/get-started/wallet-guide`

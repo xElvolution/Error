@@ -1,7 +1,7 @@
-export const PANCAKE_EXTENDED = 'https://tokens.zodiacswap.xyz/pancakeswap-extended.json'
-export const COINGECKO = 'https://tokens.zodiacswap.xyz/coingecko.json'
+export const PANCAKE_EXTENDED = 'https://tokens.pancakeswap.finance/pancakeswap-extended.json'
+export const COINGECKO = 'https://tokens.pancakeswap.finance/coingecko.json'
 export const COINGECKO_ETH = 'https://tokens.coingecko.com/uniswap/all.json'
-export const CMC = 'https://tokens.zodiacswap.xyz/cmc.json'
+export const CMC = 'https://tokens.pancakeswap.finance/cmc.json'
 
 export const ETH_URLS = [COINGECKO_ETH]
 export const BSC_URLS = [PANCAKE_EXTENDED, CMC, COINGECKO]

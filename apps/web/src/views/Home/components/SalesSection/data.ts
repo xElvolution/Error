@@ -33,7 +33,7 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.zodiacswap.xyz/products/yield-farming',
+    to: 'https://docs.pancakeswap.finance/products/yield-farming',
     text: t('Learn'),
     external: true,
   },
@@ -59,7 +59,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.zodiacswap.xyz/tokenomics/cake',
+    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
     text: t('Learn'),
     external: true,
   },

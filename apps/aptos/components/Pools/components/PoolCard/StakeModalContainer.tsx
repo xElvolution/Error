@@ -105,7 +105,7 @@ const StakeModalContainer = ({
       account={account}
       handleConfirmClick={handleConfirmClick}
       isRemovingStake={isRemovingStake}
-      imageUrl="https://tokens.zodiacswap.xyz/images/aptos/"
+      imageUrl="https://tokens.pancakeswap.finance/images/aptos/"
     />
   )
 }
