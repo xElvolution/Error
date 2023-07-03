@@ -1,4 +1,4 @@
-# ✨ Pancake Frontend
+# ✨ Zodiac Frontend
 
 <p align="center">
   <a href="https://pancakeswap.finance">
