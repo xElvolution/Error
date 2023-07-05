@@ -11,7 +11,7 @@ export const bscTestnetTokens = {
     18,
     'SYRUP',
     'SyrupBar Token',
-    'https://pancakeswap.finance/',
+    'https://zodiacswap.xyz/',
   ),
   bake: new ERC20Token(
     ChainId.BSC_TESTNET,

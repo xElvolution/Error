@@ -58,7 +58,7 @@ export const NetworkSwitcher = () => {
     <UserMenu
       mr="8px"
       variant="default"
-      avatarSrc="https://tokens.pancakeswap.finance/images/symbol/apt.png"
+      avatarSrc="https://tokens.zodiacswap.xyz/images/symbol/apt.png"
       avatarClassName={aptosLogoClass}
       placement="bottom"
       text={

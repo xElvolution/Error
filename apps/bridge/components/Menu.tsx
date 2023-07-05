@@ -87,7 +87,7 @@ export function Menu() {
   return (
     <Flex height="56px" bg="backgroundAlt" px="16px" alignItems="center" justifyContent="space-between" zIndex={9}>
       <Flex>
-        <Logo href="https://pancakeswap.finance" />
+        <Logo href="https://zodiacswap.xyz" />
 
         <Flex pl={['10px', null, '50px']}>
           {MenuConfig.map((menu) => (
@@ -97,7 +97,7 @@ export function Menu() {
               </NextLink>
             </Box>
           ))}
-          <StyledMenuItem href="https://pancakeswap.finance/swap">Swap</StyledMenuItem>
+          <StyledMenuItem href="https://zodiacswap.xyz/swap">Swap</StyledMenuItem>
         </Flex>
       </Flex>
       <Flex alignItems="center">
