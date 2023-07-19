@@ -3,11 +3,11 @@ import shuffle from 'lodash/shuffle'
 import CompetitionBanner from '../CompetitionBanner'
 import IFOBanner from '../IFOBanner'
 import LotteryBanner from '../LotteryBanner'
-import PerpetualBanner from '../PerpetualBanner'
+import ProjectBanner from '../ProjectBanner'
 import useIsRenderIfoBanner from './useIsRenderIFOBanner'
 import useIsRenderLotteryBanner from './useIsRenderLotteryBanner'
 import useIsRenderCompetitionBanner from './useIsRenderCompetitionBanner'
-import AptosBanner from '../AptosBanner'
+import WelcomeBanner from '../WelcomeBanner'
 
 interface IBannerConfig {
   shouldRender: boolean
@@ -33,7 +33,7 @@ export const useMultipleBannerConfig = () => {
 
   return useMemo(() => {
     const NO_SHUFFLE_BANNERS: IBannerConfig[] = [
-      { shouldRender: true, banner: <AptosBanner /> },
+      { shouldRender: true, banner: <WelcomeBanner /> },
       {
         shouldRender: isRenderIFOBanner,
         banner: <IFOBanner />,
@@ -50,8 +50,8 @@ export const useMultipleBannerConfig = () => {
         banner: <LotteryBanner />,
       },
       {
-        shouldRender: true,
-        banner: <PerpetualBanner />,
+        shouldRender: false,
+        banner: <ProjectBanner />,
       },
     ]
     return [...NO_SHUFFLE_BANNERS, ...shuffle(SHUFFLE_BANNERS)]

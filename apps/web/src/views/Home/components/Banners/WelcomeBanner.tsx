@@ -24,8 +24,8 @@ const RightWrapper = styled.div`
   }
 `
 const Header = styled(S.StyledHeading)`
-  font-size: 20px;
-  min-height: 44px;
+  font-size: 10px;
+  min-height: 34px;
   ${({ theme }) => theme.mediaQueries.sm} {
     font-size: 40px;
     min-height: auto;
@@ -34,7 +34,7 @@ const Header = styled(S.StyledHeading)`
 
 const HEADING_ONE_LINE_HEIGHT = 27
 
-const PerpetualBanner = () => {
+const WelcomeBanner = () => {
   const {
     t,
     currentLanguage: { code },
@@ -61,8 +61,8 @@ const PerpetualBanner = () => {
     <S.Wrapper>
       <S.Inner>
         <S.LeftWrapper>
-          <S.StyledSubheading ref={headerRef}>{t('Perpetual Futures')}</S.StyledSubheading>
-          <Header width={['160px', '160px', 'auto']}>{t('Up to 100× Leverage')}</Header>
+          <Header width={['160px', '160px', 'auto']}>{t('Welcome To ZodiacSwap')}</Header>
+          <S.StyledSubheading ref={headerRef}>{t('Step into the realm of boundless imagination and limitless possibilities')}</S.StyledSubheading>
           <Link href={perpetualUrl} external>
             <Button>
               <Text color="invertedContrast" bold fontSize="16px" mr="4px">
@@ -74,9 +74,9 @@ const PerpetualBanner = () => {
         </S.LeftWrapper>
         <RightWrapper>
           {isDesktop ? (
-            <Image src={perpetualImage} alt="PerpetualBanner" width={392} height={232} placeholder="blur" />
+            <Image src={perpetualImage} alt="ProjectBanner" width={392} height={232} placeholder="blur" />
           ) : (
-            <Image src={perpetualMobileImage} alt="PerpetualBanner" width={208} height={208} placeholder="blur" />
+            <Image src={perpetualMobileImage} alt="ProjectBanner" width={208} height={208} placeholder="blur" />
           )}
         </RightWrapper>
       </S.Inner>
@@ -84,4 +84,4 @@ const PerpetualBanner = () => {
   )
 }
 
-export default memo(PerpetualBanner)
+export default memo(WelcomeBanner)
