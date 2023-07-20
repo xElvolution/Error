@@ -67,6 +67,14 @@
       "logoURI": "https://zodiacswap.netlify.app/images/tokens/Virgo.png"
     },
     {
+      "name": "Aries Token",
+      "symbol": "zARIES",
+      "address": "0xb71C46E5E42A576248dDBd93651F794De5c64d0e",
+      "chainId": 84531,
+      "decimals": 18,
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Aries.png"
+    },
+    {
       "name": "Scorpio Token",
       "symbol": "zSCORPIO",
       "address": "0x4bfAB49060aC82C39495c0F862bbeCCd5c30d6c6",
