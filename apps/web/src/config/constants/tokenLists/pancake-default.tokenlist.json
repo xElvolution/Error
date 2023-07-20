@@ -16,7 +16,7 @@
       "address": "0x55d398326f99059fF775485246999027B3197955",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://tokens.zodiacswap.xyz/images/symbol/usdt.png"
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
     },
     {
       "name": "Zodiac USD coin",
@@ -24,7 +24,7 @@
       "chainId": 84531,
       "decimals": 18,
       "address": "0xb71C46E5E42A576248dDBd93651F794De5c64d0e",
-      "logoURI": "https://tokens.zodiacswap.xyz/images/symbol/usdc.png"
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdc.png"
     },
     {
       "name": "Taurus Token",
@@ -32,7 +32,7 @@
       "address": "0x978d166c17F308020F921A20429151e10f1aA928",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x978d166c17F308020F921A20429151e10f1aA928.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Taurus.png"
     },
     {
       "name": "Gemini Token",
@@ -40,7 +40,7 @@
       "address": "0x52419fE70d2A3e595dfF23A46A46eb35745D6FfE",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x52419fE70d2A3e595dfF23A46A46eb35745D6FfE.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Gemini.png"
     },
     {
       "name": "Leo Token",
@@ -48,7 +48,7 @@
       "address": "0xdcB4aA9c9b2207E527245Dbb34b8a12Ed0f17e87",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0xdcB4aA9c9b2207E527245Dbb34b8a12Ed0f17e87.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Leo.png"
     },
     {
       "name": "Cancer Token",
@@ -56,7 +56,7 @@
       "address": "0x5d2770a6F996feC40ce23b0667E48b61c3FB9292",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x5d2770a6F996feC40ce23b0667E48b61c3FB9292.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Cancer.png"
     },
     {
       "name": "Virgo Token",
@@ -64,7 +64,7 @@
       "address": "0x1642E3d5552fb0BeC8e144277f855a0633dd8359",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x5d2770a6F996feC40ce23b0667E48b61c3FB9292.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Virgo.png"
     },
     {
       "name": "Scorpio Token",
@@ -72,7 +72,7 @@
       "address": "0x4bfAB49060aC82C39495c0F862bbeCCd5c30d6c6",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x4bfAB49060aC82C39495c0F862bbeCCd5c30d6c6.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Scorpio.png"
     },
     {
       "name": "Libra Token",
@@ -80,7 +80,7 @@
       "address": "0x8A3c16E8BC1DCA134510A201Fd47Fd5c793411B6",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x8A3c16E8BC1DCA134510A201Fd47Fd5c793411B6.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Libra.png"
     },
     {
       "name": "Sagittarius Token",
@@ -88,7 +88,7 @@
       "address": "0x87A7866939f6110A7Eaf5d3884B338D981D2360c",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x87A7866939f6110A7Eaf5d3884B338D981D2360c.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Sagittarius.png"
     },
     {
       "name": "Capricorn Token",
@@ -96,7 +96,7 @@
       "address": "0x325Db896462944F51bf705DC2cbE9E459241eca1",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0x325Db896462944F51bf705DC2cbE9E459241eca1.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Capricorn.png"
     },
     {
       "name": "Aquarius Token",
@@ -104,7 +104,7 @@
       "address": "0xddf7844dE73E153428B36e6Cc3F13e1d9cbdD76c",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0xddf7844dE73E153428B36e6Cc3F13e1d9cbdD76c.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Aquarius.png"
     },
     {
       "name": "Pisces Token",
@@ -112,7 +112,7 @@
       "address": "0xCf9947e8A453B5E0b0f01c19C218E224e271f4ea",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0xCf9947e8A453B5E0b0f01c19C218E224e271f4ea.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Pisces.png"
     },
     {
       "name": "Aries Token",
@@ -120,7 +120,7 @@
       "address": "0xb71C46E5E42A576248dDBd93651F794De5c64d0e",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/tokens/0xb71C46E5E42A576248dDBd93651F794De5c64d0e.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/tokens/Aries.png"
     },
     {
       "name": "Wrapped Ether",
@@ -128,7 +128,7 @@
       "address": "0x4200000000000000000000000000000000000006",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://tokens.zodiacswap.xyz/images/symbol/weth.png"
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/weth.png"
     },
     {
       "name": "Wrapped BTC",
@@ -136,7 +136,7 @@
       "address": "0x42000000000000000000000000000ddd00000006",
       "chainId": 84531,
       "decimals": 18,
-      "logoURI": "https://tokens.zodiacswap.xyz/images/symbol/wbtc.png"
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/wbtc.png"
     }
     
   ]
