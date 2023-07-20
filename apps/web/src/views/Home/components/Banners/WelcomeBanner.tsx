@@ -32,7 +32,7 @@ const Header = styled(S.StyledHeading)`
   }
 `
 
-const HEADING_ONE_LINE_HEIGHT = 27
+const HEADING_ONE_LINE_HEIGHT = 25
 
 const WelcomeBanner = () => {
   const {
@@ -72,13 +72,13 @@ const WelcomeBanner = () => {
             </Button>
           </Link>
         </S.LeftWrapper>
-        <RightWrapper>
+        {/* <RightWrapper>
           {isDesktop ? (
             <Image src={perpetualImage} alt="ProjectBanner" width={392} height={232} placeholder="blur" />
           ) : (
             <Image src={perpetualMobileImage} alt="ProjectBanner" width={208} height={208} placeholder="blur" />
           )}
-        </RightWrapper>
+        </RightWrapper> */}
       </S.Inner>
     </S.Wrapper>
   )
