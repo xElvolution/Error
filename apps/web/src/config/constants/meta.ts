@@ -5,7 +5,7 @@ import { PageMeta } from './types'
 export const DEFAULT_META: PageMeta = {
   title: 'ZodiacSwap',
   description:
-    'The most popular AMM on BSC by user count! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by PancakeSwap), NFTs, and more, on a platform you can trust.',
+    'The most unique AMM on Base Chain, guided by the constellations of creativity, inspiration, and discovery and also illuminate the Blockchain with the radiance of our collective brilliance.',
   image: 'https://zodiacswap.xyz/images/hero.png',
 }
 
