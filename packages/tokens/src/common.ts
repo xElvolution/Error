@@ -52,12 +52,12 @@ export const USDC_GOERLI = new ERC20Token(
   'test USD Coin',
 )
 
-export const USDC_BASE_GOERLI = new ERC20Token(
+export const USDT_BASE_GOERLI = new ERC20Token(
   ChainId.BASE_GOERLI,
-  '0x07865c6E87B9F70255377e024ace6630C1Eaa37F',
+  '0xeeeD97aC275c2e9894B890d2E56F4412C8566fb5',
   18,
-  'tUSDC',
-  'test USD Coin',
+  'zUSDT',
+  'Zodiac Tether USD',
 )
 
 export const USDT_BSC = new ERC20Token(
@@ -133,7 +133,7 @@ export const USDC = {
   [ChainId.BSC_TESTNET]: USDC_TESTNET,
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
-  [ChainId.BASE_GOERLI]: USDC_BASE_GOERLI,
+  [ChainId.BASE_GOERLI]: USDT_BASE_GOERLI,
 }
 
 export const USDT = {

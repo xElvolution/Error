@@ -4,8 +4,8 @@ import { SerializedFarmConfig } from '@pancakeswap/farms'
 const priceHelperLps: SerializedFarmConfig[] = [
   {
     pid: null,
-    lpSymbol: 'WETH-USDC LP',
-    lpAddress: '0xf5bf0C34d3c428A74Ceb98d27d38d0036C587200',
+    lpSymbol: 'WETH-zUSDT LP',
+    lpAddress: '0x597417F750f67a7F9Ca543161CF1eD543022DF5b',
     quoteToken: baseGoerliTestnetTokens.usdc,
     token: baseGoerliTestnetTokens.weth,
   },

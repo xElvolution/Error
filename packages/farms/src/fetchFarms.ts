@@ -21,9 +21,9 @@ const evmNativeStableLpMap = {
     stable: 'tUSDC',
   },
   [ChainId.BASE_GOERLI]: {
-    address: '0xf5bf0C34d3c428A74Ceb98d27d38d0036C587200',
+    address: '0x597417F750f67a7F9Ca543161CF1eD543022DF5b',
     wNative: 'WETH',
-    stable: 'tUSDC',
+    stable: 'zUSDT',
   },
   [ChainId.BSC]: {
     address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
