@@ -130,12 +130,31 @@ export const BUSD_GOERLI = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+export const BUSD_PEGO = new ERC20Token(
+  ChainId.PEGO,
+  '0xb809b9B2dc5e93CB863176Ea2D565425B03c0540',
+  18,
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
+export const BUSD_PEGO_TESTNET = new ERC20Token(
+  ChainId.PEGO_TESTNET,
+  '0xb809b9B2dc5e93CB863176Ea2D565425B03c0540',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
 export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ETHEREUM]: BUSD_ETH,
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
   [ChainId.BASE_GOERLI]: BUSD_GOERLI,
+  [ChainId.PEGO]: BUSD_PEGO,
+  [ChainId.PEGO_TESTNET]: BUSD_PEGO_TESTNET,
 
 }
 
