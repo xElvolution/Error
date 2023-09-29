@@ -31,3 +31,19 @@ export const baseGoerliProvider = new StaticJsonRpcProvider(
   },
   5,
 )
+
+export const pegoProvider = new StaticJsonRpcProvider(
+  {
+    url: '',
+    skipFetchSetup: true,
+  },
+  20201022,
+)
+
+export const pegoTestnetProvider = new StaticJsonRpcProvider(
+  {
+    url: '',
+    skipFetchSetup: true,
+  },
+  123456,
+)

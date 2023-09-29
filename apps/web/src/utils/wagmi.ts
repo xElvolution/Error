@@ -37,12 +37,64 @@ const baseGoerli: Chain = {
   },
 };
 
+const pego: Chain = {
+  id: 20201022, 
+  name: 'PEGO Mainnet',
+  network: 'pego-mainnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'PEGO Mainnet',
+    symbol: 'PG',
+  },
+  rpcUrls: {
+    public: { http: ['https://pegorpc.com'] },
+    default: { http: ['https://pegorpc.com'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'PEGO Mainnet Explorer', url: 'https://scan.pego.network' },
+    default: { name: 'PEGO Mainnet Explorer', url: 'https://scan.pego.network' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0x32dE1Eac390d8D16A67EFf13ddAdEE443dcFb438',
+      blockCreated: 11_907_934,
+    },
+  },
+};
+
+const pegoTestnet: Chain = {
+  id: 123456, 
+  name: 'PEGO Testnet',
+  network: 'pego-testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'PEGO Testnet',
+    symbol: 'PG',
+  },
+  rpcUrls: {
+    public: { http: ['https://rpc.pegotest.net'] },
+    default: { http: ['https://rpc.pegotest.net'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'PEGO Testnet Explorer', url: 'https://scan.pegotest.net/' },
+    default: { name: 'PEGO Testnet Explorer', url: 'https://scan.pegotest.net/' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0x32dE1Eac390d8D16A67EFf13ddAdEE443dcFb438',
+      blockCreated: 11_907_934,
+    },
+  },
+};
+
 const CHAINS = [
   // bsc, 
   // mainnet, 
   // bscTestnet, 
-  baseGoerli,
-  goerli
+  // baseGoerli,
+  // goerli,
+  pego,
+  pegoTestnet
 ]
 
 const getNodeRealUrl = (networkName: string) => {

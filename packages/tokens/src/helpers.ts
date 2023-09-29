@@ -10,6 +10,8 @@ export const EMPTY_LIST: TokenAddressMap<ChainId> = {
   [ChainId.BASE_GOERLI]: {},
   [ChainId.BSC]: {},
   [ChainId.BSC_TESTNET]: {},
+  [ChainId.PEGO]: {},
+  [ChainId.PEGO_TESTNET]: {},
 }
 
 export function serializeTokens(unserializedTokens) {

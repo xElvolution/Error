@@ -1,6 +1,6 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE } from '@pancakeswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
+import { bscTokens, bscTestnetTokens,pegoTokens, pegoTestnetTokens, USDC, USDT, BUSD, WBTC_ETH } from '@pancakeswap/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
@@ -9,6 +9,8 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BASE_GOERLI]: '0x32dE1Eac390d8D16A67EFf13ddAdEE443dcFb438',
   [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
+  [ChainId.PEGO]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
+  [ChainId.PEGO_TESTNET]: '0x0Fe7C8BF49Aa7d1605a92Ee526850A3d850577be',
 }
 
 // used to construct intermediary pairs for trading
@@ -26,6 +28,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.usdc,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
+  [ChainId.PEGO]: [pegoTokens.wpg, pegoTokens.zodiac, pegoTokens.usdc],
+  [ChainId.PEGO_TESTNET]: [pegoTestnetTokens.wpg, pegoTestnetTokens.zodiac, pegoTestnetTokens.usdc],
 }
 
 /**
@@ -55,6 +59,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BASE_GOERLI]: [],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
+  [ChainId.PEGO]: [],
+  [ChainId.PEGO_TESTNET]: [],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -64,6 +70,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BASE_GOERLI]: [USDC[ChainId.BASE_GOERLI], WNATIVE[ChainId.BASE_GOERLI]],
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
+  [ChainId.PEGO]: [pegoTokens.wpg, pegoTokens.zodiac, pegoTokens.usdc],
+  [ChainId.PEGO_TESTNET]: [pegoTestnetTokens.wpg, pegoTestnetTokens.zodiac, pegoTestnetTokens.usdc],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

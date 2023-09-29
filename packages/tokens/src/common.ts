@@ -44,6 +44,22 @@ export const USDC_ETH = new ERC20Token(
   'USD Coin',
 )
 
+export const USDC_PEGO = new ERC20Token(
+  ChainId.PEGO,
+  '0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B',
+  18,
+  'USDC',
+  'USD Coin',
+)
+
+export const USDC_PEGO_TESTNET = new ERC20Token(
+  ChainId.PEGO_TESTNET,
+  '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
+  18,
+  'tUSDC',
+  'Test USD Coin',
+)
+
 export const USDC_GOERLI = new ERC20Token(
   ChainId.GOERLI,
   '0x07865c6E87B9F70255377e024ace6630C1Eaa37F',
@@ -134,6 +150,8 @@ export const USDC = {
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
   [ChainId.BASE_GOERLI]: USDT_BASE_GOERLI,
+  [ChainId.PEGO]: USDC_PEGO,
+  [ChainId.PEGO_TESTNET]: USDC_PEGO_TESTNET,
 }
 
 export const USDT = {

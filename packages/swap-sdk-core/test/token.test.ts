@@ -6,6 +6,8 @@ enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   BASE_GOERLI = 84531,
+  PEGO_TESTNET = 123456,
+  PEGO = 20201022,
 }
 
 describe('Token', () => {

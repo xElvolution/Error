@@ -44,8 +44,8 @@ export default function CurrencyLogo({
     if (currency.chainId === ChainId.BSC) {
       return <BinanceIcon width={size} style={style} />
     }
-    if (currency.chainId === ChainId.BASE_GOERLI) {
-      return <img src="/images/chains/1.png" width={size} style={style} alt="Ethereum" />
+    if (currency.chainId === ChainId.PEGO) {
+      return <img src="/images/chains/20201022.png" width={size} style={style} alt="PEGO" />
     }
     return (
       <StyledLogo
