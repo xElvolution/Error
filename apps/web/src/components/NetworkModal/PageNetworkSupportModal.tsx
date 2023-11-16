@@ -57,7 +57,7 @@ export function PageNetworkSupportModal() {
           <Button
             variant={foundChain && lastValidPath ? 'secondary' : 'primary'}
             isLoading={isLoading}
-            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.PEGO) : switchNetworkAsync(ChainId.PEGO))}
+            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.VICTION_TESTNET) : switchNetworkAsync(ChainId.VICTION_TESTNET))}
           >
             {t('Switch to %chain%', { chain: 'Base Chain' })}
           </Button>

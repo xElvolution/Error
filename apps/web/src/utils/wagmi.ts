@@ -37,22 +37,22 @@ const baseGoerli: Chain = {
   },
 };
 
-const pego: Chain = {
-  id: 20201022, 
-  name: 'PEGO Mainnet',
-  network: 'pego-mainnet',
+const viction: Chain = {
+  id: 88, 
+  name: 'Viction Mainnet',
+  network: 'viction-mainnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'PEGO Mainnet',
-    symbol: 'PG',
+    name: 'Viction Mainnet',
+    symbol: 'VIC',
   },
   rpcUrls: {
-    public: { http: ['https://pegorpc.com'] },
-    default: { http: ['https://pegorpc.com'] },
+    public: { http: ['https://rpc.tomochain.com'] },
+    default: { http: ['https://rpc.tomochain.com'] },
   },
   blockExplorers: {
-    etherscan: { name: 'PEGO Mainnet Explorer', url: 'https://scan.pego.network' },
-    default: { name: 'PEGO Mainnet Explorer', url: 'https://scan.pego.network' },
+    etherscan: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io/' },
+    default: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io/' },
   },
   contracts: {
     multicall3: {
@@ -62,22 +62,22 @@ const pego: Chain = {
   },
 };
 
-const pegoTestnet: Chain = {
-  id: 123456, 
-  name: 'PEGO Testnet',
-  network: 'pego-testnet',
+const victionTestnet: Chain = {
+  id: 89, 
+  name: 'Viction Testnet',
+  network: 'viction-testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'PEGO Testnet',
-    symbol: 'PG',
+    name: 'Viction Testnet',
+    symbol: 'VIC',
   },
   rpcUrls: {
-    public: { http: ['https://rpc.pegotest.net'] },
-    default: { http: ['https://rpc.pegotest.net'] },
+    public: { http: ['https://rpc.testnet.tomochain.com'] },
+    default: { http: ['https://rpc.testnet.tomochain.com'] },
   },
   blockExplorers: {
-    etherscan: { name: 'PEGO Testnet Explorer', url: 'https://scan.pegotest.net/' },
-    default: { name: 'PEGO Testnet Explorer', url: 'https://scan.pegotest.net/' },
+    etherscan: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io/' },
+    default: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io/' },
   },
   contracts: {
     multicall3: {
@@ -93,8 +93,8 @@ const CHAINS = [
   // bscTestnet, 
   // baseGoerli,
   // goerli,
-  pego,
-  pegoTestnet
+  viction,
+  victionTestnet
 ]
 
 const getNodeRealUrl = (networkName: string) => {

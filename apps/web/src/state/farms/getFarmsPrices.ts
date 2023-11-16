@@ -147,14 +147,14 @@ const nativeStableLpMap = {
     wNative: 'WBNB',
     stable: 'BUSD',
   },
-  [ChainId.PEGO]: {
+  [ChainId.VICTION]: {
     address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-    wNative: 'WPG',
+    wNative: 'WVIC',
     stable: 'USDC',
   },
-  [ChainId.PEGO_TESTNET]: {
+  [ChainId.VICTION_TESTNET]: {
     address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
-    wNative: 'WPG',
+    wNative: 'WVIC',
     stable: 'USDC',
   },
 }

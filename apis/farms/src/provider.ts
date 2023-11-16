@@ -32,18 +32,18 @@ export const baseGoerliProvider = new StaticJsonRpcProvider(
   5,
 )
 
-export const pegoProvider = new StaticJsonRpcProvider(
+export const victionProvider = new StaticJsonRpcProvider(
   {
     url: '',
     skipFetchSetup: true,
   },
-  20201022,
+  88,
 )
 
-export const pegoTestnetProvider = new StaticJsonRpcProvider(
+export const victionTestnetProvider = new StaticJsonRpcProvider(
   {
     url: '',
     skipFetchSetup: true,
   },
-  123456,
+  89,
 )

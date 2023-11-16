@@ -130,16 +130,26 @@ const walletsConfig = ({
     //     'https://chrome.google.com/webstore/detail/safepal-extension-wallet/lgmpcpglpngdoalbgeoldeajfclnhafa',
     //   qrCode,
     // },
-    // {
-    //   id: 'coin98',
-    //   title: 'Coin98',
-    //   icon: '/images/wallets/coin98.png',
-    //   connectorId: ConnectorNames.Injected,
-    //   installed:
-    //     typeof window !== 'undefined' &&
-    //     (Boolean((window.ethereum as ExtendEthereum)?.isCoin98) || Boolean(window.coin98)),
-    //   qrCode,
-    // },
+    {
+      id: 'coin98',
+      title: 'Coin98',
+      icon: '/images/wallets/coin98.png',
+      connectorId: ConnectorNames.Injected,
+      installed:
+        typeof window !== 'undefined' &&
+        (Boolean((window.ethereum as ExtendEthereum)?.isCoin98) || Boolean(window.coin98)),
+      qrCode,
+    },
+    {
+      id: 'viction',
+      title: 'Viction Wallet',
+      icon: '/images/wallets/viction.png',
+      connectorId: ConnectorNames.Injected,
+      installed:
+        typeof window !== 'undefined' &&
+        (Boolean((window.ethereum as ExtendEthereum)?.isViction) || Boolean(window.viction)),
+        qrCode,
+    },
     // {
     //   id: 'blocto',
     //   title: 'Blocto',

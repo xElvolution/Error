@@ -62,7 +62,7 @@ const UserMenuItems = () => {
       <ProfileUserMenuItem
         isLoading={isLoading}
         hasProfile={hasProfile}
-        disabled={isWrongNetwork || chainId !== ChainId.PEGO}
+        disabled={isWrongNetwork || chainId !== ChainId.Viction}
       /> */}
       {/* <UserMenuDivider /> */}
       <UserMenuItem as="button" onClick={logout}>

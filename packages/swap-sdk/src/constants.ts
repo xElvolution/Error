@@ -7,8 +7,8 @@ export enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   BASE_GOERLI = 84531,
-  PEGO = 20201022,
-  PEGO_TESTNET = 123456,
+  VICTION = 88,
+  VICTION_TESTNET = 89,
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -25,8 +25,8 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
   [ChainId.BASE_GOERLI]: '0x0Fe7C8BF49Aa7d1605a92Ee526850A3d850577be',
-  [ChainId.PEGO]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
-  [ChainId.PEGO_TESTNET]: '0x34f1D6721517cA1e0A05e73AceaE8D8F9DdC6Ff8',
+  [ChainId.VICTION]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
+  [ChainId.VICTION_TESTNET]: '0x34f1D6721517cA1e0A05e73AceaE8D8F9DdC6Ff8',
 
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -40,8 +40,8 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.GOERLI]: INIT_CODE_HASH_ETH,
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
-  [ChainId.PEGO]: INIT_CODE_HASH,
-  [ChainId.PEGO_TESTNET]: '0x8bdf57c967140cae7632492210672d87ee4f60b2d90dc9ec6139d9a63337bd36',
+  [ChainId.VICTION]: INIT_CODE_HASH,
+  [ChainId.VICTION_TESTNET]: '0x8bdf57c967140cae7632492210672d87ee4f60b2d90dc9ec6139d9a63337bd36',
   [ChainId.BASE_GOERLI]: INIT_CODE_HASH_BASE,
 
 }
@@ -100,22 +100,22 @@ export const WBNB = {
   ),
 }
 
-export const WPG = {
-[ChainId.PEGO]: new ERC20Token(
-  ChainId.PEGO,
+export const WVIC = {
+[ChainId.VICTION]: new ERC20Token(
+  ChainId.VICTION,
   '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
   18,
-  'WPG',
-  'Wrapped PG',
-  'http://pego.network/'
+  'WVIC',
+  'Wrapped Viction',
+  'https://www.viction.xyz/'
 ),
-[ChainId.PEGO_TESTNET]: new ERC20Token(
-  ChainId.PEGO_TESTNET,
-  '0x94274b1Ed6E1BDe55fa631f502Aa18512Aa3007b',
+[ChainId.VICTION_TESTNET]: new ERC20Token(
+  ChainId.VICTION_TESTNET,
+  '0x0f79657e61fe20f0bF4015C427705A57D9ae5EDc',
   18,
-  'WPG',
-  'Wrapped PG',
-  'http://pego.network/'
+  'WVIC',
+  'Wrapped Viction',
+  'https://www.viction.xyz/'
 ),
 }
 
@@ -125,8 +125,8 @@ export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.BASE_GOERLI]: WETH9[ChainId.BASE_GOERLI],
   [ChainId.BSC]: WBNB[ChainId.BSC],
   [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
-  [ChainId.PEGO]: WPG[ChainId.PEGO],
-  [ChainId.PEGO_TESTNET]: WPG[ChainId.PEGO_TESTNET],
+  [ChainId.VICTION]: WVIC[ChainId.VICTION],
+  [ChainId.VICTION_TESTNET]: WVIC[ChainId.VICTION_TESTNET],
 }
 
 export const NATIVE: Record<
@@ -150,14 +150,14 @@ export const NATIVE: Record<
     symbol: 'tBNB',
     decimals: 18,
   },
-  [ChainId.PEGO]: {
-    name: 'PEGO Network Native Token',
-    symbol: 'PG',
+  [ChainId.VICTION]: {
+    name: 'Viction Network Native Token',
+    symbol: 'VIC',
     decimals: 18,
   },
-  [ChainId.PEGO_TESTNET]: {
-    name: 'PEGO Network Native Token',
-    symbol: 'tPG',
+  [ChainId.VICTION_TESTNET]: {
+    name: 'Viction Network Native Token',
+    symbol: 'tVIC',
     decimals: 18,
   },
 }

@@ -109,20 +109,20 @@
       "logoURI": "https://zodiacswap.netlify.app/images/tokens/Pisces.png"
     },
     {
-      "name": "Wrapped PG",
-      "symbol": "WPG",
+      "name": "Wrapped Viction",
+      "symbol": "WVIC",
       "address": "0x94274b1Ed6E1BDe55fa631f502Aa18512Aa3007b",
-      "chainId": 123456,
+      "chainId": 89,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/chains/123456.png"
+      "logoURI": "https://zodiacswap.xyz/images/chains/89.png"
     },
     {
-      "name": "Wrapped PG",
-      "symbol": "WPG",
+      "name": "Wrapped Viction",
+      "symbol": "WVIC",
       "address": "0x4200000000000000000000000000000000000006",
-      "chainId": 20201022,
+      "chainId": 88,
       "decimals": 18,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/weth.png"
+      "logoURI": "https://zodiacswap.xyz/images/chains/88.png"
     },
     {
       "name":"Aries Token",
@@ -136,7 +136,7 @@
       "name":"Zodiac Token",
       "symbol": "Zodiac",
       "address": "0x91E5C926c8BBfe4a8BaDf4EF0E43ccF8C9e267C6",
-      "chainId": 123456,
+      "chainId": 89,
       "decimals": 18,
       "logoURI": "https://zodiacswap.netlify.app/images/tokens/Zodiac.png"
     }

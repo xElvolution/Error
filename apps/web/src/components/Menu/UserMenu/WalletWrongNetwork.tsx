@@ -20,7 +20,7 @@ const WalletWrongNetwork: React.FC<React.PropsWithChildren<WalletWrongNetworkPro
   const { switchNetworkAsync, canSwitch } = useSwitchNetwork()
 
   const handleSwitchNetwork = async (): Promise<void> => {
-    await switchNetworkAsync(ChainId.PEGO)
+    await switchNetworkAsync(ChainId.VICTION_TESTNET)
     onDismiss?.()
   }
 

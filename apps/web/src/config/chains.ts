@@ -8,8 +8,8 @@ export const CHAIN_QUERY_NAME = {
   [ChainId.BASE_GOERLI]: 'baseGoerli',
   [ChainId.BSC]: 'bsc',
   [ChainId.BSC_TESTNET]: 'bscTestnet',
-  [ChainId.PEGO]: 'pego',
-  [ChainId.PEGO_TESTNET]: 'pegoTestnet',
+  [ChainId.VICTION]: 'viction',
+  [ChainId.VICTION_TESTNET]: 'victionTestnet',
 }
 
 const CHAIN_QUERY_NAME_TO_ID = invert(CHAIN_QUERY_NAME)

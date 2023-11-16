@@ -44,16 +44,16 @@ export const USDC_ETH = new ERC20Token(
   'USD Coin',
 )
 
-export const USDC_PEGO = new ERC20Token(
-  ChainId.PEGO,
+export const USDC_VICTION = new ERC20Token(
+  ChainId.VICTION,
   '0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B',
   18,
   'USDC',
   'USD Coin',
 )
 
-export const USDC_PEGO_TESTNET = new ERC20Token(
-  ChainId.PEGO_TESTNET,
+export const USDC_VICTION_TESTNET = new ERC20Token(
+  ChainId.VICTION_TESTNET,
   '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
   18,
   'tUSDC',
@@ -130,16 +130,16 @@ export const BUSD_GOERLI = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
-export const BUSD_PEGO = new ERC20Token(
-  ChainId.PEGO,
+export const BUSD_VICTION = new ERC20Token(
+  ChainId.VICTION,
   '0xb809b9B2dc5e93CB863176Ea2D565425B03c0540',
   18,
   'Binance USD',
   'https://www.paxos.com/busd/',
 )
 
-export const BUSD_PEGO_TESTNET = new ERC20Token(
-  ChainId.PEGO_TESTNET,
+export const BUSD_VICTION_TESTNET = new ERC20Token(
+  ChainId.VICTION_TESTNET,
   '0xb809b9B2dc5e93CB863176Ea2D565425B03c0540',
   18,
   'BUSD',
@@ -153,8 +153,8 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
   [ChainId.BASE_GOERLI]: BUSD_GOERLI,
-  [ChainId.PEGO]: BUSD_PEGO,
-  [ChainId.PEGO_TESTNET]: BUSD_PEGO_TESTNET,
+  [ChainId.VICTION]: BUSD_VICTION,
+  [ChainId.VICTION_TESTNET]: BUSD_VICTION_TESTNET,
 
 }
 
@@ -169,8 +169,8 @@ export const USDC = {
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
   [ChainId.BASE_GOERLI]: USDT_BASE_GOERLI,
-  [ChainId.PEGO]: USDC_PEGO,
-  [ChainId.PEGO_TESTNET]: USDC_PEGO_TESTNET,
+  [ChainId.VICTION]: USDC_VICTION,
+  [ChainId.VICTION_TESTNET]: USDC_VICTION_TESTNET,
 }
 
 export const USDT = {
