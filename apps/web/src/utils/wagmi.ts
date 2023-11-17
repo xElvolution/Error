@@ -81,7 +81,7 @@ const victionTestnet: Chain = {
   },
   contracts: {
     multicall3: {
-      address: '0x32dE1Eac390d8D16A67EFf13ddAdEE443dcFb438',
+      address: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b',
       blockCreated: 11_907_934,
     },
   },

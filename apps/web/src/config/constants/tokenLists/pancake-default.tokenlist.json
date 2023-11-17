@@ -135,7 +135,7 @@
     {
       "name":"Zodiac Token",
       "symbol": "Zodiac",
-      "address": "0x91E5C926c8BBfe4a8BaDf4EF0E43ccF8C9e267C6",
+      "address": "0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B",
       "chainId": 89,
       "decimals": 18,
       "logoURI": "https://zodiacswap.netlify.app/images/tokens/Zodiac.png"
