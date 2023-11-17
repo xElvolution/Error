@@ -51,8 +51,8 @@ const viction: Chain = {
     default: { http: ['https://rpc.tomochain.com'] },
   },
   blockExplorers: {
-    etherscan: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io/' },
-    default: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io/' },
+    etherscan: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io' },
+    default: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io' },
   },
   contracts: {
     multicall3: {
@@ -76,8 +76,8 @@ const victionTestnet: Chain = {
     default: { http: ['https://rpc.testnet.tomochain.com'] },
   },
   blockExplorers: {
-    etherscan: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io/' },
-    default: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io/' },
+    etherscan: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
+    default: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
   },
   contracts: {
     multicall3: {
