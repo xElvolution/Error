@@ -106,15 +106,15 @@ export const WVIC = {
   '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
   18,
   'WVIC',
-  'Wrapped Viction',
+  'Wrapped VIC',
   'https://www.viction.xyz/'
 ),
 [ChainId.VICTION_TESTNET]: new ERC20Token(
   ChainId.VICTION_TESTNET,
-  '0x0f79657e61fe20f0bF4015C427705A57D9ae5EDc',
+  '0xeD36ca79cD08332553ad11f5905aE759DA008Bc5',
   18,
   'WVIC',
-  'Wrapped Viction',
+  'Wrapped VIC',
   'https://www.viction.xyz/'
 ),
 }

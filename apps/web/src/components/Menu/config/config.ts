@@ -74,7 +74,7 @@ const config: (
         // },
         {
           label: t('Bridge'),
-          href: 'https://bridge.base.org/deposit',
+          href: 'https://spacegate.coin98.com/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
