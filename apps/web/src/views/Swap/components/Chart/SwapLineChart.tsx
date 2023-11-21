@@ -15,7 +15,7 @@ export type SwapLineChartProps = {
 
 const getChartColors = ({ isChangePositive }) => {
   return isChangePositive
-    ? { gradient1: '#00E7B0', gradient2: '#0C8B6C', stroke: '#0052ff' }
+    ? { gradient1: '#00E7B0', gradient2: '#0C8B6C', stroke: '#aa14f0' }
     : { gradient1: '#ED4B9E', gradient2: '#ED4B9E', stroke: '#ED4B9E ' }
 }
 
