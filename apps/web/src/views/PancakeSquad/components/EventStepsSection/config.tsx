@@ -56,7 +56,7 @@ const stepsConfigBuilder = ({ t, userInfos, eventInfos, userStatus, account, the
         <>
           <Button
             as="a"
-            href="https://zodiacswap.xyz/swap?chain=victionTestnet&outputCurrency=0x91E5C926c8BBfe4a8BaDf4EF0E43ccF8C9e267C6"
+            href="https://zodiacswap.xyz/swap?chain=victionTestnet&outputCurrency=0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B"
             target="_blank"
             width="100%"
           >

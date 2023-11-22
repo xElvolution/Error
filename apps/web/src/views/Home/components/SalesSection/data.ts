@@ -54,7 +54,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
   ),
   reverse: false,
   primaryButton: {
-    to: '/swap?chain=victionTestnet&outputCurrency=0x91E5C926c8BBfe4a8BaDf4EF0E43ccF8C9e267C6',
+    to: '/swap?chain=victionTestnet&outputCurrency=0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
     text: t('Buy ZODIAC'),
     external: false,
   },
