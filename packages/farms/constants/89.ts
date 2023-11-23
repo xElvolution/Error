@@ -6,7 +6,7 @@ const farms: SerializedFarmConfig[] = [
     pid: 34,
     vaultPid: 3,
     lpSymbol: 'ZODIAC-WVIC LP',
-    lpAddress: '0x8813D6BB24798468A9eDA5De4DabD68B625229b5',
+    lpAddress: '0xcE4c5CD57365db031971596d0C672A1734604bbB',
     quoteToken: victionTestnetTokens.wvic,
     token: victionTestnetTokens.zodiac,
   },
