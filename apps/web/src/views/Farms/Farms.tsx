@@ -455,7 +455,9 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         </ControlContainer>
         {isInactive && (
           <FinishedTextContainer>
-
+            <Text fontSize={['16px', null, '20px']} color="failure" pr="4px">
+              {t("Don't see the farm you are staking?")}
+            </Text>
           </FinishedTextContainer>
         )}
         {viewMode === ViewMode.TABLE ? (
