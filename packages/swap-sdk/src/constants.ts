@@ -103,7 +103,7 @@ export const WBNB = {
 export const WVIC = {
 [ChainId.VICTION]: new ERC20Token(
   ChainId.VICTION,
-  '0xC054751BdBD24Ae713BA3Dc9Bd9434aBe2abc1ce',
+  '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
   18,
   'WVIC',
   'Wrapped VIC',

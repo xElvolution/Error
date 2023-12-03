@@ -103,15 +103,6 @@ export const BUSD_BSC = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
-export const BUSD_M = new ERC20Token(
-  ChainId.VICTION,
-  '0x381B31409e4D220919B2cFF012ED94d70135A59e',
-  18,
-  'BUSD',
-  'Binance USD',
-  'https://www.paxos.com/busd/',
-)
-
 export const BUSD_TESTNET = new ERC20Token(
   ChainId.BSC_TESTNET,
   '0xaB1a4d4f1D656d2450692D237fdD6C7f9146e814',
@@ -139,6 +130,13 @@ export const BUSD_GOERLI = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+export const BUSD_VICTION = new ERC20Token(
+  ChainId.VICTION,
+  '0xb809b9B2dc5e93CB863176Ea2D565425B03c0540',
+  18,
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
 
 export const BUSD_VICTION_TESTNET = new ERC20Token(
   ChainId.VICTION_TESTNET,
@@ -155,7 +153,7 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
   [ChainId.BASE_GOERLI]: BUSD_GOERLI,
-  [ChainId.VICTION]: BUSD_M,
+  [ChainId.VICTION]: BUSD_VICTION,
   [ChainId.VICTION_TESTNET]: BUSD_VICTION_TESTNET,
 
 }
