@@ -14,8 +14,8 @@
     {
       "name": "USD Coin",
       "symbol": "USDC",
-      "address": "0xeeeD97aC275c2e9894B890d2E56F4412C8566fb5",
-      "chainId": 123456,
+      "address": "0xb809b9B2dc5e93CB863176Ea2D565425B03c0540",
+      "chainId": 89,
       "decimals": 18,
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdc.png"
     },
@@ -24,7 +24,7 @@
       "name": "Taurus Token",
       "symbol": "zTAURUS",
       "address": "0x1Ce49Ed8F2805F4c71C5184188A83cDb30d5c57e",
-      "chainId": 123456,
+      "chainId": 89,
       "decimals": 18,
       "logoURI": "https://zodiacswap.netlify.app/images/tokens/Taurus.png"
     },
@@ -119,7 +119,7 @@
     {
       "name": "Wrapped VIC",
       "symbol": "WVIC",
-      "address": "0x4200000000000000000000000000000000000006",
+      "address": "0xC054751BdBD24Ae713BA3Dc9Bd9434aBe2abc1ce",
       "chainId": 88,
       "decimals": 18,
       "logoURI": "https://zodiacswap.xyz/images/chains/88.png"

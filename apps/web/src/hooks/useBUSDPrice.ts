@@ -6,6 +6,7 @@ import {
   Pair,
   Price,
   Token,
+  WVIC,
   WNATIVE,
   WBNB,
   ERC20Token,
@@ -144,21 +145,33 @@ export const usePriceByPairs = (currencyA?: Currency, currencyB?: Currency) => {
   return price
 }
 
-export const useBUSDCurrencyAmount = (currency?: Currency, amount?: number): number | undefined => {
-  const busdPrice = useBUSDPrice(currency)
-  if (!amount) {
-    return undefined
-  }
-  if (busdPrice) {
-    return multiplyPriceByAmount(busdPrice, amount)
-  }
-  return undefined
-}
 
-export const useBUSDCakeAmount = (amount: number): number | undefined => {
-  const cakeBusdPrice = useCakeBusdPrice()
-  if (cakeBusdPrice) {
-    return multiplyPriceByAmount(cakeBusdPrice, amount)
+export const useBUSDCurrencyAmount = (currency?: Currency, amount?: number): number | undefined => {
+  const busdPrice = useBUSDPrice(currency?.chainId === ChainId.VICTION ? undefined : currency)
+  // we don't have too many AMM pools on ethereum yet, try to get it from api
+  const { data } = useSWR(
+    amount && currency?.chainId === ChainId.VICTION && ['fiat-price-TomoChain', currency],
+    async () => {
+      const address = currency.isToken ? currency.address : WVIC[ChainId.VICTION].address
+      return fetch(`https://coins.llama.fi/prices/current/TomoChain:${address}`) // <3 llama
+        .then((res) => res.json())
+        .then(
+          (res) => res?.coins?.[`TomoChain:${address}`]?.confidence > 0.9 && res?.coins?.[`TomoChain:${address}`]?.price,
+        )
+    },
+    {
+      dedupingInterval: 30_000,
+      refreshInterval: 30_000,
+    },
+  )
+
+  if (amount) {
+    if (data) {
+      return parseFloat(data) * amount
+    }
+    if (busdPrice) {
+      return multiplyPriceByAmount(busdPrice, amount)
+    }
   }
   return undefined
 }
@@ -170,7 +183,7 @@ export const useCakeBusdPrice = (
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
   // Return bsc testnet cake if chain is testnet
-  const cake: Token = isTestnet ? CAKE[ChainId.BSC_TESTNET] : CAKE[ChainId.BSC]
+  const cake: Token = isTestnet ? CAKE[ChainId.BSC] : CAKE[ChainId.BSC]
   return usePriceByPairs(BUSD[cake.chainId], cake)
 }
 
@@ -181,6 +194,6 @@ export const useBNBBusdPrice = (
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
   // Return bsc testnet wbnb if chain is testnet
-  const wbnb: Token = isTestnet ? WBNB[ChainId.BSC_TESTNET] : WBNB[ChainId.BSC]
+  const wbnb: Token = isTestnet ? WVIC[ChainId.VICTION_TESTNET] : WVIC[ChainId.VICTION]
   return usePriceByPairs(BUSD[wbnb.chainId], wbnb)
 }
