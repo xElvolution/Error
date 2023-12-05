@@ -147,32 +147,14 @@ export const usePriceByPairs = (currencyA?: Currency, currencyB?: Currency) => {
   return price
 }
 
-export const useBUSDCurrencyAmount = (currency?: Currency, amount?: number): number | undefined => {
-  const busdPrice = useBUSDPrice(currency?.chainId === ChainId.VICTION_TESTNET ? undefined : currency)
-  // we don't have too many AMM pools on ethereum yet, try to get it from api
-  const { data } = useSWRImmutable(
-    amount && currency?.chainId === ChainId.VICTION_TESTNET && ['fiat-price-tomochain', currency],
-    async () => {
-      const address = currency.isToken ? currency.address : WVIC[ChainId.VICTION_TESTNET].address
-      return fetch(`https://coins.llama.fi/prices/current/tomochain:${address}`) // <3 llama
-        .then((res) => res.json())
-        .then(
-          (res) => res?.coins?.[`tomochain:${address}`]?.confidence > 0.9 && res?.coins?.[`tomochain:${address}`]?.price,
-        )
-    },
-    {
-      dedupingInterval: 30_000,
-      refreshInterval: 30_000,
-    },
-  )
 
-  if (amount) {
-    if (data) {
-      return parseFloat(data) * amount
-    }
-    if (busdPrice) {
-      return multiplyPriceByAmount(busdPrice, amount)
-    }
+export const useBUSDCurrencyAmount = (currency?: Currency, amount?: number): number | undefined => {
+  const busdPrice = useBUSDPrice(currency)
+  if (!amount) {
+    return undefined
+  }
+  if (busdPrice) {
+    return multiplyPriceByAmount(busdPrice, amount)
   }
   return undefined
 }
@@ -192,7 +174,7 @@ export const useCakeBusdPrice = (
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
   // Return bsc testnet cake if chain is testnet
-  const cake: Token = isTestnet ? CAKE[ChainId.BSC_TESTNET] : CAKE[ChainId.BSC]
+  const cake: Token = isTestnet ? CAKE[ChainId.BSC] : CAKE[ChainId.BSC]
   return usePriceByPairs(BUSD[cake.chainId], cake)
 }
 
@@ -203,6 +185,6 @@ export const useBNBBusdPrice = (
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
   // Return bsc testnet wbnb if chain is testnet
-  const wbnb: Token = isTestnet ? WBNB[ChainId.BSC_TESTNET] : WBNB[ChainId.BSC]
+  const wbnb: Token = isTestnet ? WVIC[ChainId.VICTION_TESTNET] : WVIC[ChainId.VICTION]
   return usePriceByPairs(BUSD[wbnb.chainId], wbnb)
 }
