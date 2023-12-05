@@ -14,10 +14,19 @@
     {
       "name": "USD Coin",
       "symbol": "USDC",
-      "address": "0xb809b9B2dc5e93CB863176Ea2D565425B03c0540",
+      "address": "0x59e2F979f4a302EF56ad7B2225080Cf471336417",
       "chainId": 89,
       "decimals": 18,
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdc.png"
+    },
+
+    {
+      "name": "USD Tether",
+      "symbol": "USDT",
+      "address": "0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E",
+      "chainId": 89,
+      "decimals": 18,
+      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
     },
 
     {
