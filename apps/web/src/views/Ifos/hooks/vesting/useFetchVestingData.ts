@@ -20,7 +20,7 @@ const useFetchVestingData = () => {
         }),
       )
 
-      const currentTimeStamp = Date.now()
+      const currentTimeStamp = new Date().getTime()
 
       return allData.filter(
         // eslint-disable-next-line array-callback-return, consistent-return

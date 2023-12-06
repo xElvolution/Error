@@ -15,7 +15,7 @@ describe('swap reducer', () => {
       expect(store.getState().lastUpdateVersionTimestamp).toBeUndefined()
     })
     it('sets the lastUpdateVersionTimestamp', () => {
-      const time = Date.now()
+      const time = new Date().getTime()
       store.dispatch(updateVersion())
       expect(store.getState().lastUpdateVersionTimestamp).toBeGreaterThanOrEqual(time)
     })

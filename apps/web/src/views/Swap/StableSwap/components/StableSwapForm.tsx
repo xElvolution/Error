@@ -1,29 +1,27 @@
+import { useCallback, useEffect, useState, useContext, useMemo } from 'react'
+import styled from 'styled-components'
 import { Currency, CurrencyAmount, Percent } from '@pancakeswap/sdk'
 import {
+  Text,
   ArrowDownIcon,
-  ArrowUpDownIcon,
-  AutoColumn,
   Box,
-  Flex,
   IconButton,
+  ArrowUpDownIcon,
+  Skeleton,
+  Flex,
   Message,
   MessageText,
-  PencilIcon,
-  Skeleton,
   Swap as SwapUI,
-  Text,
-  useModal,
 } from '@pancakeswap/uikit'
 import InfoTooltip from '@pancakeswap/uikit/src/components/Timeline/InfoTooltip'
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import styled from 'styled-components'
 
 import { useTranslation } from '@pancakeswap/localization'
-import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
+import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { AutoRow, RowBetween } from 'components/Layout/Row'
+import { AutoColumn } from 'components/Layout/Column'
 
 import { useCurrency } from 'hooks/Tokens'
 import { ApprovalState } from 'hooks/useApproveCallback'
@@ -35,17 +33,14 @@ import { useExpertModeManager, useUserSlippageTolerance } from 'state/user/hooks
 import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
 import { currencyId } from 'utils/currencyId'
 
-import { useStableSwapPairs } from 'state/swap/useStableSwapPairs'
 import { useAccount } from 'wagmi'
-import SettingsModal from '../../../../components/Menu/GlobalSettings/SettingsModal'
-import { SettingsMode } from '../../../../components/Menu/GlobalSettings/types'
 import CurrencyInputHeader from '../../components/CurrencyInputHeader'
-import { Wrapper } from '../../components/styleds'
 import useRefreshBlockNumberID from '../../hooks/useRefreshBlockNumber'
-import useApproveCallbackFromStableTrade from '../hooks/useApproveCallbackFromStableTrade'
-import { useDerivedStableSwapInfo } from '../hooks/useDerivedStableSwapInfo'
-import { StableConfigContext } from '../hooks/useStableConfig'
+import { Wrapper } from '../../components/styleds'
 import StableSwapCommitButton from './StableSwapCommitButton'
+import { useDerivedStableSwapInfo } from '../hooks/useDerivedStableSwapInfo'
+import useApproveCallbackFromStableTrade from '../hooks/useApproveCallbackFromStableTrade'
+import { StableConfigContext, useStableFarms } from '../hooks/useStableConfig'
 
 const Label = styled(Text)`
   font-size: 12px;
@@ -75,18 +70,18 @@ export default function StableSwapForm() {
   const { t } = useTranslation()
   const { refreshBlockNumber, isLoading } = useRefreshBlockNumberID()
   const { address: account } = useAccount()
-  const stablePairs = useStableSwapPairs()
+  const stableFarms = useStableFarms()
   const stableTokens = useMemo(() => {
-    return stablePairs.reduce((tokens, farm) => {
-      if (!tokens.find((token) => farm.token0.wrapped.address === token.address)) {
+    return stableFarms.reduce((tokens, farm) => {
+      if (!tokens.find((token) => farm.token0.address === token.address)) {
         tokens.push(farm.token0)
       }
-      if (!tokens.find((token) => farm.token1.wrapped.address === token.address)) {
+      if (!tokens.find((token) => farm.token1.address === token.address)) {
         tokens.push(farm.token1)
       }
       return tokens
     }, [])
-  }, [stablePairs])
+  }, [stableFarms])
 
   // for expert mode
   const [isExpertMode] = useExpertModeManager()
@@ -215,8 +210,6 @@ export default function StableSwapForm() {
     }
   }, [hasAmount, refreshBlockNumber])
 
-  const [onPresentSettingsModal] = useModal(<SettingsModal mode={SettingsMode.SWAP_LIQUIDITY} />)
-
   return (
     <>
       <CurrencyInputHeader
@@ -288,7 +281,7 @@ export default function StableSwapForm() {
             tokensToShow={stableTokens}
           />
 
-          <AutoColumn gap="sm" style={{ padding: '0 16px' }}>
+          <AutoColumn gap="7px" style={{ padding: '0 16px' }}>
             <RowBetween align="center">
               {Boolean(trade) && (
                 <>
@@ -302,12 +295,7 @@ export default function StableSwapForm() {
               )}
             </RowBetween>
             <RowBetween align="center">
-              <Label>
-                {t('Slippage Tolerance')}
-                <IconButton scale="sm" variant="text" onClick={onPresentSettingsModal}>
-                  <PencilIcon color="primary" width="10px" />
-                </IconButton>
-              </Label>
+              <Label>{t('Slippage Tolerance')}</Label>
               <Text bold color="primary">
                 {allowedSlippage / 100}%
               </Text>

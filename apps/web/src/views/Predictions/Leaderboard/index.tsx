@@ -4,6 +4,7 @@ import useLocalDispatch from 'contexts/LocalRedux/useLocalDispatch'
 import { useGetLeaderboardFilters, useGetLeaderboardLoadingState } from 'state/predictions/hooks'
 import { filterLeaderboard } from 'state/predictions'
 import PageLoader from 'components/Loader/PageLoader'
+import { PageMeta } from 'components/Layout/Page'
 import { FetchStatus } from 'config/constants/types'
 import Hero from './components/Hero'
 import Results from './components/Results'
@@ -26,6 +27,7 @@ const Leaderboard = () => {
 
   return (
     <>
+      <PageMeta />
       <Hero />
       <Filters />
       <ConnectedWalletResult />

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const StyledSubheading = styled(Heading)`
   background: -webkit-linear-gradient(#ffd800, #eb8c00);
-  font-size: 20px;
+  font-size: 25px;
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -19,7 +19,7 @@ export const StyledSubheading = styled(Heading)`
 
 export const StyledHeading = styled(Heading)`
   color: #ffffff;
-  background: -webkit-linear-gradient(#7645d9 0%, #452a7a 100%);
+  background: -webkit-linear-gradient(#AA14F0 0%, #452a7a 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-stroke: 6px transparent;
@@ -31,7 +31,6 @@ export const StyledHeading = styled(Heading)`
   }
 `
 export const Wrapper = styled.div`
-  position: relative;
   border-radius: 32px;
   width: 100%;
   max-height: max-content;
@@ -47,10 +46,6 @@ export const Inner = styled(Flex)`
   flex-direction: row;
   justify-content: space-between;
   max-height: 192px;
-  min-height: 181px;
-  &::-webkit-scrollbar {
-    display: none;
-  }
 `
 
 export const LeftWrapper = styled(Flex)`

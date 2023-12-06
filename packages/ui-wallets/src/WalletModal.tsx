@@ -17,7 +17,7 @@ import {
   WarningIcon,
 } from '@pancakeswap/uikit'
 import { atom, useAtom } from 'jotai'
-import { lazy, PropsWithChildren, Suspense, useMemo, useState } from 'react'
+import { FC, lazy, PropsWithChildren, Suspense, useMemo, useState } from 'react'
 import { isMobile } from 'react-device-detect'
 import { StepIntro } from './components/Intro'
 import {
@@ -42,7 +42,7 @@ type LinkOfDevice = string | DeviceLink
 export type WalletConfigV2<T = unknown> = {
   id: string
   title: string
-  icon: string | React.FC<React.PropsWithChildren<SvgProps>>
+  icon: string | FC<React.PropsWithChildren<SvgProps>>
   connectorId: T
   deepLink?: string
   installed?: boolean
@@ -390,7 +390,7 @@ export function WalletModalV2<T = unknown>(props: WalletModalV2Props<T>) {
       wallets
         .map((w) => w.icon)
         .filter((icon) => typeof icon === 'string')
-        .concat('https://cdn.pancakeswap.com/wallets/wallet_intro.png') as string[],
+        .concat('/images/wallet_intro.png') as string[],
     [wallets],
   )
 
@@ -442,7 +442,7 @@ const Intro = ({ docLink, docText }: { docLink: string; docText: string }) => {
       <Heading as="h1" fontSize="20px" color="secondary">
         {t('Haven’t got a wallet yet?')}
       </Heading>
-      <Image src="https://cdn.pancakeswap.com/wallets/wallet_intro.png" width={198} height={178} />
+      <Image src="/images/wallet_intro.png" width={198} height={178} />
       <Button as={LinkExternal} color="backgroundAlt" variant="subtle" href={docLink}>
         {docText}
       </Button>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useFarms, usePriceCakeBusd } from 'state/farms/hooks'
+import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
 import { useAppDispatch } from 'state'
 import { fetchFarmsPublicDataAsync } from 'state/farms'
 import { getFarmApr } from 'utils/apr'
@@ -17,6 +18,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
   const [topFarms, setTopFarms] = useState<FarmWithStakedValue[]>([null, null, null, null, null])
   const cakePriceBusd = usePriceCakeBusd()
   const { chainId } = useActiveChainId()
+  const farmFlag = useFeatureFlag(featureFarmApiAtom)
 
   useEffect(() => {
     const fetchFarmData = async () => {
@@ -24,7 +26,9 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
       setFetchStatus(FetchStatus.Fetching)
       const activeFarms = farmsConfig.filter((farm) => farm.pid !== 0)
       try {
-        await dispatch(fetchFarmsPublicDataAsync({ pids: activeFarms.map((farm) => farm.pid), chainId }))
+        await dispatch(
+          fetchFarmsPublicDataAsync({ pids: activeFarms.map((farm) => farm.pid), chainId, flag: farmFlag }),
+        )
         setFetchStatus(FetchStatus.Fetched)
       } catch (e) {
         console.error(e)
@@ -35,7 +39,7 @@ const useGetTopFarmsByApr = (isIntersecting: boolean) => {
     if (isIntersecting && fetchStatus === FetchStatus.Idle) {
       fetchFarmData()
     }
-  }, [dispatch, setFetchStatus, fetchStatus, topFarms, isIntersecting, chainId])
+  }, [dispatch, setFetchStatus, fetchStatus, topFarms, isIntersecting, chainId, farmFlag])
 
   useEffect(() => {
     const getTopFarmsByApr = (farmsState: DeserializedFarm[]) => {

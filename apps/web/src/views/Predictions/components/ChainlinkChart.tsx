@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react'
 import { ResponsiveContainer, XAxis, YAxis, Tooltip, AreaChart, Area, Dot } from 'recharts'
 import useTheme from 'hooks/useTheme'
-import { LineChartLoader } from 'components/ChartLoaders'
+import { LineChartLoader } from 'views/Info/components/ChartLoaders'
 import { useTranslation } from '@pancakeswap/localization'
 import { useSWRContract, useSWRMulticall } from 'hooks/useSWRContract'
 import useSWRImmutable from 'swr/immutable'
@@ -101,7 +101,7 @@ function useChartHoverMutate() {
   return updateHover
 }
 
-const chartColor = { gradient1: '#00E7B0', gradient2: '#0C8B6C', stroke: '#31D0AA' }
+const chartColor = { gradient1: '#00E7B0', gradient2: '#0C8B6C', stroke: '#aa14f0' }
 
 const ChainlinkChartWrapper = styled(Flex)<{ isMobile?: boolean }>`
   flex-direction: column;

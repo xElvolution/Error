@@ -1,3 +1,4 @@
+import { getAddress } from '@ethersproject/address'
 import { useTranslation } from '@pancakeswap/localization'
 import {
   ArrowBackIcon,
@@ -5,30 +6,25 @@ import {
   Box,
   Button,
   Flex,
-  MoreIcon,
   NextLinkFromReactRouter,
   Skeleton,
   SortArrowIcon,
   Text,
-  TokenLogo,
   useMatchBreakpoints,
+  TokenLogo,
 } from '@pancakeswap/uikit'
-import { isAddress } from 'utils'
-import { Currency, Token, ChainId } from '@pancakeswap/sdk'
-import { BAD_SRCS } from 'components/Logo/constants'
-import { CHAIN_QUERY_NAME } from 'config/chains'
+
 import { useActiveChainId } from 'hooks/useActiveChainId'
-import useTheme from 'hooks/useTheme'
 import orderBy from 'lodash/orderBy'
 import { Fragment, useCallback, useEffect, useMemo, useState } from 'react'
-import { useStableSwapPath } from 'state/info/hooks'
+import { useMultiChainPath, useStableSwapPath } from 'state/info/hooks'
 import { TokenData } from 'state/info/types'
-import { multiChainPaths } from 'state/info/constant'
 import styled from 'styled-components'
 import { formatAmount } from 'utils/formatInfoNumbers'
 import { getTokenLogoURLByAddress } from 'utils/getTokenLogoURL'
 import { Arrow, Break, ClickableColumnHeader, PageButtons, TableWrapper } from 'views/Info/components/InfoTables/shared'
 import Percent from 'views/Info/components/Percent'
+import { BAD_SRCS } from 'components/Logo/constants'
 
 /**
  *  Columns on different layouts
@@ -39,7 +35,7 @@ import Percent from 'views/Info/components/Percent'
  *  On smallest screen Name is reduced to just symbol
  */
 
-type TableType = 'priceChange' | 'volume' | 'liquidity'
+type TableType = 'priceChange' | 'volume'
 const ResponsiveGrid = styled.div`
   display: grid;
   grid-gap: 1em;
@@ -47,27 +43,24 @@ const ResponsiveGrid = styled.div`
 
   padding: 0 24px;
 
-  grid-template-columns: 4fr 1fr 1fr 1fr;
+  grid-template-columns: 3fr 1fr 1fr;
 
   @media screen and (max-width: 900px) {
-    grid-template-columns: 2fr repeat(3, 1fr);
+    grid-template-columns: 2fr repeat(2, 1fr);
     & :nth-child(4) {
       display: none;
     }
   }
 
   @media screen and (max-width: 800px) {
-    grid-template-columns: 2fr repeat(3, 1fr);
+    grid-template-columns: 2fr repeat(2, 1fr);
     & :nth-child(6) {
       display: none;
     }
   }
 
   @media screen and (max-width: 670px) {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    & :nth-child(4) {
-      display: block;
-    }
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `
 
@@ -148,40 +141,24 @@ const TableLoader: React.FC<React.PropsWithChildren> = () => {
   )
 }
 
-const DataRow: React.FC<
-  React.PropsWithChildren<{
-    tokenData: TokenData
-    index: number
-    type: TableType
-    handleOutputSelect: (newCurrencyOutput: Currency) => void
-  }>
-> = ({ tokenData, type, handleOutputSelect }) => {
-  const { t } = useTranslation()
-  const { theme } = useTheme()
-  const { isXs, isSm, isMobile } = useMatchBreakpoints()
+const DataRow: React.FC<React.PropsWithChildren<{ tokenData: TokenData; index: number; type: TableType }>> = ({
+  tokenData,
+  type,
+}) => {
+  const { isXs, isSm } = useMatchBreakpoints()
+  const chianPath = useMultiChainPath()
   const stableSwapPath = useStableSwapPath()
   const { chainId } = useActiveChainId()
-  const address = isAddress(tokenData.address)
-  if (!address) return null
+  const address = getAddress(tokenData.address)
   const tokenLogoURL = getTokenLogoURLByAddress(tokenData.address, chainId)
-  const imagePath = chainId === ChainId.BSC ? '' : `${chainId}/tokens/`
   return (
-    <LinkWrapper
-      to={`/info${multiChainPaths[chainId]}/tokens/${address}?chain=${
-        CHAIN_QUERY_NAME[chainId]
-      }${stableSwapPath.replace('?', '&')}`}
-    >
+    <LinkWrapper to={`/info${chianPath}/tokens/${tokenData.address}${stableSwapPath}`}>
       <ResponsiveGrid>
         <Flex alignItems="center">
           <ResponsiveLogo
             badSrcs={BAD_SRCS}
             sizes="24px"
-            srcs={[
-              tokenLogoURL,
-              `https://${
-                chainId === ChainId.BSC ? 'tokens.' : ''
-              }pancakeswap.finance/images/${imagePath}${address}.png`,
-            ]}
+            srcs={[tokenLogoURL, `https://tokens.zodiacswap.xyz/images/${address}.png`]}
           />
           {(isXs || isSm) && <Text ml="8px">{tokenData.symbol}</Text>}
           {!isXs && !isSm && (
@@ -191,40 +168,13 @@ const DataRow: React.FC<
             </Flex>
           )}
         </Flex>
-        {(type === 'priceChange' || type === 'liquidity') && (
+        {type === 'priceChange' && (
           <Text fontWeight={400}>${formatAmount(tokenData.priceUSD, { notation: 'standard' })}</Text>
         )}
-        {type !== 'liquidity' && (
-          <Text fontWeight={400}>
-            <Percent value={tokenData.priceUSDChange} fontWeight={400} />
-          </Text>
-        )}
+        <Text fontWeight={400}>
+          <Percent value={tokenData.priceUSDChange} fontWeight={400} />
+        </Text>
         {type === 'volume' && <Text fontWeight={400}>${formatAmount(tokenData.volumeUSD)}</Text>}
-        {type === 'liquidity' && <Text fontWeight={400}>${formatAmount(tokenData.liquidityUSD)}</Text>}
-        <Flex alignItems="center">
-          <Button
-            variant="text"
-            scale="sm"
-            p="0"
-            onClick={(e) => {
-              e.stopPropagation()
-              e.preventDefault()
-              const currency = new Token(chainId, address, tokenData.decimals, tokenData.symbol)
-              handleOutputSelect(currency)
-            }}
-            style={{ color: theme.colors.textSubtle }}
-          >
-            {t('Trade')}
-          </Button>
-          {!isMobile && (
-            <>
-              <Text pl="8px" pr="4px" lineHeight="100%" color="rgba(122, 110, 170, 0.3)">
-                |
-              </Text>
-              <MoreIcon color={theme.colors.textSubtle} />
-            </>
-          )}
-        </Flex>
       </ResponsiveGrid>
     </LinkWrapper>
   )
@@ -247,9 +197,8 @@ const TokenTable: React.FC<
     maxItems?: number
     defaultSortField?: string
     type: TableType
-    handleOutputSelect: (newCurrencyOutput: Currency) => void
   }>
-> = ({ tokenDatas, maxItems = MAX_ITEMS, defaultSortField = SORT_FIELD.volumeUSD, type, handleOutputSelect }) => {
+> = ({ tokenDatas, maxItems = MAX_ITEMS, defaultSortField = SORT_FIELD.volumeUSD, type }) => {
   const [sortField, setSortField] = useState(SORT_FIELD[defaultSortField])
   const { isMobile } = useMatchBreakpoints()
   useEffect(() => {
@@ -315,7 +264,7 @@ const TokenTable: React.FC<
         >
           {t('Token Name')}
         </StyledClickableColumnHeader>
-        {(type === 'priceChange' || type === 'liquidity') && (
+        {type === 'priceChange' && (
           <StyledClickableColumnHeader
             color="secondary"
             fontSize="12px"
@@ -329,35 +278,18 @@ const TokenTable: React.FC<
             </SortButton>
           </StyledClickableColumnHeader>
         )}
-
-        {type !== 'liquidity' && (
-          <StyledClickableColumnHeader
-            color="secondary"
-            fontSize="12px"
-            bold
-            onClick={() => handleSort(SORT_FIELD.priceUSDChange)}
-            textTransform="uppercase"
-          >
-            {t('Change')}{' '}
-            <SortButton scale="sm" variant="subtle" className={arrowClassName(SORT_FIELD.priceUSDChange)}>
-              <SortArrowIcon />
-            </SortButton>
-          </StyledClickableColumnHeader>
-        )}
-        {type === 'liquidity' && (
-          <StyledClickableColumnHeader
-            color="secondary"
-            fontSize="12px"
-            bold
-            onClick={() => handleSort(SORT_FIELD.liquidityUSD)}
-            textTransform="uppercase"
-          >
-            {t('Liquidity')}
-            <SortButton scale="sm" variant="subtle" className={arrowClassName(SORT_FIELD.liquidityUSD)}>
-              <SortArrowIcon />
-            </SortButton>
-          </StyledClickableColumnHeader>
-        )}
+        <StyledClickableColumnHeader
+          color="secondary"
+          fontSize="12px"
+          bold
+          onClick={() => handleSort(SORT_FIELD.priceUSDChange)}
+          textTransform="uppercase"
+        >
+          {t('Change')}{' '}
+          <SortButton scale="sm" variant="subtle" className={arrowClassName(SORT_FIELD.priceUSDChange)}>
+            <SortArrowIcon />
+          </SortButton>
+        </StyledClickableColumnHeader>
         {type === 'volume' && (
           <StyledClickableColumnHeader
             color="secondary"
@@ -381,12 +313,7 @@ const TokenTable: React.FC<
             if (data) {
               return (
                 <Fragment key={data.address}>
-                  <DataRow
-                    index={(page - 1) * MAX_ITEMS + i}
-                    tokenData={data}
-                    type={type}
-                    handleOutputSelect={handleOutputSelect}
-                  />
+                  <DataRow index={(page - 1) * MAX_ITEMS + i} tokenData={data} type={type} />
                   <Break />
                 </Fragment>
               )

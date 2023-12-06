@@ -1,14 +1,13 @@
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { useMasterchef, useNonBscVault } from 'hooks/useContract'
 import { useCallback } from 'react'
-import { useFeeDataWithGasPrice } from 'state/user/hooks'
-import { nonBscStakeFarm, stakeFarm } from 'utils/calls'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { stakeFarm, nonBscStakeFarm } from 'utils/calls'
+import { useMasterchef, useNonBscVault } from 'hooks/useContract'
+import { useGasPrice } from 'state/user/hooks'
 import { useOraclePrice } from 'views/Farms/hooks/useFetchOraclePrice'
 
 const useStakeFarms = (pid: number, vaultPid?: number) => {
   const { account, chainId } = useActiveWeb3React()
-  const { gasPrice } = useFeeDataWithGasPrice()
-
+  const gasPrice = useGasPrice()
   const oraclePrice = useOraclePrice(chainId)
   const masterChefContract = useMasterchef()
   const nonBscVaultContract = useNonBscVault()

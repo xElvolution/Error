@@ -1,8 +1,7 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-await-in-loop */
-import { TokenList, TokenInfo } from '@pancakeswap/token-lists'
+import { TokenList } from '@pancakeswap/token-lists'
 import uriToHttp from '@pancakeswap/utils/uriToHttp'
-import remove from 'lodash/remove'
 import Ajv from 'ajv'
 import schema from '../schema/pancakeswap.json'
 
@@ -33,11 +32,6 @@ export default async function getTokenList(listUrl: string): Promise<TokenList> 
     }
 
     const json = await response.json()
-    if (json.tokens) {
-      remove<TokenInfo>(json.tokens, (token) => {
-        return token.symbol ? token.symbol.length === 0 : true
-      })
-    }
     if (!tokenListValidator(json)) {
       const validationErrors: string =
         tokenListValidator.errors?.reduce<string>((memo, error) => {

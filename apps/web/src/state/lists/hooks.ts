@@ -22,7 +22,6 @@ import DEFAULT_TOKEN_LIST from '../../config/constants/tokenLists/pancake-defaul
 import UNSUPPORTED_TOKEN_LIST from '../../config/constants/tokenLists/pancake-unsupported.tokenlist.json'
 import WARNING_TOKEN_LIST from '../../config/constants/tokenLists/pancake-warning.tokenlist.json'
 import { listsAtom } from './lists'
-import { isAddress } from '../../utils'
 
 type TokenAddressMap = TTokenAddressMap<ChainId>
 
@@ -149,15 +148,10 @@ export function listToTokenMap(list: TokenList): TokenAddressMap {
   const result = listCache?.get(list)
   if (result) return result
 
-  const tokenMap: WrappedTokenInfo[] = uniqBy(list.tokens, (tokenInfo) => `${tokenInfo.chainId}#${tokenInfo.address}`)
-    .map((tokenInfo) => {
-      const checksummedAddress = isAddress(tokenInfo.address)
-      if (checksummedAddress) {
-        return new WrappedTokenInfo({ ...tokenInfo, address: checksummedAddress })
-      }
-      return null
-    })
-    .filter(Boolean)
+  const tokenMap: WrappedTokenInfo[] = uniqBy(
+    list.tokens,
+    (tokenInfo) => `${tokenInfo.chainId}#${tokenInfo.address}`,
+  ).map((tokenInfo) => new WrappedTokenInfo(tokenInfo))
 
   const groupedTokenMap: { [chainId: string]: WrappedTokenInfo[] } = groupBy(tokenMap, 'chainId')
 
@@ -209,8 +203,11 @@ function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddress
   return {
     [ChainId.ETHEREUM]: { ...map1[ChainId.ETHEREUM], ...map2[ChainId.ETHEREUM] },
     [ChainId.GOERLI]: { ...map1[ChainId.GOERLI], ...map2[ChainId.GOERLI] },
+    [ChainId.BASE_GOERLI]: { ...map1[ChainId.BASE_GOERLI], ...map2[ChainId.BASE_GOERLI] },
     [ChainId.BSC]: { ...map1[ChainId.BSC], ...map2[ChainId.BSC] },
     [ChainId.BSC_TESTNET]: { ...map1[ChainId.BSC_TESTNET], ...map2[ChainId.BSC_TESTNET] },
+    [ChainId.VICTION]: { ...map1[ChainId.VICTION], ...map2[ChainId.VICTION] },
+    [ChainId.VICTION_TESTNET]: { ...map1[ChainId.VICTION_TESTNET], ...map2[ChainId.VICTION_TESTNET] },
   }
 }
 

@@ -20,13 +20,6 @@ export const listenOnBnMessage = () => {
         cbList[id](newPayload)
         delete cbList[id]
       }
-      // control connect / disconnect
-      if (id === 'disconnect') {
-        window.bn.disconnect?.()
-      }
-      if (id === 'connect') {
-        window.bn.connect?.()
-      }
     }
   }
 }
@@ -86,7 +79,7 @@ const _bridgeUtils = {
   },
 }
 export const bridgeUtils = {
-  toWallet(): Promise<undefined | { method: string }> {
+  toWallet() {
     return new Promise((resolve) => {
       postMessage({ action: 'toWallet', cb: resolve })
     })

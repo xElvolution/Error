@@ -1,7 +1,5 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Box, Text } from '@pancakeswap/uikit'
-import { useMemo } from 'react'
-import { ifosConfig } from 'config/constants'
 import { PoolIds } from 'config/constants/types'
 import { useRouter } from 'next/router'
 import styled, { keyframes, css } from 'styled-components'
@@ -56,8 +54,7 @@ interface ExpandProps {
 
 const Expand: React.FC<React.PropsWithChildren<ExpandProps>> = ({ data, expanded, fetchUserVestingData }) => {
   const { t } = useTranslation()
-  const { id, token } = data.ifo
-  const ifoIsActive = useMemo(() => ifosConfig.find((ifo) => ifo.isActive && ifo.id === id), [id])
+  const { token } = data.ifo
   const router = useRouter()
 
   const handleViewIfo = () => {
@@ -67,11 +64,9 @@ const Expand: React.FC<React.PropsWithChildren<ExpandProps>> = ({ data, expanded
   return (
     <StyledExpand expanded={expanded}>
       <Info poolId={PoolIds.poolUnlimited} data={data} fetchUserVestingData={fetchUserVestingData} />
-      {!ifoIsActive && (
-        <Text bold color="primary" textAlign="center" style={{ cursor: 'pointer' }} onClick={handleViewIfo}>
-          {t('View IFO')}
-        </Text>
-      )}
+      <Text bold color="primary" textAlign="center" style={{ cursor: 'pointer' }} onClick={handleViewIfo}>
+        {t('View IFO')}
+      </Text>
     </StyledExpand>
   )
 }

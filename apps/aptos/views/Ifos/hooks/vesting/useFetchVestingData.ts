@@ -1,12 +1,10 @@
 import BigNumber from 'bignumber.js'
 import { useMemo } from 'react'
-import useLedgerTimestamp from 'hooks/useLedgerTimestamp'
 import { PoolIds } from 'config/constants/types'
 import { useFetchUserWalletIfoData } from './useFetchUserWalletIfoData'
 
 const useFetchVestingData = () => {
-  const getNow = useLedgerTimestamp()
-  const currentTimeStamp = getNow()
+  const currentTimeStamp = new Date().getTime()
   const allData = useFetchUserWalletIfoData()
 
   const filterVestingIfos = useMemo(

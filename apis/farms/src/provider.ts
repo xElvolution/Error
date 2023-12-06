@@ -2,7 +2,7 @@ import { StaticJsonRpcProvider } from '@ethersproject/providers'
 
 export const bscProvider = new StaticJsonRpcProvider(
   {
-    url: 'https://nodes.pancakeswap.info',
+    url: 'https://nodes.pancakeswap.com',
     skipFetchSetup: true,
   },
   56,
@@ -22,4 +22,28 @@ export const goerliProvider = new StaticJsonRpcProvider(
     skipFetchSetup: true,
   },
   5,
+)
+
+export const baseGoerliProvider = new StaticJsonRpcProvider(
+  {
+    url: 'https://eth-goerli.nodereal.io/v1/8a4432e42df94dcca2814fde8aea2a2e',
+    skipFetchSetup: true,
+  },
+  5,
+)
+
+export const victionProvider = new StaticJsonRpcProvider(
+  {
+    url: '',
+    skipFetchSetup: true,
+  },
+  88,
+)
+
+export const victionTestnetProvider = new StaticJsonRpcProvider(
+  {
+    url: '',
+    skipFetchSetup: true,
+  },
+  89,
 )

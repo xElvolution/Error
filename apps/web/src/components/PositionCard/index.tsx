@@ -14,7 +14,6 @@ import {
   useTooltip,
   NextLinkFromReactRouter,
   Link,
-  AutoColumn,
 } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import { useTranslation } from '@pancakeswap/localization'
@@ -32,6 +31,7 @@ import { currencyId } from '../../utils/currencyId'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
 
 import { LightCard } from '../Card'
+import { AutoColumn } from '../Layout/Column'
 import CurrencyLogo from '../Logo/CurrencyLogo'
 import { DoubleCurrencyLogo } from '../Logo'
 import { RowBetween, RowFixed } from '../Layout/Row'
@@ -253,7 +253,7 @@ function MinimalPositionCardView({
         <LightCard>
           <Text fontSize="14px" style={{ textAlign: 'center' }}>
             <span role="img" aria-label="pancake-icon">
-              🥞
+              ✨
             </span>{' '}
             {isStableLP ? (
               <>
@@ -264,7 +264,7 @@ function MinimalPositionCardView({
                   style={{ display: 'inline' }}
                   ml="4px"
                   external
-                  href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
+                  href="https://docs.zodiacswap.xyz/products/stableswap#stableswap-fees"
                 >
                   {t('here.')}
                 </Link>

@@ -1,31 +1,51 @@
-import { Currency, CurrencyAmount } from '@pancakeswap/sdk'
+import { useContract } from 'hooks/useContract'
+import stableSwapABI from 'config/abi/stableSwap.json'
 import stableSwapInfoABI from 'config/abi/infoStableSwap.json'
 import stableLPABI from 'config/abi/stableLP.json'
-import stableSwapABI from 'config/abi/stableSwap.json'
-import { useContract } from 'hooks/useContract'
-import { createContext, useMemo } from 'react'
-import { useStableSwapPairs } from 'state/swap/useStableSwapPairs'
+import { Currency, CurrencyAmount, ERC20Token } from '@pancakeswap/sdk'
 import { useTokenBalancesWithLoadingIndicator } from 'state/wallet/hooks'
+import { createContext, useMemo } from 'react'
+import useSWRImmutable from 'swr/immutable'
+import { getStableConfig } from '@pancakeswap/farms/constants'
+import { deserializeToken } from '@pancakeswap/token-lists'
+import { useActiveChainId } from 'hooks/useActiveChainId'
 
-function useFindStablePair({ tokenA, tokenB }: { tokenA: Currency | undefined; tokenB: Currency | undefined }) {
-  const stablePairs = useStableSwapPairs()
+export function useStableFarms() {
+  const { chainId } = useActiveChainId()
+
+  const { data: stableFarms = [] } = useSWRImmutable(chainId && ['stable-farms', chainId], async () => {
+    const farms = await getStableConfig(chainId)
+
+    return farms.map(({ token, quoteToken, lpAddress, ...rest }) => ({
+      ...rest,
+      liquidityToken: new ERC20Token(chainId, lpAddress, 18, 'Stable-LP', 'Pancake StableSwap LPs'),
+      token0: deserializeToken(token),
+      token1: deserializeToken(quoteToken),
+    }))
+  })
+
+  return stableFarms
+}
+
+function useFindStablePair({ tokenA, tokenB }) {
+  const stableFarms = useStableFarms()
 
   return useMemo(
     () =>
-      stablePairs.find((stablePair) => {
+      stableFarms.find((stablePair) => {
         return (
           tokenA &&
           tokenB &&
-          ((stablePair?.token0?.equals(tokenA.wrapped) && stablePair?.token1?.equals(tokenB.wrapped)) ||
-            (stablePair?.token1?.equals(tokenA.wrapped) && stablePair?.token0?.equals(tokenB.wrapped)))
+          ((stablePair?.token0?.equals(tokenA) && stablePair?.token1?.equals(tokenB)) ||
+            (stablePair?.token1?.equals(tokenA) && stablePair?.token0?.equals(tokenB)))
         )
       }),
-    [tokenA, tokenB, stablePairs],
+    [tokenA, tokenB, stableFarms],
   )
 }
 
 export function useLPTokensWithBalanceByAccount(account) {
-  const lpTokens = useStableSwapPairs()
+  const lpTokens = useStableFarms()
 
   const [stableBalances] = useTokenBalancesWithLoadingIndicator(
     account ?? undefined,

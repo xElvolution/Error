@@ -6,7 +6,7 @@ export const CAKE_MAINNET = new ERC20Token(
   18,
   'CAKE',
   'PancakeSwap Token',
-  'https://pancakeswap.finance/',
+  'https://zodiacswap.xyz/',
 )
 
 export const CAKE_TESTNET = new ERC20Token(
@@ -15,7 +15,7 @@ export const CAKE_TESTNET = new ERC20Token(
   18,
   'CAKE',
   'PancakeSwap Token',
-  'https://pancakeswap.finance/',
+  'https://zodiacswap.xyz/',
 )
 
 export const USDC_BSC = new ERC20Token(
@@ -44,12 +44,36 @@ export const USDC_ETH = new ERC20Token(
   'USD Coin',
 )
 
+export const USDC_VICTION = new ERC20Token(
+  ChainId.VICTION,
+  '0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B',
+  18,
+  'USDC',
+  'USD Coin',
+)
+
+export const USDC_VICTION_TESTNET = new ERC20Token(
+  ChainId.VICTION_TESTNET,
+  '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
+  18,
+  'tUSDC',
+  'Test USD Coin',
+)
+
 export const USDC_GOERLI = new ERC20Token(
   ChainId.GOERLI,
   '0x07865c6E87B9F70255377e024ace6630C1Eaa37F',
   6,
   'tUSDC',
   'test USD Coin',
+)
+
+export const USDT_BASE_GOERLI = new ERC20Token(
+  ChainId.BASE_GOERLI,
+  '0xeeeD97aC275c2e9894B890d2E56F4412C8566fb5',
+  18,
+  'zUSDT',
+  'Zodiac Tether USD',
 )
 
 export const USDT_BSC = new ERC20Token(
@@ -73,6 +97,15 @@ export const USDT_ETH = new ERC20Token(
 export const BUSD_BSC = new ERC20Token(
   ChainId.BSC,
   '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
+export const BUSD_M = new ERC20Token(
+  ChainId.VICTION,
+  '0x381B31409e4D220919B2cFF012ED94d70135A59e',
   18,
   'BUSD',
   'Binance USD',
@@ -106,11 +139,25 @@ export const BUSD_GOERLI = new ERC20Token(
   'https://www.paxos.com/busd/',
 )
 
+
+export const BUSD_VICTION_TESTNET = new ERC20Token(
+  ChainId.VICTION_TESTNET,
+  '0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E',
+  18,
+  'BUSD',
+  'Binance USD',
+  'https://www.paxos.com/busd/',
+)
+
 export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.ETHEREUM]: BUSD_ETH,
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
+  [ChainId.BASE_GOERLI]: BUSD_GOERLI,
+  [ChainId.VICTION]: BUSD_M,
+  [ChainId.VICTION_TESTNET]: BUSD_VICTION_TESTNET,
+
 }
 
 export const CAKE = {
@@ -123,6 +170,9 @@ export const USDC = {
   [ChainId.BSC_TESTNET]: USDC_TESTNET,
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
+  [ChainId.BASE_GOERLI]: USDT_BASE_GOERLI,
+  [ChainId.VICTION]: USDC_VICTION,
+  [ChainId.VICTION_TESTNET]: USDC_VICTION_TESTNET,
 }
 
 export const USDT = {

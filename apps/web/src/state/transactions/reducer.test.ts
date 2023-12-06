@@ -18,7 +18,7 @@ describe('transaction reducer', () => {
 
   describe('addTransaction', () => {
     it('adds the transaction', () => {
-      const beforeTime = Date.now()
+      const beforeTime = new Date().getTime()
       store.dispatch(
         addTransaction({
           chainId: ChainId.BSC,
@@ -71,7 +71,7 @@ describe('transaction reducer', () => {
           from: '0x0',
         }),
       )
-      const beforeTime = Date.now()
+      const beforeTime = new Date().getTime()
       store.dispatch(
         finalizeTransaction({
           chainId: ChainId.BSC_TESTNET,

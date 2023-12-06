@@ -12,7 +12,7 @@ import {
 } from '@pancakeswap/uikit'
 import Trans from 'components/Trans'
 import { useTranslation } from '@pancakeswap/localization'
-import { ReactNode, useMemo } from 'react'
+import { FC, ReactNode, useMemo } from 'react'
 import { DeserializedLockedVaultUser } from 'state/types'
 import { VaultPosition, getVaultPosition } from 'utils/cakePool'
 
@@ -49,7 +49,7 @@ const positionLabel: Record<VaultPosition, ReactNode> = {
   [VaultPosition.AfterBurning]: <Trans>After Burning</Trans>,
 }
 
-const VaultPositionTag: React.FC<React.PropsWithChildren<{ position: VaultPosition }>> = ({ position }) => {
+const VaultPositionTag: FC<React.PropsWithChildren<{ position: VaultPosition }>> = ({ position }) => {
   return (
     <Tag {...tagConfig[position]}>
       <Box as={iconConfig[position]} mr="4px" />
@@ -58,7 +58,7 @@ const VaultPositionTag: React.FC<React.PropsWithChildren<{ position: VaultPositi
   )
 }
 
-export const VaultPositionTagWithLabel: React.FC<
+export const VaultPositionTagWithLabel: FC<
   React.PropsWithChildren<{ userData: DeserializedLockedVaultUser } & FlexGapProps>
 > = ({ userData, ...props }) => {
   const { t } = useTranslation()

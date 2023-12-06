@@ -1,8 +1,9 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency, CurrencyAmount, Percent, TradeType } from '@pancakeswap/sdk'
 import { Pair } from '@pancakeswap/smart-router/evm'
-import { Modal, ModalV2, QuestionHelper, SearchIcon, Text, Flex, Link, AutoColumn } from '@pancakeswap/uikit'
+import { Modal, ModalV2, QuestionHelper, SearchIcon, Text, Flex, Link } from '@pancakeswap/uikit'
 
+import { AutoColumn } from 'components/Layout/Column'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { BUYBACK_FEE, LP_HOLDERS_FEE, TOTAL_FEE, TREASURY_FEE } from 'config/constants/info'
 import { useState } from 'react'
@@ -19,7 +20,6 @@ function TradeSummary({
   priceImpactWithoutFee,
   realizedLPFee,
   hasStablePair = false,
-  isMM = false,
 }: {
   hasStablePair?: boolean
   inputAmount?: CurrencyAmount<Currency>
@@ -31,7 +31,6 @@ function TradeSummary({
   }
   priceImpactWithoutFee?: Percent
   realizedLPFee?: CurrencyAmount<Currency>
-  isMM?: boolean
 }) {
   const { t } = useTranslation()
   const isExactIn = tradeType === TradeType.EXACT_INPUT
@@ -52,7 +51,7 @@ function TradeSummary({
               'Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.',
             )}
             ml="4px"
-            placement="top"
+            placement="top-start"
           />
         </RowFixed>
         <RowFixed>
@@ -70,28 +69,12 @@ function TradeSummary({
               {t('Price Impact')}
             </Text>
             <QuestionHelper
-              text={
-                <>
-                  <Text>
-                    <Text bold display="inline-block">
-                      {t('AMM')}
-                    </Text>
-                    {`: ${t('The difference between the market price and estimated price due to trade size.')}`}
-                  </Text>
-                  <Text mt="10px">
-                    <Text bold display="inline-block">
-                      {t('MM')}
-                    </Text>
-                    {`: ${t('No slippage against quote from market maker')}`}
-                  </Text>
-                </>
-              }
+              text={t('The difference between the market price and estimated price due to trade size.')}
               ml="4px"
-              placement="top"
+              placement="top-start"
             />
           </RowFixed>
-
-          {isMM ? <Text color="textSubtle">--</Text> : <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />}
+          <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
         </RowBetween>
       )}
 
@@ -105,10 +88,6 @@ function TradeSummary({
               text={
                 <>
                   <Text mb="12px">
-                    <Text bold display="inline-block">
-                      {t('AMM')}
-                    </Text>
-                    :{' '}
                     {hasStablePair
                       ? t('For each non-stableswap trade, a %amount% fee is paid', { amount: totalFeePercent })
                       : t('For each trade a %amount% fee is paid', { amount: totalFeePercent })}
@@ -124,26 +103,17 @@ function TradeSummary({
                           style={{ display: 'inline' }}
                           ml="4px"
                           external
-                          href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
+                          href="https://docs.zodiacswap.xyz/products/stableswap#stableswap-fees"
                         >
                           {t('here.')}
                         </Link>
                       </Text>
                     </>
                   )}
-                  <Text mt="10px">
-                    <Text bold display="inline-block">
-                      {t('MM')}
-                    </Text>
-                    :{' '}
-                    {t(
-                      'PancakeSwap does not charge any fees for trades. However, the market makers charge an implied fee of 0.05% (non-stablecoin) / 0.01% (stablecoin) factored into the quotes provided by them.',
-                    )}
-                  </Text>
                 </>
               }
               ml="4px"
-              placement="top"
+              placement="top-start"
             />
           </RowFixed>
           <Text fontSize="14px">{`${realizedLPFee.toSignificant(4)} ${inputAmount.currency.symbol}`}</Text>
@@ -166,7 +136,6 @@ export interface AdvancedSwapDetailsProps {
   inputAmount?: CurrencyAmount<Currency>
   outputAmount?: CurrencyAmount<Currency>
   tradeType?: TradeType
-  isMM?: boolean
 }
 
 export function AdvancedSwapDetails({
@@ -179,10 +148,9 @@ export function AdvancedSwapDetails({
   outputAmount,
   tradeType,
   hasStablePair,
-  isMM = false,
 }: AdvancedSwapDetailsProps) {
   const { t } = useTranslation()
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isModalOpen, setIsModalOpen] = useState(() => false)
   const showRoute = Boolean(path && path.length > 1)
   return (
     <AutoColumn gap="0px">
@@ -196,7 +164,6 @@ export function AdvancedSwapDetails({
             priceImpactWithoutFee={priceImpactWithoutFee}
             realizedLPFee={realizedLPFee}
             hasStablePair={hasStablePair}
-            isMM={isMM}
           />
           {showRoute && (
             <>
@@ -228,7 +195,6 @@ export function AdvancedSwapDetails({
                     onDismiss={() => setIsModalOpen(false)}
                   >
                     <RouterViewer
-                      isMM={isMM}
                       inputCurrency={inputAmount.currency}
                       pairs={pairs}
                       path={path}

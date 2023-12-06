@@ -2,10 +2,10 @@
   "short_name": "PancakeSwap",
   "name": "PancakeSwap",
   "description": "Farm CAKE with Pancake LP Tokens",
-  "homepage_url": "https://aptos.pancakeswap.finance",
+  "homepage_url": "https://aptos.zodiacswap.xyz",
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#1FC7D4",
+  "theme_color": "#AA14F0",
   "background_color": "#ffffff",
   "orientation": "portrait",
   "icons": [

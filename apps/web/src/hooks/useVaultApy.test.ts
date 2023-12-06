@@ -1,8 +1,7 @@
-import { FixedNumber } from '@ethersproject/bignumber'
 import { renderHook } from '@testing-library/react-hooks'
-import BigNumber from 'bignumber.js'
+import { FixedNumber } from '@ethersproject/bignumber'
 import { createSWRWrapper } from 'testUtils'
-import { vi } from 'vitest'
+import BigNumber from 'bignumber.js'
 import * as PoolHooks from '../state/pools/hooks'
 import { useVaultApy } from './useVaultApy'
 
@@ -11,10 +10,10 @@ BigNumber.config({
   DECIMAL_PLACES: 80,
 })
 
-vi.mock('../state/pools/hooks', () => ({
+jest.mock('../state/pools/hooks', () => ({
   // @ts-ignore
-  ...vi.importActual('state/pools/hooks'),
-  useCakeVault: vi.fn(),
+  ...jest.requireActual('state/pools/hooks'),
+  useCakeVault: jest.fn(),
 }))
 
 describe('useVaultApy', () => {

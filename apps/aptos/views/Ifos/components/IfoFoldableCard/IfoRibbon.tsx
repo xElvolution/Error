@@ -2,7 +2,6 @@ import { Box, Flex, Heading, Progress, ProgressBar } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
 import styled from 'styled-components'
 import { getStatus } from 'views/Ifos/hooks/helpers'
-import useLedgerTimestamp from 'hooks/useLedgerTimestamp'
 import { PublicIfoData } from '../../types'
 import LiveTimer, { SoonTimer } from './Timer'
 
@@ -40,9 +39,8 @@ const BigCurve = styled(Box)<{ $status }>`
 
 export const IfoRibbon = ({ publicIfoData, releaseTime }: { publicIfoData: PublicIfoData; releaseTime: number }) => {
   const { startTime, endTime } = publicIfoData
-  const getNow = useLedgerTimestamp()
 
-  const currentTime = getNow() / 1000
+  const currentTime = Date.now() / 1000
 
   const status = getStatus(currentTime, startTime, endTime)
 

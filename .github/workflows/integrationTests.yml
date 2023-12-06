@@ -36,3 +36,5 @@ jobs:
         run: yarn install --frozen-lockfile
       - run: yarn cypress install
       - run: yarn e2e:ci
+        env:
+          NEXT_PUBLIC_SF_HEADER: ${{ secrets.SF_HEADER }}

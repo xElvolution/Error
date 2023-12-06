@@ -1,8 +1,8 @@
-import { vi } from "vitest";
+import React from "react";
 import { renderWithProvider } from "../../testHelpers";
 import Toggle from "../../components/Toggle/Toggle";
 
-const handleChange = vi.fn();
+const handleChange = jest.fn();
 
 it("renders correctly", () => {
   const { asFragment } = renderWithProvider(<Toggle checked onChange={handleChange} scale="md" />);

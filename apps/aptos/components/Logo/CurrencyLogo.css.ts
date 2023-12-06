@@ -1,16 +1,9 @@
-import { recipe } from '@vanilla-extract/recipes'
+import { style } from '@vanilla-extract/css'
 
-export const aptosLogoClass = recipe({
-  base: {
-    opacity: 1,
-    borderRadius: '50%',
-  },
-  variants: {
-    isProduction: {
-      false: {
-        opacity: 0.35,
-        border: 'solid 2px #7645D9',
-      },
+export const aptosLogoClass = style({
+  selectors: {
+    '[data-theme="light"] &': {
+      filter: 'invert(1)',
     },
   },
 })

@@ -47,9 +47,9 @@ const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = (
       <Flex flexDirection="column" alignItems="flex-end">
         {isReady ? <Heading mb="4px">{lpLabel.split(' ')[0]}</Heading> : <Skeleton mb="4px" width={60} height={18} />}
         <Flex justifyContent="center">
-          {isReady && isStable && <StableFarmTag mr="4px" />}
-          {isReady && boosted && <BoostedTag mr="4px" />}
+          {isStable ? <StableFarmTag mr="4px" /> : null}
           {isReady ? <Box>{isCommunityFarm ? <FarmAuctionTag /> : <CoreTag />}</Box> : null}
+          {isReady && boosted && <BoostedTag ml="4px" />}
           {isReady ? (
             <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>
           ) : (

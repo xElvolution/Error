@@ -32,7 +32,8 @@ const CollectModalContainer = ({
         </ToastDescriptionWithTx>,
       )
 
-      onDone?.()
+      if (onDone) onDone()
+
       onDismiss?.()
     }
   }, [earningTokenSymbol, fetchWithCatchTxError, onDismiss, onDone, onReward, t, toastSuccess])

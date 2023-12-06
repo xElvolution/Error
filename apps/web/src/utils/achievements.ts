@@ -2,7 +2,6 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { Campaign, TranslatableText } from 'config/constants/types'
 import ifosList from 'config/constants/ifo'
 import { campaignMap } from 'config/constants/campaigns'
-import { TranslateFunction } from '@pancakeswap/localization'
 import { Achievement } from 'state/types'
 import { multicallv2 } from 'utils/multicall'
 import { getPointCenterIfoAddress } from 'utils/addressHelpers'
@@ -14,23 +13,29 @@ interface IfoMapResponse {
   numberPoints: BigNumber
 }
 
-export const getAchievementTitle = (campaign: Campaign, t: TranslateFunction): TranslatableText => {
-  const title = campaign.title as string
-
+export const getAchievementTitle = (campaign: Campaign): TranslatableText => {
   switch (campaign.type) {
     case 'ifo':
-      return t('IFO Shopper: %title%', { title })
+      return {
+        key: 'IFO Shopper: %title%',
+        data: {
+          title: campaign.title as string,
+        },
+      }
     default:
       return campaign.title
   }
 }
 
-export const getAchievementDescription = (campaign: Campaign, t: TranslateFunction): TranslatableText => {
-  const title = campaign.title as string
-
+export const getAchievementDescription = (campaign: Campaign): TranslatableText => {
   switch (campaign.type) {
     case 'ifo':
-      return t('Participated in the %title% IFO by committing above the minimum required amount', { title })
+      return {
+        key: 'Committed more than $5 in the %title% IFO',
+        data: {
+          title: campaign.title as string,
+        },
+      }
     default:
       return campaign.description
   }
@@ -39,7 +44,7 @@ export const getAchievementDescription = (campaign: Campaign, t: TranslateFuncti
 /**
  * Checks if a wallet is eligible to claim points from valid IFO's
  */
-export const getClaimableIfoData = async (account: string, t: TranslateFunction): Promise<Achievement[]> => {
+export const getClaimableIfoData = async (account: string): Promise<Achievement[]> => {
   const ifoCampaigns = ifosList.filter((ifoItem) => ifoItem.campaignId !== undefined)
 
   // Returns the claim status of every IFO with a campaign ID
@@ -91,8 +96,8 @@ export const getClaimableIfoData = async (account: string, t: TranslateFunction)
         address,
         id: claimableCampaignId,
         type: 'ifo',
-        title: getAchievementTitle(campaignMeta, t),
-        description: getAchievementDescription(campaignMeta, t),
+        title: getAchievementTitle(campaignMeta),
+        description: getAchievementDescription(campaignMeta),
         badge: campaignMeta.badge,
         points: claimableIfoDataItem.numberPoints.toNumber(),
       },

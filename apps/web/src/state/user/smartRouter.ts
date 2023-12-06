@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai'
-import atomWithStorageWithErrorCatch from 'utils/atomWithStorageWithErrorCatch'
+import { atomWithStorage } from 'jotai/utils'
 
-const userUseStableSwapAtom = atomWithStorageWithErrorCatch<boolean>('pcs:useStableSwap', true)
+const userUseStableSwapAtom = atomWithStorage<boolean>('pcs:useStableSwap', true)
 
 export function useStableSwapByDefault() {
   return useAtom(userUseStableSwapAtom)

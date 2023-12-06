@@ -117,14 +117,12 @@ const SubgraphHealthIndicator: React.FC<
 
   if (inline) {
     return (
-      <Flex justifyContent="flex-end">
-        <IndicatorWrapper alignItems="center" ref={targetRef}>
-          <Dot $color={current.color} />
-          <Text>{current.label}</Text>
-          <InfoIcon />
-          {tooltipVisible && tooltip}
-        </IndicatorWrapper>
-      </Flex>
+      <IndicatorWrapper alignItems="center" justifyContent="flex-end" ref={targetRef}>
+        <Dot $color={current.color} />
+        <Text>{current.label}</Text>
+        <InfoIcon />
+        {tooltipVisible && tooltip}
+      </IndicatorWrapper>
     )
   }
 
@@ -159,7 +157,7 @@ const TooltipContent = ({
   const { t } = useTranslation()
   return (
     <Box>
-      <IndicatorWrapper alignItems="center" pb="10px">
+      <IndicatorWrapper pb="10px">
         <Dot $color={color} />
         <Text>{label}</Text>
       </IndicatorWrapper>

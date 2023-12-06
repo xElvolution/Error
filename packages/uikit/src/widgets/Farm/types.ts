@@ -23,7 +23,6 @@ export interface FarmTableFarmTokenInfoProps {
   quoteToken: Token;
   isReady: boolean;
   isStable?: boolean;
-  isBoosted?: boolean;
   stakedBalance?: BigNumber;
   children?: ReactNode;
 }

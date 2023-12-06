@@ -45,18 +45,12 @@ export default function SwapModalHeader({
   const symbol =
     trade.tradeType === TradeType.EXACT_INPUT ? trade.outputAmount.currency.symbol : trade.inputAmount.currency.symbol
 
-  const tradeInfoText = useMemo(() => {
-    if (!amount) return null
-    return trade.tradeType === TradeType.EXACT_INPUT
-      ? t('Output is estimated. You will receive at least %amount% %symbol% or the transaction will revert.', {
-          amount,
-          symbol,
-        })
-      : t('Input is estimated. You will sell at most %amount% %symbol% or the transaction will revert.', {
-          amount,
-          symbol,
-        })
-  }, [t, trade.tradeType, amount, symbol])
+  const tradeInfoText =
+    trade.tradeType === TradeType.EXACT_INPUT
+      ? t('Output is estimated. You will receive at least or the transaction will revert.')
+      : t('Input is estimated. You will sell at most or the transaction will revert.')
+
+  const [estimatedText, transactionRevertText] = tradeInfoText.split(`${amount} ${symbol}`)
 
   const truncatedRecipient = recipient ? truncateHash(recipient) : ''
 
@@ -131,8 +125,9 @@ export default function SwapModalHeader({
             {t('Insufficient input token balance. Your transaction may fail.')}
           </Text>
         )}
-        <Text small color="textSubtle" textAlign="left" style={{ maxWidth: '320px' }}>
-          {tradeInfoText}
+        <Text small color="textSubtle" textAlign="left" style={{ width: '100%' }}>
+          {estimatedText}
+          {transactionRevertText}
         </Text>
       </AutoColumn>
       {recipient !== null ? (

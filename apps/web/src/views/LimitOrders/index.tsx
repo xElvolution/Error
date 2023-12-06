@@ -1,57 +1,56 @@
-import { useTranslation } from '@pancakeswap/localization'
-import { Currency, CurrencyAmount, Percent, Token, Trade, TradeType } from '@pancakeswap/sdk'
-import {
-  BottomDrawer,
-  Box,
-  Button,
-  Flex,
-  Link,
-  Swap as SwapUI,
-  useMatchBreakpoints,
-  useModal,
-  AutoColumn,
-} from '@pancakeswap/uikit'
+import { useCallback, useEffect, useState, useMemo } from 'react'
+import { useRouter } from 'next/router'
+import { CurrencyAmount, Token, Trade, TradeType, Currency, Percent, ChainId } from '@pancakeswap/sdk'
 import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
+import {
+  Button,
+  Box,
+  Flex,
+  useModal,
+  BottomDrawer,
+  Link,
+  useMatchBreakpoints,
+  Swap as SwapUI,
+} from '@pancakeswap/uikit'
+import AccessRisk from 'views/Swap/components/AccessRisk'
+import { useTranslation } from '@pancakeswap/localization'
+import { AutoColumn } from 'components/Layout/Column'
+import CurrencyInputPanel from 'components/CurrencyInputPanel'
 import { AppBody } from 'components/App'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import CurrencyInputPanel from 'components/CurrencyInputPanel'
+import useGelatoLimitOrders from 'hooks/limitOrders/useGelatoLimitOrders'
+import useGasOverhead from 'hooks/limitOrders/useGasOverhead'
+import useTheme from 'hooks/useTheme'
+import { ApprovalState, useApproveCallbackFromInputCurrencyAmount } from 'hooks/useApproveCallback'
+import { Field } from 'state/limitOrders/types'
+import { useDefaultsFromURLSearch } from 'state/limitOrders/hooks'
+import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { GELATO_NATIVE } from 'config/constants'
 import { LIMIT_ORDERS_DOCS_URL } from 'config/constants/exchange'
-import { SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
-import useGasOverhead from 'hooks/limitOrders/useGasOverhead'
-import useGelatoLimitOrders from 'hooks/limitOrders/useGelatoLimitOrders'
-import { ApprovalState, useApproveCallbackFromInputCurrencyAmount } from 'hooks/useApproveCallback'
-import useTheme from 'hooks/useTheme'
-import { useRouter } from 'next/router'
-import { useCallback, useEffect, useMemo, useState } from 'react'
-import { useDefaultsFromURLSearch } from 'state/limitOrders/hooks'
-import { Field } from 'state/limitOrders/types'
 import { useExchangeChartManager } from 'state/user/hooks'
-import { maxAmountSpend } from 'utils/maxAmountSpend'
-import AccessRisk from 'views/Swap/components/AccessRisk'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import PriceChartContainer from 'views/Swap/components/Chart/PriceChartContainer'
+import { useWeb3React } from '@pancakeswap/wagmi'
 import ClaimWarning from './components/ClaimWarning'
 
-import ImportTokenWarningModal from '../../components/ImportTokenWarningModal'
-import { CommonBasesType } from '../../components/SearchModal/types'
-import { useAllTokens, useCurrency } from '../../hooks/Tokens'
-import { currencyId } from '../../utils/currencyId'
-import Page from '../Page'
-import { ConfirmLimitOrderModal } from './components/ConfirmLimitOrderModal'
+import { Wrapper, StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
 import CurrencyInputHeader from './components/CurrencyInputHeader'
 import LimitOrderPrice from './components/LimitOrderPrice'
-import LimitOrderTable from './components/LimitOrderTable'
 import SwitchTokensButton from './components/SwitchTokensButton'
-import { StyledInputCurrencyWrapper, StyledSwapContainer, Wrapper } from './styles'
+import Page from '../Page'
+import LimitOrderTable from './components/LimitOrderTable'
+import { ConfirmLimitOrderModal } from './components/ConfirmLimitOrderModal'
 import getRatePercentageDifference from './utils/getRatePercentageDifference'
+import { useCurrency, useAllTokens } from '../../hooks/Tokens'
+import ImportTokenWarningModal from '../../components/ImportTokenWarningModal'
+import { CommonBasesType } from '../../components/SearchModal/types'
+import { currencyId } from '../../utils/currencyId'
 
 const LimitOrders = () => {
   // Helpers
-  const { account, chainId } = useActiveWeb3React()
+  const { account, chainId } = useWeb3React()
   const { t } = useTranslation()
   const router = useRouter()
-  const { isMobile, isTablet, isDesktop } = useMatchBreakpoints()
+  const { isMobile, isTablet } = useMatchBreakpoints()
   const { theme } = useTheme()
   const [userChartPreference, setUserChartPreference] = useExchangeChartManager(isMobile)
   const [isChartExpanded, setIsChartExpanded] = useState(false)
@@ -329,7 +328,8 @@ const LimitOrders = () => {
 
   const isSideFooter = isChartExpanded || isChartDisplayed
 
-  const isAccessTokenSupported = SUPPORT_ONLY_BSC.includes(chainId)
+  const ACCESS_TOKEN_SUPPORT_CHAIN_IDS = [ChainId.BSC]
+  const isAccessTokenSupported = ACCESS_TOKEN_SUPPORT_CHAIN_IDS.includes(chainId)
 
   return (
     <Page
@@ -347,7 +347,7 @@ const LimitOrders = () => {
         mb={isSideFooter ? null : '24px'}
         mt={isChartExpanded ? '24px' : null}
       >
-        {isDesktop && (
+        {!isMobile && (
           <Flex width={isChartExpanded ? '100%' : '50%'} maxWidth="928px" flexDirection="column">
             <PriceChartContainer
               inputCurrencyId={currencyIds.input}
@@ -393,14 +393,7 @@ const LimitOrders = () => {
                       id="limit-order-currency-input"
                       showCommonBases
                       commonBasesType={CommonBasesType.SWAP_LIMITORDER}
-                      showUSDPrice
                     />
-
-                    <Box id="yo">
-                      {isAccessTokenSupported && currencies.input && currencies.input.isToken && (
-                        <AccessRisk token={currencies.input} />
-                      )}
-                    </Box>
 
                     <SwitchTokensButton
                       handleSwitchTokens={handleTokenSwitch}
@@ -417,11 +410,10 @@ const LimitOrders = () => {
                       id="limit-order-currency-output"
                       showCommonBases
                       commonBasesType={CommonBasesType.SWAP_LIMITORDER}
-                      showUSDPrice
                     />
                     <Box>
-                      {isAccessTokenSupported && currencies.output && currencies.output.isToken && (
-                        <AccessRisk token={currencies.output} />
+                      {isAccessTokenSupported && (
+                        <AccessRisk inputCurrency={currencies.input} outputCurrency={currencies.output} />
                       )}
                     </Box>
                     <LimitOrderPrice
@@ -492,7 +484,7 @@ const LimitOrders = () => {
               </AppBody>
             </StyledInputCurrencyWrapper>
           </StyledSwapContainer>
-          {!isDesktop && (
+          {isMobile && (
             <Flex mt="24px" width="100%">
               <LimitOrderTable isCompact />
             </Flex>
@@ -516,7 +508,6 @@ const LimitOrders = () => {
             setIsChartExpanded={setIsChartExpanded}
             isChartDisplayed={isChartDisplayed}
             currentSwapPrice={singleTokenPrice}
-            isFullWidthContainer
             isMobile
           />
         }

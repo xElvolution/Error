@@ -1,7 +1,7 @@
 import { ErrorBoundary as SErrorBoundary } from '@sentry/nextjs'
 import Page from 'components/Layout/Page'
 import { useTranslation } from '@pancakeswap/localization'
-import { Button, Text, LogoIcon, Flex, IconButton, CopyIcon, copyText } from '@pancakeswap/uikit'
+import { Button, Text, Flex, IconButton, CopyIcon, copyText } from '@pancakeswap/uikit'
 import { useCallback } from 'react'
 
 export function SentryErrorBoundary({ children }) {
@@ -16,7 +16,6 @@ export function SentryErrorBoundary({ children }) {
         return (
           <Page>
             <Flex flexDirection="column" justifyContent="center" alignItems="center">
-              <LogoIcon width="64px" mb="8px" />
               <Text mb="16px">{t('Oops, something wrong.')}</Text>
               {eventId && (
                 <Flex flexDirection="column" style={{ textAlign: 'center' }} mb="8px">

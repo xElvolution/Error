@@ -224,7 +224,7 @@ export const useCollectionNfts = (collectionAddress: string) => {
   } = useSWRInfinite(
     (pageIndex, previousPageData) => {
       if (pageIndex !== 0 && previousPageData && !previousPageData.length) return null
-      return [collectionAddress, itemListingSettingsJson, pageIndex, 'collectionNfts'] as const
+      return [collectionAddress, itemListingSettingsJson, pageIndex, 'collectionNfts']
     },
     async ([, settingsJson, page]) => {
       const settings: ItemListingSettings = JSON.parse(settingsJson)

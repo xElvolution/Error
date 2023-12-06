@@ -1,6 +1,7 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Swap } from '@pancakeswap/uikit'
 import { ChainId } from '@pancakeswap/sdk'
+import { PageMeta } from 'components/Layout/Page'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { EXCHANGE_HELP_URLS } from 'config/constants'
 
@@ -23,10 +24,11 @@ const Page: React.FC<
   const { chainId } = useActiveChainId()
   const isBSC = chainId === ChainId.BSC
   const externalText = isBSC ? t('Bridge assets to BNB Chain') : ''
-  const externalLinkUrl = isBSC ? 'https://bridge.pancakeswap.finance/' : ''
+  const externalLinkUrl = isBSC ? 'https://bridge.zodiacswap.xyz/' : ''
 
   return (
     <>
+      <PageMeta />
       <Swap.Page
         removePadding={removePadding}
         noMinHeight={noMinHeight}

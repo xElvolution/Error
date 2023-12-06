@@ -1,8 +1,8 @@
-import { vi } from "vitest";
+import React from "react";
 import { renderWithProvider } from "../../testHelpers";
 import Input from "../../components/Input/Input";
 
-const handleChange = vi.fn();
+const handleChange = jest.fn();
 
 it("renders correctly", () => {
   const { asFragment } = renderWithProvider(<Input type="text" value="input" onChange={handleChange} />);

@@ -25,7 +25,7 @@ const RemoveLiquidityPage = () => {
     currencyB,
   }
 
-  return stableConfig.stableSwapConfig && Boolean(router.query.stable) ? (
+  return stableConfig.stableSwapConfig && router.query.stable === '1' ? (
     <StableConfigContext.Provider value={stableConfig}>
       <RemoveStableLiquidity {...props} />
     </StableConfigContext.Provider>

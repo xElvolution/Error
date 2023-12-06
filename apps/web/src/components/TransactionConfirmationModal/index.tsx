@@ -1,23 +1,25 @@
-import { useCallback } from 'react'
+import { ReactElement, useCallback } from 'react'
 import { ChainId, Currency, Token } from '@pancakeswap/sdk'
 import styled from 'styled-components'
 import {
   Button,
   Text,
+  ErrorIcon,
   ArrowUpIcon,
+  Flex,
+  Box,
   Link,
-  ConfirmationPendingContent,
+  Spinner,
   Modal,
   InjectedModalProps,
   ModalProps,
   BscScanIcon,
-  AutoColumn,
-  ColumnCenter,
 } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
 import { wrappedCurrency } from 'utils/wrappedCurrency'
 import { WrappedTokenInfo } from '@pancakeswap/token-lists'
 import { useActiveChainId } from 'hooks/useActiveChainId'
+import { AutoColumn, ColumnCenter } from '../Layout/Column'
 import { getBlockExploreLink, getBlockExploreName } from '../../utils'
 import AddToWalletButton, { AddToWalletTextOptions } from '../AddToWallet/AddToWalletButton'
 
@@ -31,6 +33,28 @@ const Section = styled(AutoColumn)`
 const ConfirmedIcon = styled(ColumnCenter)`
   padding: 24px 0;
 `
+
+function ConfirmationPendingContent({ pendingText }: { pendingText: string }) {
+  const { t } = useTranslation()
+  return (
+    <Wrapper>
+      <ConfirmedIcon>
+        <Spinner />
+      </ConfirmedIcon>
+      <AutoColumn gap="12px" justify="center">
+        <Text fontSize="20px">{t('Waiting For Confirmation')}</Text>
+        <AutoColumn gap="12px" justify="center">
+          <Text bold small textAlign="center">
+            {pendingText}
+          </Text>
+        </AutoColumn>
+        <Text small color="textSubtle" textAlign="center">
+          {t('Confirm this transaction in your wallet')}
+        </Text>
+      </AutoColumn>
+    </Wrapper>
+  )
+}
 
 export function TransactionSubmittedContent({
   onDismiss,
@@ -81,6 +105,47 @@ export function TransactionSubmittedContent({
           </Button>
         </AutoColumn>
       </Section>
+    </Wrapper>
+  )
+}
+
+export function ConfirmationModalContent({
+  bottomContent,
+  topContent,
+}: {
+  topContent: () => React.ReactNode
+  bottomContent: () => React.ReactNode
+}) {
+  return (
+    <Wrapper>
+      <Box>{topContent()}</Box>
+      <Box>{bottomContent()}</Box>
+    </Wrapper>
+  )
+}
+
+export function TransactionErrorContent({
+  message,
+  onDismiss,
+}: {
+  message: ReactElement | string
+  onDismiss?: () => void
+}) {
+  const { t } = useTranslation()
+  return (
+    <Wrapper>
+      <AutoColumn justify="center">
+        <ErrorIcon color="failure" width="64px" />
+        <Text color="failure" style={{ textAlign: 'center', width: '85%', wordBreak: 'break-word' }}>
+          {message}
+        </Text>
+      </AutoColumn>
+
+      {onDismiss ? (
+        <Flex justifyContent="center" pt="24px">
+          <Button onClick={onDismiss}>{t('Dismiss')}</Button>
+        </Flex>
+      ) : null}
     </Wrapper>
   )
 }

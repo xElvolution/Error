@@ -16,31 +16,22 @@ export function transactionErrorToUserReadableMessage(error: any, t: TranslateFu
 
   if (reason?.indexOf('execution reverted: ') === 0) reason = reason.substring('execution reverted: '.length)
 
-  const formatErrorMessage = (message: string) => [message, `(${reason})`].join(' ')
   switch (reason) {
     case 'PancakeRouter: EXPIRED':
-      return formatErrorMessage(
-        t(
-          'The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low.',
-        ),
+      return t(
+        'The transaction could not be sent because the deadline has passed. Please check that your transaction deadline is not too low.',
       )
     case 'PancakeRouter: INSUFFICIENT_OUTPUT_AMOUNT':
     case 'PancakeRouter: EXCESSIVE_INPUT_AMOUNT':
     case 'PancakeRouter: INSUFFICIENT_A_AMOUNT':
     case 'PancakeRouter: INSUFFICIENT_B_AMOUNT':
-    case 'swapMulti: incorrect user balance':
-    case 'Pancake: K':
-      return formatErrorMessage(
-        t(
-          'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.',
-        ),
+      return t(
+        'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.',
       )
     case 'TransferHelper: TRANSFER_FROM_FAILED':
-      return formatErrorMessage(t('The input token cannot be transferred. There may be an issue with the input token.'))
+      return t('The input token cannot be transferred. There may be an issue with the input token.')
     case 'Pancake: TRANSFER_FAILED':
-      return formatErrorMessage(
-        t('The output token cannot be transferred. There may be an issue with the output token.'),
-      )
+      return t('The output token cannot be transferred. There may be an issue with the output token.')
     default:
       if (reason?.indexOf('undefined is not an object') !== -1) {
         console.error(error, reason)

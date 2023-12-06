@@ -68,10 +68,10 @@ export const useIfoResourcesListByUserInfoType = (userInfoTypes?: string[]) => {
   })
 }
 
-export const useIfoResources = (ifo: Ifo | undefined) => {
+export const useIfoResources = (ifo: Ifo) => {
   const { networkName } = useActiveWeb3React()
 
-  const [ifoRaisingCoin, ifoOfferingCoin, ifoUid] = splitTypeTag(ifo?.address)
+  const [ifoRaisingCoin, ifoOfferingCoin, ifoUid] = splitTypeTag(ifo.address)
 
   return useAccountResources({
     enabled: !!ifo,

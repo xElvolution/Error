@@ -1,3 +1,9 @@
 import { createContext, ElementType } from "react";
 
-export const MenuContext = createContext<{ linkComponent: ElementType }>({ linkComponent: "a" });
+interface MenuContextType {
+  linkComponent: ElementType;
+}
+
+export const MenuContext = createContext<MenuContextType>({
+  linkComponent: "a",
+});

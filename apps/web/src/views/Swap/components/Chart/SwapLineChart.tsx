@@ -1,157 +1,107 @@
-import { useRef, useState, useEffect, Dispatch, SetStateAction, useMemo } from 'react'
-import { useTranslation } from '@pancakeswap/localization'
-import { createChart, IChartApi, UTCTimestamp } from 'lightweight-charts'
-import { format } from 'date-fns'
-import { LineChartLoader } from 'components/ChartLoaders'
+import { Dispatch, SetStateAction } from 'react'
+import { ResponsiveContainer, XAxis, YAxis, Tooltip, AreaChart, Area } from 'recharts'
 import useTheme from 'hooks/useTheme'
+import { LineChartLoader } from 'views/Info/components/ChartLoaders'
 import { PairDataTimeWindowEnum } from 'state/swap/types'
-import { lightColors, darkColors } from '@pancakeswap/ui/tokens/colors'
+import { useTranslation } from '@pancakeswap/localization'
 
-export type SwapLineChartNewProps = {
+export type SwapLineChartProps = {
   data: any[]
-  setHoverValue?: Dispatch<SetStateAction<number | undefined>> // used for value on hover
-  setHoverDate?: Dispatch<SetStateAction<string | undefined>> // used for value label on hover
+  setHoverValue: Dispatch<SetStateAction<number | undefined>> // used for value on hover
+  setHoverDate: Dispatch<SetStateAction<string | undefined>> // used for label of value
   isChangePositive: boolean
-  isChartExpanded: boolean
   timeWindow: PairDataTimeWindowEnum
 } & React.HTMLAttributes<HTMLDivElement>
 
 const getChartColors = ({ isChangePositive }) => {
   return isChangePositive
-    ? { gradient1: '#00E7B0', gradient2: '#0C8B6C', stroke: '#31D0AA' }
+    ? { gradient1: '#00E7B0', gradient2: '#0C8B6C', stroke: '#aa14f0' }
     : { gradient1: '#ED4B9E', gradient2: '#ED4B9E', stroke: '#ED4B9E ' }
 }
 
-const dateFormattingByTimewindow: Record<PairDataTimeWindowEnum, string> = {
-  [PairDataTimeWindowEnum.DAY]: 'h:mm a',
-  [PairDataTimeWindowEnum.WEEK]: 'MMM dd',
-  [PairDataTimeWindowEnum.MONTH]: 'MMM dd',
-  [PairDataTimeWindowEnum.YEAR]: 'MMM dd',
+const dateFormattingByTimewindow: Record<PairDataTimeWindowEnum, Intl.DateTimeFormatOptions> = {
+  [PairDataTimeWindowEnum.DAY]: {
+    hour: '2-digit',
+    minute: '2-digit',
+  },
+  [PairDataTimeWindowEnum.WEEK]: {
+    month: 'short',
+    day: '2-digit',
+  },
+  [PairDataTimeWindowEnum.MONTH]: {
+    month: 'short',
+    day: '2-digit',
+  },
+  [PairDataTimeWindowEnum.YEAR]: {
+    month: 'short',
+    day: '2-digit',
+  },
 }
 
-const SwapLineChart = ({
-  data,
-  setHoverValue,
-  setHoverDate,
-  isChangePositive,
-  isChartExpanded,
-  timeWindow,
-  ...rest
-}: SwapLineChartNewProps) => {
-  const { isDark } = useTheme()
-  const transformedData = useMemo(() => {
-    return (
-      data?.map(({ time, value }) => {
-        return { time: Math.floor(time.getTime() / 1000) as UTCTimestamp, value }
-      }) || []
-    )
-  }, [data])
+/**
+ * Note: remember that it needs to be mounted inside the container with fixed height
+ */
+const LineChart = ({ data, setHoverValue, setHoverDate, isChangePositive, timeWindow }: SwapLineChartProps) => {
   const {
     currentLanguage: { locale },
   } = useTranslation()
-  const chartRef = useRef<HTMLDivElement>(null)
-  const colors = useMemo(() => {
-    return getChartColors({ isChangePositive })
-  }, [isChangePositive])
-  const [chartCreated, setChart] = useState<IChartApi | undefined>()
+  const { theme } = useTheme()
+  const colors = getChartColors({ isChangePositive })
+  const dateFormatting = dateFormattingByTimewindow[timeWindow]
 
-  useEffect(() => {
-    const handleResize = () => {
-      chart.applyOptions({ width: chartRef.current.clientWidth, height: chartRef.current.clientHeight })
-    }
-
-    const chart = createChart(chartRef.current, {
-      layout: {
-        background: { color: 'transparent' },
-        textColor: isDark ? darkColors.text : lightColors.text,
-      },
-      handleScale: false,
-      handleScroll: false,
-      width: chartRef.current.parentElement.clientWidth - 32,
-      height: chartRef.current.parentElement.clientHeight - 32,
-      rightPriceScale: {
-        scaleMargins: {
-          top: 0.1,
-          bottom: 0.1,
-        },
-        borderVisible: false,
-      },
-      timeScale: {
-        visible: true,
-        borderVisible: false,
-        secondsVisible: false,
-        tickMarkFormatter: (unixTime: number) => {
-          return format(unixTime * 1000, dateFormattingByTimewindow[timeWindow])
-        },
-      },
-      grid: {
-        horzLines: {
-          visible: false,
-        },
-        vertLines: {
-          visible: false,
-        },
-      },
-      crosshair: {
-        horzLine: {
-          visible: true,
-          labelVisible: true,
-        },
-        mode: 1,
-        vertLine: {
-          visible: true,
-          labelVisible: false,
-          style: 3,
-          width: 1,
-          color: isDark ? '#B8ADD2' : '#7A6EAA',
-        },
-      },
-    })
-    const newSeries = chart.addAreaSeries({
-      lineWidth: 2,
-      lineColor: colors.gradient1,
-      topColor: colors.gradient1,
-      bottomColor: isDark ? darkColors.backgroundDisabled : lightColors.backgroundDisabled,
-    })
-    setChart(chart)
-    newSeries.setData(transformedData)
-    chart.timeScale().fitContent()
-
-    chart.subscribeCrosshairMove((param) => {
-      if (newSeries && param && param.seriesPrices.size) {
-        const timestamp = param.time as number
-        const now = new Date(timestamp * 1000)
-        const time = `${now.toLocaleString(locale, {
-          year: 'numeric',
-          month: 'short',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: '2-digit',
-          timeZone: 'UTC',
-        })} (UTC)`
-        const parsed = param.seriesPrices.get(newSeries) as number | undefined
-        if (setHoverValue) setHoverValue(parsed)
-        if (setHoverDate) setHoverDate(time)
-      } else {
-        if (setHoverValue) setHoverValue(undefined)
-        if (setHoverDate) setHoverDate(undefined)
-      }
-    })
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-      chart.remove()
-    }
-  }, [transformedData, isDark, colors, isChartExpanded, locale, timeWindow, setHoverDate, setHoverValue])
-
+  if (!data || data.length === 0) {
+    return <LineChartLoader />
+  }
   return (
-    <>
-      {!chartCreated && <LineChartLoader />}
-      <div ref={chartRef} id="swap-line-chart" {...rest} />
-    </>
+    <ResponsiveContainer>
+      <AreaChart
+        data={data}
+        margin={{
+          top: 5,
+          right: 0,
+          left: 0,
+          bottom: 5,
+        }}
+        onMouseLeave={() => {
+          if (setHoverDate) setHoverDate(undefined)
+          if (setHoverValue) setHoverValue(undefined)
+        }}
+      >
+        <defs>
+          <linearGradient id="gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor={colors.gradient1} stopOpacity={0.34} />
+            <stop offset="100%" stopColor={colors.gradient2} stopOpacity={0} />
+          </linearGradient>
+        </defs>
+        <XAxis
+          dataKey="time"
+          axisLine={false}
+          tickLine={false}
+          tickFormatter={(time) => time.toLocaleString(locale, dateFormatting)}
+          minTickGap={8}
+        />
+        <YAxis dataKey="value" axisLine={false} tickLine={false} domain={['auto', 'auto']} hide />
+        <Tooltip
+          cursor={{ stroke: theme.colors.textDisabled }}
+          contentStyle={{ display: 'none' }}
+          formatter={(tooltipValue, name, props) => {
+            setHoverValue(props.payload.value)
+            setHoverDate(
+              props.payload.time.toLocaleString(locale, {
+                year: 'numeric',
+                month: 'short',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+              }),
+            )
+            return null
+          }}
+        />
+        <Area dataKey="value" type="linear" stroke={colors.stroke} fill="url(#gradient)" strokeWidth={2} />
+      </AreaChart>
+    </ResponsiveContainer>
   )
 }
 
-export default SwapLineChart
+export default LineChart

@@ -1,8 +1,6 @@
 import { appearAnimation, useIsomorphicEffect, useMatchBreakpoints } from '@pancakeswap/uikit'
 import { useAccount } from 'wagmi'
 import { useState } from 'react'
-import { ChainId } from '@pancakeswap/sdk'
-import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled from 'styled-components'
 import SwiperCore, { Autoplay, EffectFade, Pagination } from 'swiper'
 import 'swiper/css'
@@ -28,7 +26,7 @@ const BannerPlaceHolder = styled.div<{ walletConnected: boolean }>`
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background: -webkit-linear-gradient(#7645d9 0%, #452a7a 100%);
+    background: -webkit-linear-gradient(#AA14F0 0%, #452a7a 100%);
     ${({ theme }) => theme.mediaQueries.sm} {
       top: 20px;
       left: 20px;
@@ -50,12 +48,6 @@ const BannerPlaceHolder = styled.div<{ walletConnected: boolean }>`
     padding-top: 0;
     margin-top: ${({ walletConnected }) => (walletConnected ? '60px' : '-32px')};
     margin-bottom: ${({ walletConnected }) => (walletConnected ? '60px' : '30px')};
-  }
-  .swiper-slide {
-    overflow: visible;
-    &::-webkit-scrollbar {
-      display: none;
-    }
   }
 `
 
@@ -100,7 +92,6 @@ const MultipleBanner: React.FC<React.PropsWithChildren> = () => {
   const bannerList = useMultipleBannerConfig()
   const { address: account } = useAccount()
   const { isDesktop, isTablet } = useMatchBreakpoints()
-  const { chainId } = useActiveChainId()
   const [swiperRef, setSwiperRef] = useState<SwiperCore>(null)
 
   useIsomorphicEffect(() => {
@@ -114,7 +105,7 @@ const MultipleBanner: React.FC<React.PropsWithChildren> = () => {
   }, [bannerList, swiperRef])
 
   return (
-    <BannerPlaceHolder walletConnected={Boolean(account) && chainId === ChainId.BSC}>
+    <BannerPlaceHolder walletConnected={Boolean(account)}>
       <StyledSwiper
         onSwiper={setSwiperRef}
         modules={[Autoplay, Pagination, EffectFade]}

@@ -1,16 +1,11 @@
-import { useCallback, memo, useMemo } from 'react'
+import { useCallback, memo } from 'react'
 import { Trade, Currency, TradeType, CurrencyAmount } from '@pancakeswap/sdk'
-import {
-  InjectedModalProps,
-  LinkExternal,
-  Text,
-  TransactionErrorContent,
-  ConfirmationPendingContent,
-} from '@pancakeswap/uikit'
-import { TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
+import { InjectedModalProps, LinkExternal, Text } from '@pancakeswap/uikit'
+import { TransactionErrorContent, TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
 import { useTranslation } from '@pancakeswap/localization'
 import { Field } from 'state/swap/actions'
 import { useActiveChainId } from 'hooks/useActiveChainId'
+import ConfirmationPendingContent from './ConfirmationPendingContent'
 import TransactionConfirmSwapContent from './TransactionConfirmSwapContent'
 import ConfirmSwapModalContainer from './ConfirmSwapModalContainer'
 import { StableTrade } from '../StableSwap/hooks/useStableTradeExactIn'
@@ -42,7 +37,7 @@ const SwapTransactionErrorContent = ({ onDismiss, message, openSettingModal }) =
             </Text>
           </Text>
           <LinkExternal
-            href="https://docs.pancakeswap.finance/products/pancakeswap-exchange/trade-guide"
+            href="https://docs.zodiacswap.xyz/products/pancakeswap-exchange/trade-guide"
             style={{ width: '100%', justifyContent: 'center' }}
           >
             {t('What are the potential issues with the token?')}
@@ -88,7 +83,6 @@ const ConfirmSwapModal: React.FC<React.PropsWithChildren<InjectedModalProps & Co
   isStable,
 }) => {
   const { chainId } = useActiveChainId()
-  const { t } = useTranslation()
 
   const handleDismiss = useCallback(() => {
     if (customOnDismiss) {
@@ -132,22 +126,12 @@ const ConfirmSwapModal: React.FC<React.PropsWithChildren<InjectedModalProps & Co
     ],
   )
 
-  // text to show while loading
-  const pendingText = useMemo(() => {
-    return t('Swapping %amountA% %symbolA% for %amountB% %symbolB%', {
-      amountA: trade.inputAmount?.toSignificant(6) ?? '',
-      symbolA: trade.inputAmount?.currency?.symbol ?? '',
-      amountB: trade.outputAmount?.toSignificant(6) ?? '',
-      symbolB: trade.outputAmount?.currency?.symbol ?? '',
-    })
-  }, [t, trade])
-
   if (!chainId) return null
 
   return (
     <ConfirmSwapModalContainer handleDismiss={handleDismiss}>
       {attemptingTxn ? (
-        <ConfirmationPendingContent pendingText={pendingText} />
+        <ConfirmationPendingContent inputAmount={trade?.inputAmount} outputAmount={trade?.outputAmount} />
       ) : txHash ? (
         <TransactionSubmittedContent
           chainId={chainId}

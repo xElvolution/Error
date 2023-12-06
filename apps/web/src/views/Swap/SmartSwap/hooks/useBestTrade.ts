@@ -35,14 +35,14 @@ function createUseBestTrade<T>(key: string, getBestTrade: (options: TradeOptions
     const deferQuotient = useDeferredValue(amount?.quotient.toString())
 
     const { data: trade } = useSWR(
-      amount && amount.currency && currency
+      amount
         ? [
             key,
             'swap',
             tradeType,
             amount.currency.chainId,
             amount.currency.symbol,
-            currency.symbol,
+            // currency.symbol,
             deferQuotient,
             maxHops,
             allCommonPairs,
