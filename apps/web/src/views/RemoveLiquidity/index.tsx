@@ -20,10 +20,6 @@ import {
   useTooltip,
   useToast,
   useMatchBreakpoints,
-  IconButton,
-  PencilIcon,
-  AutoColumn,
-  ColumnCenter,
 } from '@pancakeswap/uikit'
 import { useDebouncedChangeHandler } from '@pancakeswap/hooks'
 import { useWeb3LibraryContext } from '@pancakeswap/wagmi'
@@ -38,6 +34,7 @@ import { useTranslation } from '@pancakeswap/localization'
 import { ROUTER_ADDRESS } from 'config/constants/exchange'
 import { transactionErrorToUserReadableMessage } from 'utils/transactionErrorToUserReadableMessage'
 import { useLPApr } from 'state/swap/useLPApr'
+import { AutoColumn, ColumnCenter } from '../../components/Layout/Column'
 import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 import { MinimalPositionCard } from '../../components/PositionCard'
 import { AppHeader, AppBody } from '../../components/App'
@@ -66,8 +63,6 @@ import ConfirmLiquidityModal from '../Swap/components/ConfirmRemoveLiquidityModa
 import { logError } from '../../utils/sentry'
 import { formatAmount } from '../../utils/formatInfoNumbers'
 import { CommonBasesType } from '../../components/SearchModal/types'
-import SettingsModal from '../../components/Menu/GlobalSettings/SettingsModal'
-import { SettingsMode } from '../../components/Menu/GlobalSettings/types'
 
 const BorderCard = styled.div`
   border: solid 1px ${({ theme }) => theme.colors.cardBorder};
@@ -179,7 +174,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
       { name: 'verifyingContract', type: 'address' },
     ]
     const domain = {
-      name: 'Pancake LPs',
+      name: 'Zodiac LPs',
       version: '1',
       chainId,
       verifyingContract: pair.liquidityToken.address,
@@ -561,8 +556,6 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
     'removeLiquidityModal',
   )
 
-  const [onPresentSettingsModal] = useModal(<SettingsModal mode={SettingsMode.SWAP_LIQUIDITY} />)
-
   const isZapOutA = isZap && !removalCheckedB && removalCheckedA
   const isZapOutB = isZap && !removalCheckedA && removalCheckedB
 
@@ -625,7 +618,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
               <ColumnCenter>
                 <ArrowDownIcon color="textSubtle" width="24px" my="16px" />
               </ColumnCenter>
-              <AutoColumn gap="12px">
+              <AutoColumn gap="10px">
                 <Text bold color="secondary" fontSize="12px" textTransform="uppercase">
                   {t('Receive')}
                 </Text>
@@ -791,7 +784,7 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
             </Box>
           )}
           {pair && (
-            <AutoColumn gap="12px" style={{ marginTop: '16px' }}>
+            <AutoColumn gap="10px" style={{ marginTop: '16px' }}>
               <Text bold color="secondary" fontSize="12px" textTransform="uppercase">
                 {t('Prices')}
               </Text>
@@ -818,9 +811,6 @@ export default function RemoveLiquidity({ currencyA, currencyB, currencyIdA, cur
           <RowBetween mt="16px">
             <Text bold color="secondary" fontSize="12px">
               {t('Slippage Tolerance')}
-              <IconButton scale="sm" variant="text" onClick={onPresentSettingsModal}>
-                <PencilIcon color="primary" width="10px" />
-              </IconButton>
             </Text>
             <Text bold color="primary">
               {allowedSlippage / 100}%

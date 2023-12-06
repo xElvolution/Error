@@ -6,17 +6,14 @@ import {
   LinkExternal,
   Text,
   useMatchBreakpoints,
-  Flex,
 } from '@pancakeswap/uikit'
-
-import { FarmWithStakedValue } from '@pancakeswap/farms'
-import { CHAIN_QUERY_NAME } from 'config/chains'
 import { useActiveChainId } from 'hooks/useActiveChainId'
 import { useContext, useMemo } from 'react'
 import { multiChainPaths } from 'state/info/constant'
 import styled, { css, keyframes } from 'styled-components'
 import { getBlockExploreLink } from 'utils'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
+import { FarmWithStakedValue } from '@pancakeswap/farms'
 
 import BoostedAction from '../../YieldBooster/components/BoostedAction'
 import { YieldBoosterStateContext } from '../../YieldBooster/components/ProxyFarmContainer'
@@ -34,7 +31,6 @@ export interface ActionPanelProps {
   details: FarmWithStakedValue
   userDataReady: boolean
   expanded: boolean
-  alignLinksToRight?: boolean
 }
 
 const expandAnimation = keyframes`
@@ -126,7 +122,6 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
   liquidity,
   userDataReady,
   expanded,
-  alignLinksToRight = true,
 }) => {
   const { chainId } = useActiveChainId()
   const { proxyFarm, shouldUseProxyFarm } = useContext(YieldBoosterStateContext)
@@ -141,7 +136,7 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
   } = useTranslation()
   const isActive = farm.multiplier !== '0X'
   const { quoteToken, token, stableSwapAddress } = farm
-  const lpLabel = farm.lpSymbol && farm.lpSymbol.replace(/pancake/gi, '')
+  const lpLabel = farm.lpSymbol && farm.lpSymbol.toUpperCase().replace('PANCAKE', '')
   const liquidityUrlPathParts = getLiquidityUrlPathParts({
     quoteTokenAddress: quoteToken.address,
     tokenAddress: token.address,
@@ -153,9 +148,9 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
 
   const infoUrl = useMemo(() => {
     if (farm.isStable) {
-      return `/info${multiChainPaths[chainId]}/pairs/${stableSwapAddress}?type=stableSwap&chain=${CHAIN_QUERY_NAME[chainId]}`
+      return `/info${multiChainPaths[chainId]}/pairs/${stableSwapAddress}?type=stableSwap`
     }
-    return `/info${multiChainPaths[chainId]}/pairs/${lpAddress}?chain=${CHAIN_QUERY_NAME[chainId]}`
+    return `/info${multiChainPaths[chainId]}/pairs/${lpAddress}`
   }, [chainId, farm.isStable, lpAddress, stableSwapAddress])
 
   return (
@@ -192,22 +187,16 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
           )}
         </ValueContainer>
         {isActive && (
-          <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-            <StakeContainer>
-              <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
-                {t('Get %symbol%', { symbol: lpLabel })}
-              </StyledLinkExternal>
-            </StakeContainer>
-          </Flex>
+          <StakeContainer>
+            <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
+              {t('Get %symbol%', { symbol: lpLabel })}
+            </StyledLinkExternal>
+          </StakeContainer>
         )}
-        <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <StyledLinkExternal href={infoUrl}>{t('See Pair Info')}</StyledLinkExternal>
-        </Flex>
-        <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <StyledLinkExternal isBscScan href={bsc}>
-            {t('View Contract')}
-          </StyledLinkExternal>
-        </Flex>
+        <StyledLinkExternal isBscScan href={bsc}>
+          {t('View Contract')}
+        </StyledLinkExternal>
+        <StyledLinkExternal href={infoUrl}>{t('See Pair Info')}</StyledLinkExternal>
       </InfoContainer>
       <ActionContainer>
         {shouldUseProxyFarm ? (

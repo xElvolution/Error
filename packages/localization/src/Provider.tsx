@@ -1,4 +1,4 @@
-import { createContext, useCallback, useEffect, useState, useMemo } from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
 import { Language } from '@pancakeswap/uikit'
 import { useLastUpdated } from '@pancakeswap/hooks'
 import memoize from 'lodash/memoize'
@@ -120,9 +120,5 @@ export const LanguageProvider: React.FC<React.PropsWithChildren> = ({ children }
     [currentLanguage, lastUpdated],
   )
 
-  const providerValue = useMemo(() => {
-    return { ...state, setLanguage, t: translate }
-  }, [state, setLanguage, translate])
-
-  return <LanguageContext.Provider value={providerValue}>{children}</LanguageContext.Provider>
+  return <LanguageContext.Provider value={{ ...state, setLanguage, t: translate }}>{children}</LanguageContext.Provider>
 }

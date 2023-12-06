@@ -11,7 +11,7 @@ import { CommonBasesType } from './types'
 const ButtonWrapper = styled.div`
   display: inline-block;
   vertical-align: top;
-  margin-right: 6px;
+  margin-right: 10px;
 `
 
 const BaseWrapper = styled.div<{ disable?: boolean }>`
@@ -81,7 +81,7 @@ export default function CommonBases({
         {(chainId ? SUGGESTED_BASES[chainId] || [] : []).map((token: Token) => {
           const selected = selectedCurrency?.equals(token)
           return (
-            <ButtonWrapper key={`buttonBase#${token.address}`}>
+            <ButtonWrapper>
               <BaseWrapper onClick={() => !selected && onSelect(token)} disable={selected} key={token.address}>
                 <CurrencyLogo currency={token} style={{ marginRight: 8, borderRadius: '50%' }} />
                 <Text>{token.symbol}</Text>

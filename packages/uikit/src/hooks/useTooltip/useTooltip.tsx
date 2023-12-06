@@ -2,7 +2,6 @@ import { AnimatePresence, Variants, LazyMotion, domAnimation } from "framer-moti
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { usePopper } from "react-popper";
-import { isMobile } from "react-device-detect";
 import { DefaultTheme, ThemeProvider, useTheme } from "styled-components";
 import { dark, light } from "../../theme";
 import getPortalRoot from "../../util/getPortalRoot";
@@ -33,15 +32,13 @@ const useTooltip = (content: React.ReactNode, options?: TooltipOptions): Tooltip
   const { isDark } = useTheme();
   const {
     placement = "auto",
-    trigger = isMobile ? "click" : "hover",
+    trigger = "hover",
     arrowPadding = 16,
     tooltipPadding = { left: 16, right: 16 },
     tooltipOffset = [0, 10],
     hideTimeout = 100,
     manualVisible = false,
-    avoidToStopPropagation = false,
   } = options || {};
-
   const [targetElement, setTargetElement] = useState<HTMLElement | null>(null);
   const [tooltipElement, setTooltipElement] = useState<HTMLElement | null>(null);
   const [arrowElement, setArrowElement] = useState<HTMLElement | null>(null);
@@ -50,18 +47,11 @@ const useTooltip = (content: React.ReactNode, options?: TooltipOptions): Tooltip
   const isHoveringOverTooltip = useRef(false);
   const hideTimeoutRef = useRef<number>();
 
-  useEffect(() => {
-    setVisible(manualVisible);
-  }, [manualVisible]);
-
   const hideTooltip = useCallback(
     (e: Event) => {
       const hide = () => {
-        if (!avoidToStopPropagation) {
-          e.stopPropagation();
-          e.preventDefault();
-        }
-
+        e.stopPropagation();
+        e.preventDefault();
         setVisible(false);
       };
 
@@ -83,7 +73,7 @@ const useTooltip = (content: React.ReactNode, options?: TooltipOptions): Tooltip
         hide();
       }
     },
-    [tooltipElement, trigger, hideTimeout, avoidToStopPropagation]
+    [tooltipElement, trigger, hideTimeout]
   );
 
   const showTooltip = useCallback(
@@ -99,20 +89,18 @@ const useTooltip = (content: React.ReactNode, options?: TooltipOptions): Tooltip
           isHoveringOverTooltip.current = true;
         }
       }
-      if (!avoidToStopPropagation) {
-        e.stopPropagation();
-        e.preventDefault();
-      }
+      e.stopPropagation();
+      e.preventDefault();
     },
-    [tooltipElement, targetElement, trigger, avoidToStopPropagation]
+    [tooltipElement, targetElement, trigger]
   );
 
   const toggleTooltip = useCallback(
     (e: Event) => {
-      if (!avoidToStopPropagation) e.stopPropagation();
+      e.stopPropagation();
       setVisible(!visible);
     },
-    [visible, avoidToStopPropagation]
+    [visible]
   );
 
   // Trigger = hover

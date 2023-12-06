@@ -16,8 +16,6 @@ import {
   UserMenu,
   UserMenuDivider,
   UserMenuItem,
-  DropdownMenuItemType,
-  DropdownMenu,
 } from '@pancakeswap/uikit'
 import { useRouter } from 'next/router'
 import { useTheme as useNextTheme } from 'next-themes'
@@ -29,7 +27,7 @@ import getTimePeriods from '@pancakeswap/utils/getTimePeriods'
 import { CHAINS_STARGATE } from './stargate/config'
 import { findChainByStargateId } from './stargate/network'
 
-const StyledMenuItem = styled('div')<{ $isActive?: boolean }>`
+const StyledMenuItem = styled.a<any>`
   position: relative;
   display: flex;
   align-items: center;
@@ -78,31 +76,7 @@ const TxnLink = styled(Link)`
 
 const MenuConfig = [
   { title: 'Bridge', href: '/' },
-  {
-    title: 'Aptos',
-    href: '/aptos',
-    items: [
-      {
-        label: 'CAKE Bridging',
-        href: '/aptos',
-      },
-      {
-        label: 'LayerZero',
-        href: 'https://theaptosbridge.com/bridge',
-        type: DropdownMenuItemType.EXTERNAL_LINK,
-      },
-      {
-        label: 'Celer cBridge',
-        href: 'https://cbridge.celer.network/1/12360001/',
-        type: DropdownMenuItemType.EXTERNAL_LINK,
-      },
-      {
-        label: 'Wormhole',
-        href: 'https://www.portalbridge.com/#/transfer',
-        type: DropdownMenuItemType.EXTERNAL_LINK,
-      },
-    ],
-  },
+  { title: 'Aptos', href: '/aptos' },
 ]
 
 export function Menu() {
@@ -113,29 +87,17 @@ export function Menu() {
   return (
     <Flex height="56px" bg="backgroundAlt" px="16px" alignItems="center" justifyContent="space-between" zIndex={9}>
       <Flex>
-        <Logo href="https://pancakeswap.finance" />
+        <Logo href="https://zodiacswap.xyz" />
 
         <Flex pl={['10px', null, '50px']}>
           {MenuConfig.map((menu) => (
-            <Flex key={menu.title}>
-              {menu.items ? (
-                <DropdownMenu items={menu.items}>
-                  <NextLink href={menu.href} passHref>
-                    <StyledMenuItem $isActive={nextRouter.pathname === menu.href}>{menu.title}</StyledMenuItem>
-                  </NextLink>
-                </DropdownMenu>
-              ) : (
-                <Box display="flex">
-                  <NextLink href={menu.href} passHref>
-                    <StyledMenuItem $isActive={nextRouter.pathname === menu.href}>{menu.title}</StyledMenuItem>
-                  </NextLink>
-                </Box>
-              )}
-            </Flex>
+            <Box key={menu.title} display="flex">
+              <NextLink href={menu.href} passHref>
+                <StyledMenuItem $isActive={nextRouter.pathname === menu.href}>{menu.title}</StyledMenuItem>
+              </NextLink>
+            </Box>
           ))}
-          <a href="https://pancakeswap.finance/swap" target="_blank" rel="noreferrer noopener">
-            <StyledMenuItem>Swap</StyledMenuItem>
-          </a>
+          <StyledMenuItem href="https://zodiacswap.xyz/swap">Swap</StyledMenuItem>
         </Flex>
       </Flex>
       <Flex alignItems="center">

@@ -1,5 +1,5 @@
 import { AnimatePresence, domMax, LazyMotion, m } from "framer-motion";
-import React, { createContext, useRef, useState, useMemo, useCallback } from "react";
+import React, { createContext, useRef, useState } from "react";
 import styled from "styled-components";
 import { mountAnimation, unmountAnimation } from "../../components/BottomDrawer/styles";
 import { Overlay } from "../../components/Overlay";
@@ -82,19 +82,19 @@ const ModalProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     return () => window.removeEventListener("resize", setViewportHeight);
   }, []);
 
-  const handlePresent = useCallback((node: React.ReactNode, newNodeId: string, closeOverlayClick: boolean) => {
+  const handlePresent = (node: React.ReactNode, newNodeId: string, closeOverlayClick: boolean) => {
     setModalNode(node);
     setIsOpen(true);
     setNodeId(newNodeId);
     setCloseOnOverlayClick(closeOverlayClick);
-  }, []);
+  };
 
-  const handleDismiss = useCallback(() => {
+  const handleDismiss = () => {
     setModalNode(undefined);
     setIsOpen(false);
     setNodeId("");
     setCloseOnOverlayClick(true);
-  }, []);
+  };
 
   const handleOverlayDismiss = () => {
     if (closeOnOverlayClick) {
@@ -102,12 +102,17 @@ const ModalProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     }
   };
 
-  const providerValue = useMemo(() => {
-    return { isOpen, nodeId, modalNode, setModalNode, onPresent: handlePresent, onDismiss: handleDismiss };
-  }, [isOpen, nodeId, modalNode, setModalNode, handlePresent, handleDismiss]);
-
   return (
-    <Context.Provider value={providerValue}>
+    <Context.Provider
+      value={{
+        isOpen,
+        nodeId,
+        modalNode,
+        setModalNode,
+        onPresent: handlePresent,
+        onDismiss: handleDismiss,
+      }}
+    >
       <LazyMotion features={domMax}>
         <AnimatePresence>
           {isOpen && (

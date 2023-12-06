@@ -35,7 +35,7 @@ const Staked: React.FC<React.PropsWithChildren<StackedActionProps>> = ({ pool })
   const { pricePerFullShare } = vaultPoolData
   const { userShares } = vaultPoolData.userData
 
-  let cakeAsBigNumber = BIG_ZERO
+  let cakeAsBigNumber = new BigNumber(0)
   let cakeAsNumberBalance = 0
   if (pricePerFullShare) {
     const { cakeAsBigNumber: cakeBigBumber, cakeAsNumberBalance: cakeBalance } = convertSharesToCake(

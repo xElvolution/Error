@@ -1,5 +1,5 @@
 import { Flex, Text } from '@pancakeswap/uikit'
-import { ReactElement } from 'react'
+import { ReactElement } from 'react-markdown'
 
 interface TextIconProps {
   text: string

@@ -13,14 +13,13 @@ import requestWithTimeout from 'utils/requestWithTimeout'
 export const multiQuery = async (
   queryConstructor: (subqueries: string[]) => string,
   subqueries: string[],
-  endpoint: string | GraphQLClient,
+  endpoint: string,
   skipCount = 1000,
 ) => {
   let fetchedData = {}
   let allFound = false
   let skip = 0
-  const client =
-    typeof endpoint === 'string' ? new GraphQLClient(endpoint, { headers: getGQLHeaders(endpoint) }) : endpoint
+  const client = new GraphQLClient(endpoint, { headers: getGQLHeaders(endpoint) })
   try {
     while (!allFound) {
       let end = subqueries.length

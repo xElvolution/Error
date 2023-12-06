@@ -10,10 +10,9 @@ import {
   Spinner,
   Text,
   useMatchBreakpoints,
-  TransactionErrorContent,
 } from '@pancakeswap/uikit'
 import { CurrencyLogo } from 'components/Logo'
-import { TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
+import { TransactionErrorContent, TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
 import { useTranslation } from '@pancakeswap/localization'
 import useTheme from 'hooks/useTheme'
 import { memo } from 'react'

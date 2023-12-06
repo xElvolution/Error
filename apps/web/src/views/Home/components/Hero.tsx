@@ -3,12 +3,9 @@ import { useAccount } from 'wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@pancakeswap/localization'
 import Image from 'next/legacy/image'
-import { ChainId } from '@pancakeswap/sdk'
-import { useActiveChainId } from 'hooks/useActiveChainId'
 import styled, { keyframes } from 'styled-components'
-import bunnyImage from '../../../../public/images/home/lunar-bunny/astronaut-bunny.png'
+import celestialGoddess from '../../../../public/images/home/celestial/celestial-goddess1.png'
 import CompositeImage, { CompositeImageProps } from './CompositeImage'
-import { SlideSvgDark, SlideSvgLight } from './SlideSvg'
 
 const flyingAnim = () => keyframes`
   from {
@@ -34,21 +31,6 @@ const fading = () => keyframes`
   }
 `
 
-const BgWrapper = styled.div`
-  z-index: -1;
-  overflow: hidden;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  bottom: 0px;
-  left: 0px;
-`
-
-const InnerWrapper = styled.div`
-  position: absolute;
-  width: 100%;
-  bottom: -3px;
-`
 
 const BunnyWrapper = styled.div`
   width: 100%;
@@ -81,7 +63,7 @@ const StarsWrapper = styled.div`
 `
 
 const starsImage: CompositeImageProps = {
-  path: '/images/home/lunar-bunny/',
+  path: '/images/home/celestial/',
   attributes: [
     { src: 'star-l', alt: '3D Star' },
     { src: 'star-r', alt: '3D Star' },
@@ -92,7 +74,6 @@ const starsImage: CompositeImageProps = {
 const Hero = () => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
-  const { chainId } = useActiveChainId()
 
   return (
     <>
@@ -112,26 +93,23 @@ const Hero = () => {
           }
         `}
       </style>
-      <BgWrapper>
-        <InnerWrapper>
-          <SlideSvgDark className="slide-svg-dark" width="100%" />
-          <SlideSvgLight className="slide-svg-light" width="100%" />
-        </InnerWrapper>
-      </BgWrapper>
       <Flex
         position="relative"
         flexDirection={['column-reverse', null, null, 'row']}
         alignItems={['flex-end', null, null, 'center']}
         justifyContent="center"
-        mt={[account && chainId === ChainId.BSC ? '280px' : '50px', null, 0]}
+        mt={[account ? '280px' : '50px', null, 0]}
         id="homepage-hero"
       >
         <Flex flex="1" flexDirection="column">
           <Heading scale="xxl" color="secondary" mb="24px">
-            {t('The moon is made of pancakes.')}
+            {t('Are you ready to unlock the mysteries of the zodiac?')}
+          </Heading>
+          <Heading scale="md" >
+            {t('Zodiac Swap is a celestial marvel, a boundless realm of decentralized wonders awaiting exploration.')} 
           </Heading>
           <Heading scale="md" mb="24px">
-            {t('Trade, earn, and win crypto on the most popular decentralized platform in the galaxy.')}
+            {t('Unlock the power of the zodiac as it aligns with decentralized finance, where celestial forces meet cutting-edge technology. ')}
           </Heading>
           <Flex>
             {!account && <ConnectWalletButton mr="8px" />}
@@ -144,11 +122,11 @@ const Hero = () => {
           height={['192px', null, null, '100%']}
           width={['192px', null, null, '100%']}
           flex={[null, null, null, '1']}
-          mb={['24px', null, null, '0']}
+          mb={['60px', null, null, '0']}
           position="relative"
         >
           <BunnyWrapper>
-            <Image src={bunnyImage} priority placeholder="blur" alt={t('Lunar bunny')} />
+            <Image src={celestialGoddess} priority placeholder="blur" alt={t('Celestial Goddess')} />
           </BunnyWrapper>
           <StarsWrapper>
             <CompositeImage {...starsImage} />

@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import Flex from "../../../components/Box/Flex";
-import { LogoIcon, LogoWithTextIcon } from "../../../components/Svg";
 import { MenuContext } from "../context";
 
 interface Props {
@@ -15,8 +14,9 @@ const blink = keyframes`
 
 const StyledLink = styled("a")`
   display: flex;
+  align-items: center;
   .mobile-icon {
-    width: 32px;
+    width: 62px;
     ${({ theme }) => theme.mediaQueries.lg} {
       display: none;
     }
@@ -46,19 +46,19 @@ const Logo: React.FC<React.PropsWithChildren<Props>> = ({ href }) => {
   const isAbsoluteUrl = href.startsWith("http");
   const innerLogo = (
     <>
-      <LogoIcon className="mobile-icon" />
-      <LogoWithTextIcon className="desktop-icon" />
+      <img alt="logo mobile" className="mobile-icon" src="/images/logo.png" />
+      <img alt="logo desktop" className="desktop-icon" src="/images/logo-desktop.svg" />
     </>
   );
 
   return (
-    <Flex alignItems="center">
+    <Flex>
       {isAbsoluteUrl ? (
-        <StyledLink as="a" href={href} aria-label="Pancake home page">
+        <StyledLink as="a" href={href} aria-label="Zodiac home page">
           {innerLogo}
         </StyledLink>
       ) : (
-        <StyledLink href={href} as={linkComponent} aria-label="Pancake home page">
+        <StyledLink href={href} as={linkComponent} aria-label="Zodiac home page">
           {innerLogo}
         </StyledLink>
       )}
@@ -66,4 +66,4 @@ const Logo: React.FC<React.PropsWithChildren<Props>> = ({ href }) => {
   );
 };
 
-export default React.memo(Logo);
+export default React.memo(Logo, (prev, next) => prev === next);

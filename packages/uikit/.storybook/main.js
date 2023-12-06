@@ -15,7 +15,6 @@ module.exports = {
   ],
   core: { builder: "@storybook/builder-vite" },
   async viteFinal(config) {
-    config.define["process.env"] = process.env;
     config.plugins.push(vanillaExtractPlugin());
     return config;
   },

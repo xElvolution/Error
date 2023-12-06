@@ -30,7 +30,6 @@ export async function connect({ connector, networkName }: ConnectArgs): Promise<
     client.setLastUsedConnector(connector.id)
     client.setState((x) => ({
       ...x,
-      chains: connector.chains,
       connector,
       data,
       status: 'connected',

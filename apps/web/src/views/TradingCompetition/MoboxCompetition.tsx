@@ -4,6 +4,7 @@ import { useProfile } from 'state/profile/hooks'
 import { Box, useMatchBreakpoints, PageSection } from '@pancakeswap/uikit'
 import { useTradingCompetitionContractMobox } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
+import { PageMeta } from 'components/Layout/Page'
 import { TC_MOBOX_SUBGRAPH, API_PROFILE } from 'config/constants/endpoints'
 import orderBy from 'lodash/orderBy'
 import {
@@ -167,6 +168,7 @@ const MoboxCompetition = () => {
 
   return (
     <>
+      <PageMeta />
       <CompetitionPage id="pcs-competition-page">
         <PageSection
           style={{ paddingTop: '0px' }}

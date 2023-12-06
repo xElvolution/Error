@@ -18,14 +18,14 @@ const ClaimPointsCallout: React.FC<React.PropsWithChildren<{ onSuccess?: () => v
 
   useEffect(() => {
     const fetchIfoClaims = async () => {
-      const ifoData = await getClaimableIfoData(account, t)
+      const ifoData = await getClaimableIfoData(account)
       setClaimableAchievement(ifoData)
     }
 
     if (account) {
       fetchIfoClaims()
     }
-  }, [account, dispatch, setClaimableAchievement, t])
+  }, [account, dispatch, setClaimableAchievement])
 
   const handleCollectSuccess = (achievement: Achievement) => {
     refreshProfile()

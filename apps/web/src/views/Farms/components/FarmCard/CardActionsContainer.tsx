@@ -1,6 +1,6 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Flex, Skeleton, Text } from '@pancakeswap/uikit'
-import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
+import BigNumber from 'bignumber.js'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useContext } from 'react'
 import styled from 'styled-components'
@@ -49,7 +49,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
     <Action>
       <Flex>
         <Text bold textTransform="uppercase" color="secondary" fontSize="12px" pr="4px">
-          CAKE
+          ZODIAC
         </Text>
         <Text bold textTransform="uppercase" color="textSubtle" fontSize="12px">
           {t('Earned')}
@@ -97,7 +97,7 @@ const CardActions: React.FC<React.PropsWithChildren<FarmCardActionsProps>> = ({
           userBalanceInFarm={
             (stakedBalance.plus(tokenBalance).gt(0)
               ? stakedBalance.plus(tokenBalance)
-              : proxy?.stakedBalance.plus(proxy?.tokenBalance)) ?? BIG_ZERO
+              : proxy?.stakedBalance.plus(proxy?.tokenBalance)) ?? new BigNumber(0)
           }
         />
       )}

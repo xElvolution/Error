@@ -70,7 +70,6 @@ const RouterTypeText = styled.div`
   top: 50%;
   left: calc(100% + 10px);
   transform: translateY(-50%);
-  white-space: nowrap;
   ${({ theme }) => theme.mediaQueries.md} {
     left: 50%;
     transform: translateX(-50%);
@@ -83,7 +82,7 @@ const CurrencyLogoWrapper = styled.div`
   height: 48px;
   width: 48px;
   padding: 2px;
-  background: linear-gradient(180deg, #53dee9 0%, #7645d9 76.22%);
+  background: linear-gradient(180deg, #53dee9 0%, #AA14F0 76.22%);
   border-radius: 50%;
   z-index: 2;
 `
@@ -93,16 +92,9 @@ interface RouterViewerProps {
   outputCurrency?: Currency
   pairs?: Pair[]
   path?: Currency[]
-  isMM?: boolean
 }
 
-export const RouterViewer: React.FC<RouterViewerProps> = ({
-  pairs,
-  path,
-  inputCurrency,
-  outputCurrency,
-  isMM = false,
-}) => {
+export const RouterViewer: React.FC<RouterViewerProps> = ({ pairs, path, inputCurrency, outputCurrency }) => {
   const { t } = useTranslation()
   const { targetRef, tooltip, tooltipVisible } = useTooltip(<Text>{inputCurrency.symbol}</Text>, {
     placement: 'right',
@@ -122,7 +114,6 @@ export const RouterViewer: React.FC<RouterViewerProps> = ({
       {tooltipVisible && tooltip}
       {pairs &&
         path &&
-        !isMM &&
         pairs.map((p, index) => {
           const isStableSwap = isStableSwapPair(p)
           return (
@@ -136,13 +127,6 @@ export const RouterViewer: React.FC<RouterViewerProps> = ({
             </RouterPoolBox>
           )
         })}
-      {isMM && path && (
-        <RouterPoolBox>
-          <CurrencyLogo size="32px" currency={inputCurrency} />
-          <CurrencyLogo size="32px" currency={outputCurrency} />
-          <RouterTypeText>{t('Market Maker')}</RouterTypeText>
-        </RouterPoolBox>
-      )}
       <CurrencyLogoWrapper ref={outputTargetRef}>
         <CurrencyLogo size="44px" currency={outputCurrency} />
       </CurrencyLogoWrapper>

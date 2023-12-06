@@ -30,13 +30,15 @@ export const infoClientETH = new GraphQLClient(INFO_CLIENT_ETH)
 export const infoStableSwapClient = new GraphQLClient(STABLESWAP_SUBGRAPH_CLIENT)
 
 export const infoServerClient = new GraphQLClient(INFO_CLIENT, {
-  timeout: 5000,
   headers: {
-    origin: 'https://pancakeswap.finance',
+    'X-Sf': process.env.SF_HEADER,
   },
+  timeout: 5000,
 })
 
-export const stableSwapClient = new GraphQLClient(STABLESWAP_SUBGRAPH_CLIENT)
+export const stableSwapClient = new GraphQLClient(STABLESWAP_SUBGRAPH_CLIENT, {
+  headers: getGQLHeaders(STABLESWAP_SUBGRAPH_CLIENT),
+})
 
 export const bitQueryServerClient = new GraphQLClient(BIT_QUERY, {
   headers: {

@@ -17,7 +17,6 @@ import { CAKE_PID } from 'config/constants'
 import { getFarmConfig } from 'config/constants/farms'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useActiveNetwork } from 'hooks/useNetwork'
-import useLedgerTimestamp from 'hooks/useLedgerTimestamp'
 import { usePairReservesQueries } from 'hooks/usePairs'
 import fromPairs from 'lodash/fromPairs'
 import { useMemo } from 'react'
@@ -148,8 +147,7 @@ export const useFarms = () => {
   )
 
   const userInfos = useFarmsUserInfo()
-  const getNow = useLedgerTimestamp()
-  const currentDate = getNow() / 1000
+  const currentDate = new Date().getTime() / 1000
   const showCakePerSecond = masterChef?.data && new BigNumber(currentDate).lte(masterChef.data.end_timestamp)
   const regularCakePerSeconds = showCakePerSecond
     ? new BigNumber(masterChef?.data?.cake_per_second)
@@ -168,8 +166,7 @@ export const useFarms = () => {
         .filter((f) => !!f.pid)
         .map(deserializeFarm)
         .map((f) => {
-          const accCakePerShare =
-            masterChef?.data && f.pid ? calcRewardCakePerShare(masterChef.data, String(f.pid), getNow) : 0
+          const accCakePerShare = masterChef?.data && f.pid ? calcRewardCakePerShare(masterChef.data, String(f.pid)) : 0
           const earningToken = calcPendingRewardCake(
             userInfos[f.pid]?.amount,
             userInfos[f.pid]?.reward_debt,
@@ -185,7 +182,7 @@ export const useFarms = () => {
           }
         }),
     } as DeserializedFarmsState
-  }, [poolLength, regularCakePerSeconds, farmsWithPrices, masterChef, userInfos, getNow])
+  }, [poolLength, regularCakePerSeconds, farmsWithPrices, masterChef, userInfos])
 }
 
 export function useFarmsUserInfo() {

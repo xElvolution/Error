@@ -98,8 +98,8 @@ const defaultProps = {
     </>
   ),
   activeItem: "/swap",
-  activeSubItem: "https://exchange.pancakeswap.finance",
-  buyCakeLabel: "Buy CAKE",
+  activeSubItem: "https://exchange.zodiacswap.xyz",
+  buyCakeLabel: "Buy ZODIAC",
 };
 
 const ConnectedTemplate: React.FC<React.PropsWithChildren<NavProps>> = (args) => {
@@ -180,7 +180,7 @@ export const ConnectedWithBanner = ConnectedTemplate.bind({});
 ConnectedWithBanner.args = {
   ...defaultProps,
   banner: (
-    <Flex height="100%" p="16px" alignItems="center" justifyContent="center" background="#7645D9">
+    <Flex height="100%" p="16px" alignItems="center" justifyContent="center" background="#AA14F0">
       <Text color="invertedContrast" mr="8px">
         Banner example
       </Text>
@@ -202,8 +202,8 @@ export const NotConnected: React.FC<React.PropsWithChildren> = () => {
         subLinks={links[0].items as SubMenuItemsType[]}
         footerLinks={footerLinks}
         activeItem="/swap"
-        activeSubItem="https://exchange.pancakeswap.finance"
-        buyCakeLabel="Buy CAKE"
+        activeSubItem="https://exchange.zodiacswap.xyz"
+        buyCakeLabel="Buy ZODIAC"
       >
         <div>
           <h1>Page body</h1>
@@ -235,8 +235,8 @@ export const WithoutConnectButton: React.FC<React.PropsWithChildren> = () => {
         footerLinks={footerLinks}
         subLinks={links[0].items as SubMenuItemsType[]}
         activeItem="/swap"
-        activeSubItem="https://exchange.pancakeswap.finance"
-        buyCakeLabel="Buy CAKE"
+        activeSubItem="https://exchange.zodiacswap.xyz"
+        buyCakeLabel="Buy ZODIAC"
       >
         <div>
           <h1>No connect button on top</h1>
@@ -261,8 +261,8 @@ export const WithSubmenuSelected: React.FC<React.PropsWithChildren> = () => {
         subLinks={links[0].items as SubMenuItemsType[]}
         footerLinks={footerLinks}
         activeItem="/swap"
-        activeSubItem="https://exchange.pancakeswap.finance"
-        buyCakeLabel="Buy CAKE"
+        activeSubItem="https://exchange.zodiacswap.xyz"
+        buyCakeLabel="Buy ZODIAC"
       >
         <div>
           <Heading as="h1" mb="8px">

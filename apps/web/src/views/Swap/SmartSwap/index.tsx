@@ -2,7 +2,6 @@ import { useTranslation } from '@pancakeswap/localization'
 import { Currency, CurrencyAmount, NATIVE, Percent } from '@pancakeswap/sdk'
 import {
   ArrowDownIcon,
-  AutoColumn,
   Box,
   Button,
   Checkbox,
@@ -12,7 +11,6 @@ import {
   Skeleton,
   Swap as SwapUI,
   Text,
-  useModal,
 } from '@pancakeswap/uikit'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
@@ -25,6 +23,7 @@ import AccessRisk from 'views/Swap/components/AccessRisk'
 
 import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
+import { AutoColumn } from 'components/Layout/Column'
 import { AutoRow } from 'components/Layout/Row'
 import { CommonBasesType } from 'components/SearchModal/types'
 import { useCurrency } from 'hooks/Tokens'
@@ -35,8 +34,6 @@ import { Field } from 'state/swap/actions'
 import { useDerivedSwapInfo, useSwapState } from 'state/swap/hooks'
 import { useExpertModeManager, useUserSlippageTolerance } from 'state/user/hooks'
 import { currencyId } from 'utils/currencyId'
-import SettingsModal from '../../../components/Menu/GlobalSettings/SettingsModal'
-import { SettingsMode } from '../../../components/Menu/GlobalSettings/types'
 import { combinedTokenMapFromOfficialsUrlsAtom } from '../../../state/lists/hooks'
 import AddressInputPanel from '../components/AddressInputPanel'
 import AdvancedSwapDetailsDropdown from '../components/AdvancedSwapDetailsDropdown'
@@ -45,19 +42,11 @@ import { ArrowWrapper, Wrapper } from '../components/styleds'
 import SwapCommitButton from '../components/SwapCommitButton'
 import useRefreshBlockNumberID from '../hooks/useRefreshBlockNumber'
 import useWarningImport from '../hooks/useWarningImport'
-import { MMAndAMMDealDisplay } from '../MMLinkPools/components/MMAndAMMDealDisplay'
-import MMCommitButton from '../MMLinkPools/components/MMCommitButton'
-import { MMSlippageTolerance } from '../MMLinkPools/components/MMSlippageTolerance'
-import { parseMMError, shouldShowMMError } from '../MMLinkPools/utils/exchange'
 import { SwapFeaturesContext } from '../SwapFeaturesContext'
 import SmartSwapCommitButton from './components/SmartSwapCommitButton'
 import { useDerivedSwapInfoWithStableSwap, useIsSmartRouterBetter, useTradeInfo } from './hooks'
-import { MMError } from '../MMLinkPools/apis'
-import { useDerivedSwapInfoWithMM } from '../MMLinkPools/hooks/useDerivedSwapInfoWithMM'
 
-export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: Currency) => void }> = ({
-  handleOutputSelect,
-}) => {
+export function SmartSwapForm() {
   const { isAccessTokenSupported } = useContext(SwapFeaturesContext)
   const { t } = useTranslation()
   const { refreshBlockNumber, isLoading } = useRefreshBlockNumberID()
@@ -71,7 +60,7 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
 
   // get custom setting values for user
   const [allowedSlippage] = useUserSlippageTolerance()
-  const [allowUseSmartRouter, setAllowUseSmartRouter] = useState(false)
+  const [allowUseSmartRouter, setAllowUseSmartRouter] = useState(() => false)
 
   // swap state & price data
 
@@ -106,18 +95,10 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
     currencyBalances,
     parsedAmount,
     inputError: stableSwapInputError,
-  } = useDerivedSwapInfoWithStableSwap(independentField, typedValue, inputCurrency, outputCurrency)
-
-  const { mmTradeInfo, mmOrderBookTrade, mmRFQTrade, mmQuoteExpiryRemainingSec, isMMBetter } = useDerivedSwapInfoWithMM(
-    independentField,
-    typedValue,
-    inputCurrency,
-    outputCurrency,
-    v2Trade,
-    tradeWithStableSwap,
-  )
+  } = useDerivedSwapInfoWithStableSwap(independentField, typedValue, inputCurrency, outputCurrency, recipient)
 
   const isSmartRouterBetter = useIsSmartRouterBetter({ trade: tradeWithStableSwap, v2Trade })
+
   const tradeInfo = useTradeInfo({
     trade: tradeWithStableSwap,
     v2Trade,
@@ -141,18 +122,8 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
         [Field.OUTPUT]: parsedAmount,
       }
     : {
-        [Field.INPUT]:
-          independentField === Field.INPUT
-            ? parsedAmount
-            : isMMBetter
-            ? mmTradeInfo.inputAmount
-            : tradeInfo?.inputAmount,
-        [Field.OUTPUT]:
-          independentField === Field.OUTPUT
-            ? parsedAmount
-            : isMMBetter
-            ? mmTradeInfo.outputAmount
-            : tradeInfo?.outputAmount,
+        [Field.INPUT]: independentField === Field.INPUT ? parsedAmount : tradeInfo?.inputAmount,
+        [Field.OUTPUT]: independentField === Field.OUTPUT ? parsedAmount : tradeInfo?.outputAmount,
       }
 
   const { onSwitchTokens, onCurrencySelection, onUserInput, onChangeRecipient } = useSwapActionHandlers()
@@ -179,14 +150,9 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
       : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
   }
 
-  const amountToApprove = isMMBetter
-    ? mmTradeInfo?.slippageAdjustedAmounts[Field.INPUT]
-    : tradeInfo?.slippageAdjustedAmounts[Field.INPUT]
+  const amountToApprove = tradeInfo?.slippageAdjustedAmounts[Field.INPUT]
   // check whether the user has approved the router on the input token
-  const [approval, approveCallback] = useApproveCallback(
-    amountToApprove,
-    isMMBetter ? mmTradeInfo?.routerAddress : tradeInfo?.routerAddress,
-  )
+  const [approval, approveCallback] = useApproveCallback(amountToApprove, tradeInfo?.routerAddress)
 
   // check if user has gone through approval process, used to show two step buttons, reset on token change
   const [approvalSubmitted, setApprovalSubmitted] = useState<boolean>(false)
@@ -221,6 +187,21 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
       onUserInput(Field.INPUT, maxAmountInput.toExact())
     }
   }, [maxAmountInput, onUserInput])
+
+  const handleOutputSelect = useCallback(
+    (newCurrencyOutput) => {
+      onCurrencySelection(Field.OUTPUT, newCurrencyOutput)
+      warningSwapHandler(newCurrencyOutput)
+
+      const newCurrencyOutputId = currencyId(newCurrencyOutput)
+      if (newCurrencyOutputId === inputCurrencyId) {
+        replaceBrowserHistory('inputCurrency', outputCurrencyId)
+      }
+      replaceBrowserHistory('outputCurrency', newCurrencyOutputId)
+    },
+
+    [inputCurrencyId, outputCurrencyId, onCurrencySelection, warningSwapHandler],
+  )
 
   const handlePercentInput = useCallback(
     (percent) => {
@@ -259,24 +240,8 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
 
   const allowRecipient = isExpertMode && !showWrap && !smartRouterOn
 
-  const [onPresentSettingsModal] = useModal(<SettingsModal mode={SettingsMode.SWAP_LIQUIDITY} />)
-
   return (
     <>
-      <MMAndAMMDealDisplay
-        independentField={independentField}
-        isMMBetter={isMMBetter}
-        tradeWithStableSwap={tradeWithStableSwap}
-        v2Trade={v2Trade}
-        mmTrade={mmTradeInfo?.trade || mmOrderBookTrade?.trade}
-        mmQuoteExpiryRemainingSec={mmQuoteExpiryRemainingSec}
-        errorMessage={
-          mmRFQTrade?.error instanceof MMError
-            ? mmRFQTrade?.error?.internalError
-            : mmRFQTrade?.error?.message || mmOrderBookTrade?.inputError
-        }
-        rfqId={mmRFQTrade?.rfqId}
-      />
       <CurrencyInputHeader
         title={t('Swap')}
         subtitle={t('Trade tokens in an instant')}
@@ -299,14 +264,9 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
             otherCurrency={currencies[Field.OUTPUT]}
             id="swap-currency-input"
             showCommonBases
-            showUSDPrice={!!tokenMap[chainId]?.[inputCurrencyId] || inputCurrencyId === NATIVE[chainId]?.symbol}
+            showBUSD={!!tokenMap[chainId]?.[inputCurrencyId] || inputCurrencyId === NATIVE[chainId]?.symbol}
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
           />
-          {isAccessTokenSupported && inputCurrency?.isToken && (
-            <Box>
-              <AccessRisk token={inputCurrency} />
-            </Box>
-          )}
 
           <AutoColumn justify="space-between">
             <AutoRow justify={isExpertMode ? 'space-between' : 'center'} style={{ padding: '0 1rem' }}>
@@ -336,13 +296,13 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
             id="swap-currency-output"
             showCommonBases
             disabled={smartRouterOn}
-            showUSDPrice={!!tokenMap[chainId]?.[outputCurrencyId] || outputCurrencyId === NATIVE[chainId]?.symbol}
+            showBUSD={!!tokenMap[chainId]?.[outputCurrencyId] || outputCurrencyId === NATIVE[chainId]?.symbol}
             commonBasesType={CommonBasesType.SWAP_LIMITORDER}
           />
 
-          {isAccessTokenSupported && outputCurrency?.isToken && (
+          {isAccessTokenSupported && (
             <Box>
-              <AccessRisk token={outputCurrency} />
+              <AccessRisk inputCurrency={currencies[Field.INPUT]} outputCurrency={currencies[Field.OUTPUT]} />
             </Box>
           )}
 
@@ -385,53 +345,24 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
           {showWrap ? null : (
             <SwapUI.Info
               price={
-                (Boolean(tradeInfo) || Boolean(mmTradeInfo)) && (
+                Boolean(tradeInfo) && (
                   <>
                     <SwapUI.InfoLabel>{t('Price')}</SwapUI.InfoLabel>
                     {isLoading ? (
                       <Skeleton width="100%" ml="8px" height="24px" />
                     ) : (
-                      <SwapUI.TradePrice price={isMMBetter ? mmTradeInfo?.executionPrice : tradeInfo?.executionPrice} />
+                      <SwapUI.TradePrice price={tradeInfo?.executionPrice} />
                     )}
                   </>
                 )
               }
               allowedSlippage={allowedSlippage}
-              onSlippageClick={!isMMBetter ? onPresentSettingsModal : null}
-              allowedSlippageSlot={isMMBetter || (!v2Trade && !isExpertMode) ? <MMSlippageTolerance /> : undefined}
             />
           )}
         </AutoColumn>
 
         <Box mt="0.25rem">
-          {!tradeWithStableSwap &&
-          !v2Trade &&
-          mmOrderBookTrade?.inputError &&
-          shouldShowMMError(mmOrderBookTrade?.inputError) ? (
-            <Button width="100%" disabled style={{ textAlign: 'left' }}>
-              {parseMMError(mmOrderBookTrade?.inputError)}
-            </Button>
-          ) : isMMBetter ? (
-            <MMCommitButton
-              swapIsUnsupported={swapIsUnsupported}
-              account={account}
-              showWrap={showWrap}
-              wrapInputError={wrapInputError}
-              onWrap={onWrap}
-              wrapType={wrapType}
-              approval={approval}
-              approveCallback={approveCallback}
-              approvalSubmitted={approvalSubmitted}
-              currencies={currencies}
-              isExpertMode={isExpertMode}
-              rfqTrade={mmRFQTrade}
-              swapInputError={mmOrderBookTrade?.inputError || parseMMError(mmRFQTrade?.error?.message)}
-              currencyBalances={mmOrderBookTrade.currencyBalances}
-              recipient={recipient}
-              onUserInput={onUserInput}
-              mmQuoteExpiryRemainingSec={mmQuoteExpiryRemainingSec}
-            />
-          ) : tradeInfo?.fallbackV2 ? (
+          {tradeInfo?.fallbackV2 ? (
             <SwapCommitButton
               swapIsUnsupported={swapIsUnsupported}
               account={account}
@@ -477,7 +408,8 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
         </Box>
       </Wrapper>
       {!swapIsUnsupported ? (
-        !showWrap && tradeInfo && !isMMBetter ? (
+        !showWrap &&
+        tradeInfo && (
           <AdvancedSwapDetailsDropdown
             hasStablePair={smartRouterOn}
             pairs={tradeInfo.route.pairs}
@@ -489,21 +421,6 @@ export const SmartSwapForm: React.FC<{ handleOutputSelect: (newCurrencyOutput: C
             outputAmount={tradeInfo.outputAmount}
             tradeType={tradeInfo.tradeType}
           />
-        ) : (
-          mmTradeInfo && (
-            <AdvancedSwapDetailsDropdown
-              isMM
-              hasStablePair={false}
-              pairs={mmTradeInfo.route.pairs}
-              path={mmTradeInfo.route.path}
-              priceImpactWithoutFee={mmTradeInfo.priceImpactWithoutFee}
-              realizedLPFee={mmTradeInfo.realizedLPFee}
-              slippageAdjustedAmounts={mmTradeInfo.slippageAdjustedAmounts}
-              inputAmount={mmTradeInfo.inputAmount}
-              outputAmount={mmTradeInfo.outputAmount}
-              tradeType={mmTradeInfo.tradeType}
-            />
-          )
         )
       ) : (
         <UnsupportedCurrencyFooter currencies={[currencies.INPUT, currencies.OUTPUT]} />

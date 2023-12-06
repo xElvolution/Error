@@ -1,7 +1,8 @@
 import { useTranslation } from '@pancakeswap/localization'
 import { Currency, CurrencyAmount, TradeType } from '@pancakeswap/sdk'
 import { TradeWithStableSwap } from '@pancakeswap/smart-router/evm'
-import { AutoRenewIcon, Button, QuestionHelper, Text, Link, AutoColumn } from '@pancakeswap/uikit'
+import { AutoRenewIcon, Button, QuestionHelper, Text, Link } from '@pancakeswap/uikit'
+import { AutoColumn } from 'components/Layout/Column'
 import { AutoRow, RowBetween, RowFixed } from 'components/Layout/Row'
 import { BUYBACK_FEE, LP_HOLDERS_FEE, TOTAL_FEE, TREASURY_FEE } from 'config/constants/info'
 import { useMemo, useState } from 'react'
@@ -77,7 +78,6 @@ export default function SwapModalFooter({
                 'Your transaction will revert if there is a large, unfavorable price movement before it is confirmed.',
               )}
               ml="4px"
-              placement="top"
             />
           </RowFixed>
           <RowFixed>
@@ -99,7 +99,6 @@ export default function SwapModalFooter({
             <QuestionHelper
               text={t('The difference between the market price and your price due to trade size.')}
               ml="4px"
-              placement="top"
             />
           </RowFixed>
           <FormattedPriceImpact priceImpact={priceImpactWithoutFee} />
@@ -122,7 +121,7 @@ export default function SwapModalFooter({
                       style={{ display: 'inline' }}
                       ml="4px"
                       external
-                      href="https://docs.pancakeswap.finance/products/stableswap#stableswap-fees"
+                      href="https://docs.zodiacswap.xyz/products/stableswap#stableswap-fees"
                     >
                       {t('here.')}
                     </Link>
@@ -130,7 +129,6 @@ export default function SwapModalFooter({
                 </>
               }
               ml="4px"
-              placement="top"
             />
           </RowFixed>
           <Text fontSize="14px">

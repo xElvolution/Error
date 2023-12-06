@@ -31,12 +31,10 @@ import {
   getCakeVaultV2Contract,
   getChainlinkOracleContract,
   getClaimRefundContract,
-  getCrossFarmingProxyContract,
   getEasterNftContract,
   getErc721CollectionContract,
   getErc721Contract,
   getFarmAuctionContract,
-  getIfoCreditAddressContract,
   getIfoV1Contract,
   getIfoV2Contract,
   getIfoV3Contract,
@@ -45,7 +43,6 @@ import {
   getMasterchefV1Contract,
   getNftMarketContract,
   getNftSaleContract,
-  getNonBscVaultContract,
   getPancakeBunniesContract,
   getPancakeSquadContract,
   getPointCenterIfoContract,
@@ -59,7 +56,9 @@ import {
   getTradingCompetitionContractFanToken,
   getTradingCompetitionContractMobox,
   getTradingCompetitionContractMoD,
-  getStableSwapNativeHelperContract,
+  getNonBscVaultContract,
+  getCrossFarmingProxyContract,
+  getIfoCreditAddressContract,
 } from 'utils/contractHelpers'
 import { useSigner } from 'wagmi'
 
@@ -384,10 +383,4 @@ export const useCrossFarmingProxy = (proxyContractAddress: string, withSignerIfP
     () => proxyContractAddress && getCrossFarmingProxyContract(proxyContractAddress, providerOrSigner, chainId),
     [proxyContractAddress, providerOrSigner, chainId],
   )
-}
-
-export const useStableSwapNativeHelperContract = () => {
-  const { chainId } = useActiveChainId()
-  const { data: signer } = useSigner()
-  return useMemo(() => getStableSwapNativeHelperContract(signer, chainId), [signer, chainId])
 }

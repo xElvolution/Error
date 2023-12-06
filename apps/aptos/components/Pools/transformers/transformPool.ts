@@ -16,7 +16,6 @@ import getTokenByAddress from '../utils/getTokenByAddress'
 import { getPoolApr } from './transformCakePool'
 
 function calcPendingRewardToken({
-  currentTimestamp,
   lastRewardTimestamp,
   totalStakedToken,
   userStakedAmount,
@@ -28,7 +27,7 @@ function calcPendingRewardToken({
   isFinished,
 }): FixedNumber {
   const pendingSeconds = Math.max(
-    isFinished ? endTime - lastRewardTimestamp : getSecondsLeftFromNow(lastRewardTimestamp, currentTimestamp),
+    isFinished ? endTime - lastRewardTimestamp : getSecondsLeftFromNow(lastRewardTimestamp),
     0,
   )
 
@@ -60,7 +59,6 @@ function calcPendingRewardToken({
 
 const transformPool = (
   resource: PoolResource,
-  currentTimestamp,
   balances,
   chainId,
   prices,
@@ -72,7 +70,7 @@ const transformPool = (
   | undefined => {
   const startTime = _toNumber(_get(resource, 'data.start_timestamp', '0'))
 
-  const startYet = getSecondsLeftFromNow(startTime, currentTimestamp)
+  const startYet = getSecondsLeftFromNow(startTime)
 
   if (!startYet) return undefined
 
@@ -80,15 +78,15 @@ const transformPool = (
 
   const hasRewardToken = _toNumber(_get(resource, 'data.total_reward_token.value', '0'))
 
-  const isFinished = getSecondsLeftFromNow(endTime, currentTimestamp) || !hasRewardToken
+  const isFinished = getSecondsLeftFromNow(endTime) || !hasRewardToken
 
   const [stakingAddress, earningAddress] = splitTypeTag(resource.type)
 
   let userData = {
-    allowance: BIG_ZERO,
-    pendingReward: BIG_ZERO,
-    stakedBalance: BIG_ZERO,
-    stakingTokenBalance: BIG_ZERO,
+    allowance: new BigNumber(0),
+    pendingReward: new BigNumber(0),
+    stakedBalance: new BigNumber(0),
+    stakingTokenBalance: new BigNumber(0),
   }
 
   const totalStakedToken = _get(resource, 'data.total_staked_token.value', '0')
@@ -116,7 +114,6 @@ const transformPool = (
         const precisionFactor = _get(resource, 'data.precision_factor')
 
         const pendingReward = calcPendingRewardToken({
-          currentTimestamp,
           currentRewardDebt,
           lastRewardTimestamp,
           totalStakedToken,
@@ -155,10 +152,6 @@ const transformPool = (
 
   const startBlock = _toNumber(resource.data.start_timestamp)
 
-  const stakeLimitEndBlock = _toNumber(resource.data.seconds_for_user_limit)
-
-  const stakeLimitTimeRemaining = stakeLimitEndBlock + startBlock - currentTimestamp / 1000
-
   return {
     sousId,
     contractAddress: {
@@ -176,10 +169,7 @@ const transformPool = (
     endBlock: _toNumber(resource.data.end_timestamp),
 
     tokenPerBlock: resource.data.reward_per_second,
-    stakingLimit:
-      stakeLimitTimeRemaining > 0 && resource.data.pool_limit_per_user
-        ? new BigNumber(resource.data.pool_limit_per_user)
-        : BIG_ZERO,
+    stakingLimit: resource.data.pool_limit_per_user ? new BigNumber(resource.data.pool_limit_per_user) : BIG_ZERO,
     stakeLimitEndBlock: _toNumber(resource.data.seconds_for_user_limit),
     totalStaked: new BigNumber(totalStakedToken),
 

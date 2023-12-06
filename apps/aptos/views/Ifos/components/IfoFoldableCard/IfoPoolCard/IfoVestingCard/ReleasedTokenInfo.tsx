@@ -1,11 +1,12 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { Flex, Box, Text, ReleasedChart } from '@pancakeswap/uikit'
+import { Flex, Box, Text } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
 import BigNumber from 'bignumber.js'
 import { Ifo } from 'config/constants/types'
 import { getBalanceNumber, getFullDisplayBalance } from '@pancakeswap/utils/formatBalance'
 import isUndefinedOrNull from '@pancakeswap/utils/isUndefinedOrNull'
+import ReleasedChart from './ReleasedChart'
 
 const Dot = styled.div<{ isActive?: boolean }>`
   width: 8px;
@@ -61,7 +62,7 @@ const ReleasedTokenInfo: React.FC<React.PropsWithChildren<ReleasedTokenInfoProps
           </Flex>
           <Box ml="auto">
             <Text fontSize="14px" bold as="span">
-              {`${getFullDisplayBalance(amountReleased, token.decimals, 4)} `}
+              {`${getFullDisplayBalance(amountReleased, token.decimals, token.decimals)} `}
             </Text>
             <Text fontSize="14px" as="span">
               {`(${amount.releasedPercentageDisplay}%)`}
@@ -77,7 +78,7 @@ const ReleasedTokenInfo: React.FC<React.PropsWithChildren<ReleasedTokenInfoProps
           </Flex>
           <Box ml="auto">
             <Text fontSize="14px" bold as="span">
-              {`${getFullDisplayBalance(amountInVesting, token.decimals, 4)} `}
+              {`${getFullDisplayBalance(amountInVesting, token.decimals, token.decimals)} `}
             </Text>
             <Text fontSize="14px" as="span">
               {`(${amount.inVestingPercentageDisplay}%)`}

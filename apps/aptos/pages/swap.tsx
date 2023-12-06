@@ -1,13 +1,13 @@
 import {
+  Router,
   Currency,
   CurrencyAmount,
   JSBI,
   Percent,
-  Router,
   SWAP_ADDRESS_MODULE,
-  Token,
   Trade,
   TradeType,
+  Token,
 } from '@pancakeswap/aptos-swap-sdk'
 import { useAccount } from '@pancakeswap/awgmi'
 import { parseVmStatusError, SimulateTransactionError, UserRejectedRequestError } from '@pancakeswap/awgmi/core'
@@ -16,17 +16,15 @@ import { AtomBox } from '@pancakeswap/ui'
 import {
   AutoColumn,
   Card,
-  confirmPriceImpactWithoutFee,
-  Flex,
-  HistoryIcon,
-  IconButton,
-  Link,
-  Modal,
-  ModalV2,
   Skeleton,
   Swap as SwapUI,
-  Text,
   useModal,
+  Flex,
+  ModalV2,
+  Modal,
+  Text,
+  Link,
+  confirmPriceImpactWithoutFee,
 } from '@pancakeswap/uikit'
 import replaceBrowserHistory from '@pancakeswap/utils/replaceBrowserHistory'
 import tryParseAmount from '@pancakeswap/utils/tryParseAmount'
@@ -38,9 +36,7 @@ import { SettingsModal, withCustomOnDismiss } from 'components/Menu/Settings/Set
 import ImportToken from 'components/SearchModal/ImportToken'
 import AdvancedSwapDetailsDropdown from 'components/Swap/AdvancedSwapDetailsDropdown'
 import ConfirmSwapModal from 'components/Swap/ConfirmSwapModal'
-import useBridgeInfo from 'components/Swap/hooks/useBridgeInfo'
-import { useWarningSwapModal } from 'components/SwapWarningModal'
-import { ALLOWED_PRICE_IMPACT_HIGH, BIPS_BASE, PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN } from 'config/constants/exchange'
+import { BIPS_BASE, PRICE_IMPACT_WITHOUT_FEE_CONFIRM_MIN, ALLOWED_PRICE_IMPACT_HIGH } from 'config/constants/exchange'
 import { useCurrencyBalance } from 'hooks/Balances'
 import { useAllTokens, useCurrency } from 'hooks/Tokens'
 import { useTradeExactIn, useTradeExactOut } from 'hooks/Trades'
@@ -50,8 +46,6 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Field, selectCurrency, switchCurrencies, typeInput, useDefaultsFromURLSearch, useSwapState } from 'state/swap'
 import { useTransactionAdder } from 'state/transactions/hooks'
 import { useUserSlippage } from 'state/user'
-import { useIsExpertMode } from 'state/user/expertMode'
-import useSWRImmutable from 'swr/immutable'
 import currencyId from 'utils/currencyId'
 import {
   basisPointsToPercent,
@@ -59,9 +53,11 @@ import {
   computeTradePriceBreakdown,
   warningSeverity,
 } from 'utils/exchange'
-import WalletModal, { WalletView } from 'components/Menu/WalletModal'
+import { useWarningSwapModal } from 'components/SwapWarningModal'
 import formatAmountDisplay from 'utils/formatAmountDisplay'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
+import useSWRImuutable from 'swr/immutable'
+import useBridgeInfo from 'components/Swap/hooks/useBridgeInfo'
 import { CommitButton } from '../components/CommitButton'
 
 const {
@@ -74,13 +70,15 @@ const {
   TradePrice,
 } = SwapUI
 
+const isExpertMode = false
+
 const SettingsModalWithCustomDismiss = withCustomOnDismiss(SettingsModal)
 
 function useWarningImport(currencies: (Currency | undefined)[]) {
   const defaultTokens = useAllTokens()
   const { isWrongNetwork } = useActiveNetwork()
   const chainId = useActiveChainId()
-  const { data: loadedTokenList } = useSWRImmutable(['token-list'])
+  const { data: loadedTokenList } = useSWRImuutable(['token-list'])
   const urlLoadedTokens = useMemo(() => currencies.filter((c): c is Token => Boolean(c?.isToken)), [currencies])
   const isLoaded = !!loadedTokenList
   const importTokensNotInDefault = useMemo(() => {
@@ -108,8 +106,6 @@ const SwapPage = () => {
   const isLoaded = useDefaultsFromURLSearch()
 
   const { t } = useTranslation()
-
-  const isExpertMode = useIsExpertMode()
 
   const inputCurrency = useCurrency(inputCurrencyId)
   const outputCurrency = useCurrency(outputCurrencyId)
@@ -349,11 +345,9 @@ const SwapPage = () => {
   )
 
   const [indirectlyOpenConfirmModalState, setIndirectlyOpenConfirmModalState] = useState(false)
-  const [onPresentSettingsCustomDismissModal] = useModal(
+  const [onPresentSettingsModal] = useModal(
     <SettingsModalWithCustomDismiss customOnDismiss={() => setIndirectlyOpenConfirmModalState(true)} />,
   )
-
-  const [onPresentSettingsModal] = useModal(<SettingsModal />)
 
   const [onPresentConfirmModal] = useModal(
     trade && (
@@ -369,7 +363,7 @@ const SwapPage = () => {
         onConfirm={handleSwap}
         swapErrorMessage={swapErrorMessage}
         customOnDismiss={handleConfirmDismiss}
-        openSettingModal={onPresentSettingsCustomDismissModal}
+        openSettingModal={onPresentSettingsModal}
       />
     ),
     true,
@@ -414,27 +408,17 @@ const SwapPage = () => {
 
   const { showBridgeWarning, bridgeResult } = useBridgeInfo({ currency: inputCurrency })
 
-  const [onPresentTransactionsModal] = useModal(<WalletModal initialView={WalletView.TRANSACTIONS} />)
-
   return (
     <>
       <PageMeta title={t('Exchange')} />
       <Card style={{ width: '328px' }}>
         <CurrencyInputHeader
           title={
-            <Flex width="100%" alignItems="center" justifyContent="center">
-              <Flex flex="1" />
-              <Flex flex="1" justifyContent="center">
+            <Flex width="100%" ml={32}>
+              <Flex flexDirection="column" alignItems="center" width="100%">
                 <CurrencyInputHeaderTitle>{t('Swap')}</CurrencyInputHeaderTitle>
               </Flex>
-              <Flex flex="1" justifyContent="flex-end">
-                {account && (
-                  <IconButton onClick={onPresentTransactionsModal} variant="text" scale="sm">
-                    <HistoryIcon color="textSubtle" width="24px" />
-                  </IconButton>
-                )}
-                <SettingsButton />
-              </Flex>
+              <SettingsButton />
             </Flex>
           }
           subtitle={<CurrencyInputHeaderSubTitle>{t('Trade tokens in an instant')}</CurrencyInputHeaderSubTitle>}
@@ -454,7 +438,6 @@ const SwapPage = () => {
             onPercentInput={handlePercentInput}
             label={independentField === Field.OUTPUT && trade ? t('From (estimated)') : t('From')}
             showBridgeWarning={showBridgeWarning}
-            showUSDPrice
           />
           {showBridgeWarning && (
             <AtomBox width="full">
@@ -494,7 +477,6 @@ const SwapPage = () => {
             currency={isLoaded ? outputCurrency : undefined}
             otherCurrency={inputCurrency}
             onUserInput={(value) => dispatch(typeInput({ field: Field.OUTPUT, typedValue: value }))}
-            showUSDPrice
           />
 
           <Info
@@ -507,7 +489,6 @@ const SwapPage = () => {
               ) : null
             }
             allowedSlippage={allowedSlippage}
-            onSlippageClick={onPresentSettingsModal}
           />
           <AtomBox>
             <CommitButton

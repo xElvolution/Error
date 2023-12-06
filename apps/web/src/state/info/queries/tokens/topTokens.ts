@@ -1,24 +1,16 @@
 import { gql } from 'graphql-request'
 import { useCallback, useState, useEffect } from 'react'
 import { getDeltaTimestamps } from 'utils/getDeltaTimestamps'
-import union from 'lodash/union'
 import { useGetChainName } from '../../hooks'
 import {
   MultiChainName,
   getMultiChainQueryEndPointWithStableSwap,
   checkIsStableSwap,
   multiChainTokenBlackList,
-  multiChainTokenWhiteList,
 } from '../../constant'
 
 interface TopTokensResponse {
   tokenDayDatas: {
-    id: string
-  }[]
-}
-
-interface StableSwapTopTokensResponse {
-  tokens: {
     id: string
   }[]
 }
@@ -49,37 +41,11 @@ const fetchTopTokens = async (chainName: MultiChainName, timestamp24hAgo: number
         }
       }
     `
-
-    const stableSwapQuery = gql`
-      query topTokens {
-        tokens(
-          first: ${firstCount}
-          ${whereCondition}
-          orderBy: totalLiquidity
-          orderDirection: desc
-        ) {
-          id
-        }
-      }
-    `
-
-    if (checkIsStableSwap()) {
-      const data = await getMultiChainQueryEndPointWithStableSwap(chainName).request<StableSwapTopTokensResponse>(
-        stableSwapQuery,
-      )
-      return union(
-        data.tokens.map((t) => t.id),
-        multiChainTokenWhiteList[chainName],
-      )
-    }
     const data = await getMultiChainQueryEndPointWithStableSwap(chainName).request<TopTokensResponse>(query, {
       blacklist: multiChainTokenBlackList[chainName],
     })
     // tokenDayDatas id has compound id "0xTOKENADDRESS-NUMBERS", extracting token address with .split('-')
-    return union(
-      data.tokenDayDatas.map((t) => t.id.split('-')[0]),
-      multiChainTokenWhiteList[chainName],
-    )
+    return data.tokenDayDatas.map((t) => t.id.split('-')[0])
   } catch (error) {
     console.warn('fetchTopTokens', { chainName, timestamp24hAgo })
     console.error('Failed to fetch top tokens', error)

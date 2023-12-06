@@ -6,7 +6,6 @@ import {
   Farm as FarmUI,
   FarmTableLiquidityProps,
   FarmTableMultiplierProps,
-  Flex,
 } from '@pancakeswap/uikit'
 import styled, { css, keyframes } from 'styled-components'
 import getLiquidityUrlPathParts from 'utils/getLiquidityUrlPathParts'
@@ -25,7 +24,6 @@ export interface ActionPanelProps {
   details: FarmWithStakedValue
   userDataReady: boolean
   expanded: boolean
-  alignLinksToRight?: boolean
 }
 
 const expandAnimation = keyframes`
@@ -117,7 +115,6 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
   liquidity,
   userDataReady,
   expanded,
-  alignLinksToRight = true,
 }) => {
   const farm = details
   const { isDesktop } = useMatchBreakpoints()
@@ -168,13 +165,11 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
           )}
         </ValueContainer>
         {isActive && (
-          <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-            <StakeContainer>
-              <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
-                {t('Get %symbol%', { symbol: lpLabel })}
-              </StyledLinkExternal>
-            </StakeContainer>
-          </Flex>
+          <StakeContainer>
+            <StyledLinkExternal href={`/add/${liquidityUrlPathParts}`}>
+              {t('Get %symbol%', { symbol: lpLabel })}
+            </StyledLinkExternal>
+          </StakeContainer>
         )}
       </InfoContainer>
       <ActionContainer>

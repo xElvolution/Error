@@ -12,20 +12,16 @@ import {
   Button,
   useMatchBreakpoints,
   MODAL_SWIPE_TO_CLOSE_VELOCITY,
-  ImportList,
 } from '@pancakeswap/uikit'
 import styled from 'styled-components'
 import { usePreviousValue } from '@pancakeswap/hooks'
 import { TokenList } from '@pancakeswap/token-lists'
 import { useTranslation } from '@pancakeswap/localization'
-import { enableList, removeList, useFetchListCallback } from '@pancakeswap/token-lists/react'
 import CurrencySearch from './CurrencySearch'
 import ImportToken from './ImportToken'
 import Manage from './Manage'
+import ImportList from './ImportList'
 import { CurrencyModalView } from './types'
-import { BAD_SRCS } from '../Logo/constants'
-import { useListState } from '../../state/lists'
-import { useAllLists } from '../../state/lists/hooks'
 
 const Footer = styled.div`
   width: 100%;
@@ -108,30 +104,6 @@ export default function CurrencySearchModal({
     setHeight(wrapperRef.current.offsetHeight - 330)
   }, [])
 
-  const [, dispatch] = useListState()
-  const lists = useAllLists()
-  const adding = Boolean(listURL && lists[listURL]?.loadingRequestId)
-
-  const fetchList = useFetchListCallback(dispatch)
-
-  const [addError, setAddError] = useState<string | null>(null)
-
-  const handleAddList = useCallback(() => {
-    if (adding) return
-    setAddError(null)
-    if (listURL) {
-      fetchList(listURL)
-        .then(() => {
-          dispatch(enableList(listURL))
-          setModalView(CurrencyModalView.manage)
-        })
-        .catch((error) => {
-          setAddError(error.message)
-          dispatch(removeList(listURL))
-        })
-    }
-  }, [adding, dispatch, fetchList, listURL])
-
   return (
     <StyledModalContainer
       drag={isMobile ? 'y' : false}
@@ -169,15 +141,7 @@ export default function CurrencySearchModal({
         ) : modalView === CurrencyModalView.importToken && importToken ? (
           <ImportToken tokens={[importToken]} handleCurrencySelect={handleCurrencySelect} />
         ) : modalView === CurrencyModalView.importList && importList && listURL ? (
-          <ImportList
-            onAddList={handleAddList}
-            addError={addError}
-            badSrcs={BAD_SRCS}
-            listURL={listURL}
-            listLogoURI={importList?.logoURI}
-            listName={importList?.name}
-            listTokenLength={importList?.tokens.length}
-          />
+          <ImportList list={importList} listURL={listURL} onImport={() => setModalView(CurrencyModalView.manage)} />
         ) : modalView === CurrencyModalView.manage ? (
           <Manage
             setModalView={setModalView}

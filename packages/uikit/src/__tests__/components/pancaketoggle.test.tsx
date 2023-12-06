@@ -1,8 +1,8 @@
-import { vi } from "vitest";
+import React from "react";
 import { renderWithProvider } from "../../testHelpers";
 import PancakeToggle from "../../components/PancakeToggle/PancakeToggle";
 
-const handleChange = vi.fn();
+const handleChange = jest.fn();
 
 it("renders correctly", () => {
   const { asFragment } = renderWithProvider(<PancakeToggle checked onChange={handleChange} scale="md" />);

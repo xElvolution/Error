@@ -1,3 +1,4 @@
+import { Flex, Text, Button, Heading, Skeleton, Balance, useModal } from "@pancakeswap/uikit";
 import BigNumber from "bignumber.js";
 import { ReactElement } from "react";
 import { useTranslation } from "@pancakeswap/localization";
@@ -5,13 +6,6 @@ import { getFullDisplayBalance, getBalanceNumber, formatNumber } from "@pancakes
 import { CollectModalProps } from "./CollectModal";
 import { HarvestAction as TableHarvestAction } from "./PoolsTable/HarvestAction";
 import { HarvestActionsProps } from "./types";
-import { Flex } from "../../components/Box";
-import { Heading } from "../../components/Heading";
-import { Button } from "../../components/Button";
-import { Text } from "../../components/Text";
-import { Skeleton } from "../../components/Skeleton";
-import { Balance } from "../../components/Balance";
-import { useModal } from "../Modal";
 
 const HarvestActions: React.FC<React.PropsWithChildren<HarvestActionsProps>> = ({
   earnings,

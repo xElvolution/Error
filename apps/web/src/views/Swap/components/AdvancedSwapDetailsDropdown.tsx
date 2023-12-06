@@ -27,7 +27,6 @@ export default function AdvancedSwapDetailsDropdown({
   inputAmount,
   outputAmount,
   tradeType,
-  isMM = false,
   ...rest
 }: AdvancedSwapDetailsProps) {
   const trade = useMemo(
@@ -57,7 +56,6 @@ export default function AdvancedSwapDetailsDropdown({
         inputAmount={inputAmount ?? lastTrade.inputAmount ?? undefined}
         outputAmount={outputAmount ?? lastTrade.outputAmount ?? undefined}
         tradeType={tradeType ?? lastTrade.tradeType ?? undefined}
-        isMM={isMM}
       />
     </AdvancedDetailsFooter>
   )

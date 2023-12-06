@@ -12,7 +12,7 @@ import { getBlockExploreLink } from 'utils'
 import { getAddress, getVaultPoolAddress } from 'utils/addressHelpers'
 import { getPoolBlockInfo } from 'views/Pools/helpers'
 import MaxStakeRow from './MaxStakeRow'
-import { AprInfo, DurationAvg, PerformanceFee, TotalLocked } from './Stat'
+import { AprInfo, DurationAvg, PerformanceFee, TotalLocked, TotalStaked } from './Stat'
 
 interface ExpandedFooterProps {
   pool: Pool.DeserializedPool<Token>
@@ -78,12 +78,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       )}
       {!vaultKey && <AprInfo pool={pool} stakedBalance={stakedBalance} />}
       {showTotalStaked && (
-        <Pool.TotalStaked
-          totalStaked={vaultKey ? totalCakeInVault : totalStaked}
-          tokenDecimals={stakingToken.decimals}
-          symbol={stakingToken.symbol}
-          decimalsToShow={0}
-        />
+        <TotalStaked totalStaked={vaultKey ? totalCakeInVault : totalStaked} stakingToken={stakingToken} />
       )}
       {vaultKey === VaultKey.CakeVault && <TotalLocked totalLocked={totalLockedAmount} lockedToken={stakingToken} />}
       {vaultKey === VaultKey.CakeVault && <DurationAvg />}
@@ -95,7 +90,6 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
           stakingLimit={stakingLimit}
           stakingLimitEndBlock={stakingLimitEndBlock}
           stakingToken={stakingToken}
-          endBlock={endBlock}
         />
       )}
       {shouldShowBlockCountdown && (
@@ -131,7 +125,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
       )}
       {vaultKey && (
         <Flex mb="2px" justifyContent={alignLinksToRight ? 'flex-end' : 'flex-start'}>
-          <LinkExternal href="https://docs.pancakeswap.finance/products/syrup-pool/new-cake-pool" bold={false} small>
+          <LinkExternal href="https://docs.zodiacswap.xyz/products/syrup-pool/new-cake-pool" bold={false} small>
             {t('View Tutorial')}
           </LinkExternal>
         </Flex>
@@ -162,7 +156,7 @@ const PoolStatsInfo: React.FC<React.PropsWithChildren<ExpandedFooterProps>> = ({
             tokenAddress={tokenAddress}
             tokenSymbol={earningToken.symbol}
             tokenDecimals={earningToken.decimals}
-            tokenLogo={`https://tokens.pancakeswap.finance/images/${tokenAddress}.png`}
+            tokenLogo={`https://tokens.zodiacswap.xyz/images/${tokenAddress}.png`}
           />
         </Flex>
       )}

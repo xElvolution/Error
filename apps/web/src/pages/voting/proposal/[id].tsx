@@ -1,7 +1,6 @@
 // eslint-disable-next-line camelcase
 import { SWRConfig, unstable_serialize } from 'swr'
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next'
-import { NextSeo } from 'next-seo'
 import { getProposal } from 'state/voting/helpers'
 import { ProposalState } from 'state/types'
 import Overview from 'views/Voting/Proposal/Overview'
@@ -25,21 +24,7 @@ export const getStaticPaths: GetStaticPaths = () => {
   }
 }
 
-ProposalPage.Meta = (props: InferGetStaticPropsType<typeof getStaticProps>) => {
-  if (props.id && props.fallback[unstable_serialize(['proposal', props.id])]) {
-    const proposal = props.fallback[unstable_serialize(['proposal', props.id])]
-    return (
-      <NextSeo
-        openGraph={{
-          description: proposal.title,
-        }}
-      />
-    )
-  }
-  return null
-}
-
-export const getStaticProps = (async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params
   if (typeof id !== 'string') {
     return {
@@ -60,7 +45,6 @@ export const getStaticProps = (async ({ params }) => {
         fallback: {
           [unstable_serialize(['proposal', id])]: fetchedProposal,
         },
-        id,
       },
       revalidate:
         fetchedProposal.state === ProposalState.CLOSED
@@ -71,11 +55,10 @@ export const getStaticProps = (async ({ params }) => {
     return {
       props: {
         fallback: {},
-        id,
       },
       revalidate: 60,
     }
   }
-}) satisfies GetStaticProps
+}
 
 export default ProposalPage

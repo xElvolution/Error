@@ -40,8 +40,8 @@ const Decorations = styled.div`
 const BannerBunny = styled.div`
   width: 221px;
   height: 348px;
-  background: url(/images/pottery/banner-bunny.png);
   margin: 63px auto auto auto;
+  background: url(/images/pottery/banner-bunny.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -111,6 +111,7 @@ const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }
           </Flex>
           <SkeletonV2
             isDataReady={Boolean(prizeTotal)}
+            width={['144px', '240px']}
             height={['60px', '97px']}
             wrapperProps={{ marginBottom: '8px' }}
           >
@@ -146,7 +147,7 @@ const Banner: React.FC<React.PropsWithChildren<BannerProps>> = ({ handleScroll }
               </DarkTextStyle>
             </SkeletonV2>
             <Text color="white" bold as="span">
-              {t('APR')}
+              {t('APY')}
             </Text>
           </Box>
           <Box>

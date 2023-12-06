@@ -88,7 +88,8 @@ const StakeModalContainer = ({
           )
         }
 
-        onDone?.()
+        if (onDone) onDone()
+
         onDismiss?.()
       }
     },

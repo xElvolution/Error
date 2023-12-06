@@ -69,98 +69,6 @@ export const livePools: Pool.SerializedPoolConfig<SerializedWrappedToken>[] = [
     isFinished: false,
   },
   {
-    sousId: 323,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.sd,
-    contractAddress: {
-      56: '0xaEC63F134a7853C6DaC9BA428d7962cD7C6c5e30',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '0.01022',
-    version: 3,
-  },
-  {
-    sousId: 322,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.pstake,
-    contractAddress: {
-      56: '0x98AC153577d65f2eEF2256f3AeF8ba9D7E4B756B',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '0.1186',
-    version: 3,
-  },
-  {
-    sousId: 321,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.csix,
-    contractAddress: {
-      56: '0x8BD7b0d392D2dE8F682704A3186A48467FcDC7AC',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '8.68',
-    version: 3,
-  },
-  {
-    sousId: 320,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.axlusdc,
-    contractAddress: {
-      56: '0x08287F4942A7B68DDb87D20Becd4fdadF4aE206e',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '0.0135',
-    version: 3,
-  },
-  {
-    sousId: 306,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.squad,
-    contractAddress: {
-      56: '0x08C9d626a2F0CC1ed9BD07eBEdeF8929F45B83d3',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '2.459',
-    version: 3,
-  },
-].map((p) => ({
-  ...p,
-  stakingToken: p.stakingToken.serialize,
-  earningToken: p.earningToken.serialize,
-}))
-
-// known finished pools
-const finishedPools = [
-  {
-    sousId: 310,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.champ,
-    contractAddress: {
-      56: '0x3B48325b7CA831ca7D5b649B074fF697c66166c3',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '1.961',
-    version: 3,
-  },
-  {
-    sousId: 303,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.mgp,
-    contractAddress: {
-      56: '0x365F744c8b7608253697cA2Ed561537B65a3438B',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '6.944',
-    version: 3,
-  },
-  {
     sousId: 309,
     stakingToken: bscTokens.cake,
     earningToken: bscTokens.arena,
@@ -170,18 +78,6 @@ const finishedPools = [
     },
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '2.893',
-    version: 3,
-  },
-  {
-    sousId: 307,
-    stakingToken: bscTokens.cake,
-    earningToken: bscTokens.zbc,
-    contractAddress: {
-      56: '0xa683C30d47BCd31fB1399b80A4475bc960b903e3',
-      97: '',
-    },
-    poolCategory: PoolCategory.CORE,
-    tokenPerBlock: '10.52',
     version: 3,
   },
   {
@@ -197,6 +93,30 @@ const finishedPools = [
     version: 3,
   },
   {
+    sousId: 307,
+    stakingToken: bscTokens.cake,
+    earningToken: bscTokens.zbc,
+    contractAddress: {
+      56: '0xa683C30d47BCd31fB1399b80A4475bc960b903e3',
+      97: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '10.52',
+    version: 3,
+  },
+  {
+    sousId: 306,
+    stakingToken: bscTokens.cake,
+    earningToken: bscTokens.squad,
+    contractAddress: {
+      56: '0x08C9d626a2F0CC1ed9BD07eBEdeF8929F45B83d3',
+      97: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '2.459',
+    version: 3,
+  },
+  {
     sousId: 304,
     stakingToken: bscTokens.cake,
     earningToken: bscTokens.xcad,
@@ -208,6 +128,26 @@ const finishedPools = [
     tokenPerBlock: '0.1102',
     version: 3,
   },
+  {
+    sousId: 303,
+    stakingToken: bscTokens.cake,
+    earningToken: bscTokens.mgp,
+    contractAddress: {
+      56: '0x365F744c8b7608253697cA2Ed561537B65a3438B',
+      97: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '6.944',
+    version: 3,
+  },
+].map((p) => ({
+  ...p,
+  stakingToken: p.stakingToken.serialize,
+  earningToken: p.earningToken.serialize,
+}))
+
+// known finished pools
+const finishedPools = [
   {
     sousId: 302,
     stakingToken: bscTokens.cake,

@@ -1,12 +1,11 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { Store } from 'redux'
-import { configureStore } from '@reduxjs/toolkit'
+import { createStore, Store } from 'redux'
 
 import { fetchTokenList, acceptListUpdate, addList, removeList, enableList, updateListVersion } from './actions'
 import { ListsState, createTokenListReducer, NEW_LIST_STATE } from './reducer'
 
 const DEFAULT_ACTIVE_LIST_URLS = []
-const DEFAULT_LIST_OF_LISTS = ['https://tokens.pancakeswap.finance/pancakeswap-extended.json']
+const DEFAULT_LIST_OF_LISTS = ['https://tokens.zodiacswap.xyz/pancakeswap-extended.json']
 const STUB_TOKEN_LIST = {
   name: '',
   timestamp: '',
@@ -44,12 +43,13 @@ const MAJOR_UPDATED_STUB_LIST = {
   version: { ...STUB_TOKEN_LIST.version, major: STUB_TOKEN_LIST.version.major + 1 },
 }
 
-describe.skip('list reducer', () => {
+describe('list reducer', () => {
   let store: Store<ListsState>
 
   beforeEach(() => {
-    store = configureStore({
-      reducer,
+    store = createStore(reducer, {
+      byUrl: {},
+      activeListUrls: undefined,
     })
   })
 

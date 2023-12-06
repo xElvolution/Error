@@ -2,7 +2,6 @@ import { Interface, Fragment } from '@ethersproject/abi'
 import { CallOverrides, Contract } from '@ethersproject/contracts'
 import { Provider } from '@ethersproject/providers'
 import { ChainId } from '@pancakeswap/sdk'
-import type { Multicallv2Typed, Multicallv3Typed } from '@pancakeswap/utils/abitype'
 
 import multicallAbi from './Multicall.json'
 
@@ -12,6 +11,9 @@ export const multicallAddresses = {
   5: '0xcA11bde05977b3631167028862bE2a173976CA11',
   56: '0xcA11bde05977b3631167028862bE2a173976CA11',
   97: '0xcA11bde05977b3631167028862bE2a173976CA11',
+  84531: '0x24bfc6eB2F4679217aD4cA77f7C0AA210A6c831D',
+  89: '0x9F098ABFB66d93f9E54789660501076Fc8368160',
+  88: '0x9F098ABFB66d93f9E54789660501076Fc8368160',
 }
 
 export const getMulticallContract = (chainId: ChainId, provider: Provider) => {
@@ -131,32 +133,9 @@ export function createMulticall<TProvider extends Provider>(
     })
   }
 
-  const multicallv3Typed: typeof Multicallv3Typed = async ({ calls, allowFailure, chainId, overrides }) => {
-    return multicallv3({
-      // @ts-ignore
-      calls,
-      allowFailure,
-      chainId,
-      overrides,
-    })
-  }
-
-  const multicallv2Typed: typeof Multicallv2Typed = async ({ abi, calls, chainId, options }) => {
-    return multicallv2({
-      // @ts-ignore
-      abi,
-      // @ts-ignore
-      calls,
-      chainId,
-      options,
-    })
-  }
-
   return {
     multicall,
     multicallv2,
     multicallv3,
-    multicallv3Typed,
-    multicallv2Typed,
   }
 }

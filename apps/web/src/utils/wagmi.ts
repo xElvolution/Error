@@ -1,7 +1,7 @@
 import { BinanceWalletConnector } from '@pancakeswap/wagmi/connectors/binanceWallet'
 import { BloctoConnector } from '@pancakeswap/wagmi/connectors/blocto'
-import { TrustWalletConnector } from '@pancakeswap/wagmi/connectors/trustWallet'
-import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
+import { bsc, goerli, mainnet } from 'wagmi/chains'
+import { Chain } from '@wagmi/core';
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -12,7 +12,90 @@ import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from './safeConnector'
 
-const CHAINS = [bsc, mainnet, bscTestnet, goerli]
+const baseGoerli: Chain = {
+  id: 84531, // Replace with the actual ID of Base Goerli
+  name: 'Base Goerli',
+  network: 'base-goerli',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Base Goerli',
+    symbol: 'ETH',
+  },
+  rpcUrls: {
+    public: { http: ['https://goerli.base.org'] },
+    default: { http: ['https://goerli.base.org'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'Base Goerli Explorer', url: 'https://goerli.basescan.org' },
+    default: { name: 'Base Goerli Explorer', url: 'https://goerli.basescan.org' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0x24bfc6eB2F4679217aD4cA77f7C0AA210A6c831D',
+      blockCreated: 11_907_934,
+    },
+  },
+};
+
+const viction: Chain = {
+  id: 88, 
+  name: 'Viction Mainnet',
+  network: 'viction-mainnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Viction Mainnet',
+    symbol: 'VIC',
+  },
+  rpcUrls: {
+    public: { http: ['https://rpc.tomochain.com'] },
+    default: { http: ['https://rpc.tomochain.com'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io' },
+    default: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0x32dE1Eac390d8D16A67EFf13ddAdEE443dcFb438',
+      blockCreated: 11_907_934,
+    },
+  },
+};
+
+const victionTestnet: Chain = {
+  id: 89, 
+  name: 'Viction Testnet',
+  network: 'viction-testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Viction Testnet',
+    symbol: 'VIC',
+  },
+  rpcUrls: {
+    public: { http: ['https://rpc.testnet.tomochain.com'] },
+    default: { http: ['https://rpc.testnet.tomochain.com'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
+    default: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b',
+      blockCreated: 11_907_934,
+    },
+  },
+};
+
+const CHAINS = [
+  // bsc, 
+  // mainnet, 
+  // bscTestnet, 
+  // baseGoerli,
+  // goerli,
+  viction,
+  victionTestnet
+]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null
@@ -110,14 +193,6 @@ const ledgerConnector = new LedgerConnector({
 
 export const bscConnector = new BinanceWalletConnector({ chains })
 
-export const trustWalletConnector = new TrustWalletConnector({
-  chains,
-  options: {
-    shimDisconnect: false,
-    shimChainChangedDisconnect: true,
-  },
-})
-
 export const client = createClient({
   autoConnect: false,
   provider,
@@ -130,7 +205,6 @@ export const client = createClient({
     bscConnector,
     bloctoConnector,
     ledgerConnector,
-    trustWalletConnector,
   ],
 })
 

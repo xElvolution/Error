@@ -1,15 +1,16 @@
 import { ReactNode } from 'react'
 import { bscTokens } from '@pancakeswap/tokens'
 import styled from 'styled-components'
-import { Text, Flex, Box, Skeleton, TooltipText, useTooltip, IfoSkeletonCardDetails } from '@pancakeswap/uikit'
+import { Text, Flex, Box, Skeleton, TooltipText, useTooltip } from '@pancakeswap/uikit'
 import { PublicIfoData, WalletIfoData } from 'views/Ifos/types'
 import { useTranslation } from '@pancakeswap/localization'
 import { Ifo, PoolIds } from 'config/constants/types'
-import { BIG_ONE_HUNDRED } from '@pancakeswap/utils/bigNumber'
+import BigNumber from 'bignumber.js'
 import { getBalanceNumber, formatNumber } from '@pancakeswap/utils/formatBalance'
 import useBUSDPrice from 'hooks/useBUSDPrice'
 import { DAY_IN_SECONDS } from '@pancakeswap/utils/getTimePeriods'
 import { multiplyPriceByAmount } from 'utils/prices'
+import { SkeletonCardDetails } from './Skeletons'
 
 export interface IfoCardDetailsProps {
   poolId: PoolIds
@@ -234,9 +235,9 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
                   '%percentageVested%% of the purchased token will get vested and released linearly over a period of time. %percentageTgeRelease%% of the purchased token will be released immediately and available for claiming when IFO ends.',
                   {
                     percentageVested: poolCharacteristic.vestingInformation.percentage,
-                    percentageTgeRelease: BIG_ONE_HUNDRED.minus(
-                      poolCharacteristic.vestingInformation.percentage,
-                    ).toString(),
+                    percentageTgeRelease: new BigNumber(100)
+                      .minus(poolCharacteristic.vestingInformation.percentage)
+                      .toString(),
                   },
                 )}
               />
@@ -276,7 +277,7 @@ const IfoCardDetails: React.FC<React.PropsWithChildren<IfoCardDetailsProps>> = (
         </StyledIfoCardDetails>
       )
     }
-    return <IfoSkeletonCardDetails />
+    return <SkeletonCardDetails />
   }
 
   return <Box>{renderBasedOnIfoStatus()}</Box>

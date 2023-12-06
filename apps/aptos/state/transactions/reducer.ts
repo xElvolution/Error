@@ -11,7 +11,7 @@ import {
   TransactionType,
 } from './actions'
 
-const now = () => Date.now()
+const now = () => new Date().getTime()
 
 export interface TransactionDetails {
   hash: string

@@ -193,14 +193,14 @@ export const getFarmsPrices = (
       nativeStableLp.stable,
       quoteTokenPriceBusd,
     )
-
     const lpTokenPrice = isStableFarm(farm)
       ? getStableLpTokenPrice(
           FixedNumber.from(farm.lpTotalSupply),
           FixedNumber.from(farm.tokenAmountTotal),
           tokenPriceBusd,
           FixedNumber.from(farm.quoteTokenAmountTotal),
-          quoteTokenPriceBusd,
+          // Assume token is busd, tokenPriceBusd is tokenPriceVsQuote
+          FixedNumber.from(farm.tokenPriceVsQuote),
           decimals,
         )
       : getLpTokenPrice(
@@ -210,7 +210,6 @@ export const getFarmsPrices = (
           tokenPriceBusd,
           decimals,
         )
-
     return {
       ...farm,
       tokenPriceBusd: tokenPriceBusd.toString(),
