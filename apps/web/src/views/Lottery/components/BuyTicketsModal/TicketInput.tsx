@@ -10,8 +10,8 @@ const InputsContainer = styled.div<{ focused: boolean; isDuplicate: boolean }>`
   align-items: center;
   height: 36px;
   box-sizing: border-box;
-  border: 1px solid #d7caec;
-  background-color: #eeeaf4;
+  background-color: ${({ theme }) => theme.colors.input};
+  border: 1px solid ${({ theme }) => theme.colors.inputSecondary};
   border-radius: 16px;
   margin-bottom: 8px;
   ${({ isDuplicate }) =>
@@ -23,13 +23,13 @@ const InputsContainer = styled.div<{ focused: boolean; isDuplicate: boolean }>`
   ${({ focused }) =>
     focused &&
     `
-    border: 1px solid #AA14F0;
+    border: 1px solid #7645D9;
     box-shadow: 0px 0px 0px 2px #E4DAF7;
   `}
 `
 
 const DigitInput = styled.input`
-  color: ${({ theme }) => theme.colors.primaryDark};
+  color: ${({ theme }) => theme.colors.text};
   border: none;
   height: 32px;
   padding: 0 12px;

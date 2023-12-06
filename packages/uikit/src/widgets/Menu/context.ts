@@ -1,9 +1,3 @@
 import { createContext, ElementType } from "react";
 
-interface MenuContextType {
-  linkComponent: ElementType;
-}
-
-export const MenuContext = createContext<MenuContextType>({
-  linkComponent: "a",
-});
+export const MenuContext = createContext<{ linkComponent: ElementType }>({ linkComponent: "a" });

@@ -1,8 +1,8 @@
-# ✨ Zodiac Frontend
+# 🥞 Pancake Frontend
 
 <p align="center">
-  <a href="https://zodiacswap.xyz">
-      <img src="https://zodiacswap.xyz/logo.png" height="128">
+  <a href="https://pancakeswap.finance">
+      <img src="https://pancakeswap.finance/logo.png" height="128">
   </a>
 </p>
 
@@ -52,6 +52,20 @@ yarn dev:aptos
 ```
 ```sh
 yarn turbo run build --filter=aptos-web
+```
+</details>
+
+## `apps/blog`
+<details>
+<summary>
+How to start
+</summary>
+
+```sh
+yarn dev:blog
+```
+```sh
+yarn turbo run build --filter=blog
 ```
 </details>
 

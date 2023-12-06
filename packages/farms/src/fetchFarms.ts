@@ -20,11 +20,6 @@ const evmNativeStableLpMap = {
     wNative: 'WETH',
     stable: 'tUSDC',
   },
-  [ChainId.BASE_GOERLI]: {
-    address: '0x597417F750f67a7F9Ca543161CF1eD543022DF5b',
-    wNative: 'WETH',
-    stable: 'zUSDT',
-  },
   [ChainId.BSC]: {
     address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
     wNative: 'WBNB',
@@ -35,16 +30,6 @@ const evmNativeStableLpMap = {
     wNative: 'WBNB',
     stable: 'BUSD',
   },
-  [ChainId.VICTION]: {
-    address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-    wNative: 'WVIC',
-    stable: 'USDC',
-  },
-  [ChainId.VICTION_TESTNET]: {
-    address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
-    wNative: 'WVIC',
-    stable: 'USDC',
-  }
 }
 
 export const getTokenAmount = (balance: FixedNumber, decimals: number) => {
@@ -306,7 +291,7 @@ const getStableFarmDynamicData = ({
   const lpTokenRatio =
     !lpTotalSupply.isZero() && !lpTokenBalanceMC.isZero() ? lpTokenBalanceMC.divUnsafe(lpTotalSupply) : FIXED_ZERO
 
-  const tokenPriceVsQuote = formatUnits(price1, token1Decimals)
+  const tokenPriceVsQuote = formatUnits(price1, token0Decimals)
 
   // Amount of quoteToken in the LP that are staked in the MC
   const quoteTokenAmountMcFixed = quoteTokenAmountTotal.mulUnsafe(lpTokenRatio)
@@ -376,7 +361,7 @@ const getFarmAllocation = ({
 
   return {
     poolWeight: poolWeight.toString(),
-    multiplier: !_allocPoint.isZero() ? `${+_allocPoint.divUnsafe(FixedNumber.from(100)).toString()}X` : `0X`,
+    multiplier: !_allocPoint.isZero() ? `${+_allocPoint.divUnsafe(FixedNumber.from(10)).toString()}X` : `0X`,
   }
 }
 

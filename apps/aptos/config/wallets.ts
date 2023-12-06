@@ -15,7 +15,9 @@ export const wallets: WalletConfigV2<ConnectorNames>[] = [
     id: 'petra',
     title: 'Petra',
     icon: '/images/wallets/petra.png',
-    installed: typeof window !== 'undefined' && Boolean(window.aptos),
+    get installed() {
+      return typeof window !== 'undefined' && Boolean(window.aptos)
+    },
     connectorId: ConnectorNames.Petra,
     downloadLink: {
       desktop: 'https://petra.app/',
@@ -25,7 +27,9 @@ export const wallets: WalletConfigV2<ConnectorNames>[] = [
     id: 'martian',
     title: 'Martian',
     icon: '/images/wallets/martian.png',
-    installed: typeof window !== 'undefined' && Boolean(window.martian),
+    get installed() {
+      return typeof window !== 'undefined' && Boolean(window.martian)
+    },
     connectorId: ConnectorNames.Martian,
     downloadLink: {
       desktop: 'https://martianwallet.xyz/',
@@ -35,7 +39,9 @@ export const wallets: WalletConfigV2<ConnectorNames>[] = [
     id: 'pontem',
     title: 'Pontem',
     icon: '/images/wallets/pontem.png',
-    installed: typeof window !== 'undefined' && Boolean(window.pontem),
+    get installed() {
+      return typeof window !== 'undefined' && Boolean(window.pontem)
+    },
     connectorId: ConnectorNames.Pontem,
     downloadLink: {
       desktop: 'https://chrome.google.com/webstore/detail/pontem-aptos-wallet/phkbamefinggmakgklpkljjmgibohnba',
@@ -65,17 +71,17 @@ export const wallets: WalletConfigV2<ConnectorNames>[] = [
   {
     id: 'trustWallet',
     title: 'Trust Wallet',
-    icon: 'https://zodiacswap.xyz/images/wallets/trust.png',
+    icon: 'https://pancakeswap.finance/images/wallets/trust.png',
     get installed() {
       return typeof window !== 'undefined' && Boolean(window.aptos) && Boolean((window.aptos as any)?.isTrust)
     },
-    deepLink: 'https://link.trustwallet.com/open_url?coin_id=637&url=https://aptos.zodiacswap.xyz/',
+    deepLink: 'https://link.trustwallet.com/open_url?coin_id=637&url=https://aptos.pancakeswap.finance/',
     connectorId: ConnectorNames.TrustWallet,
   },
   {
     id: 'safePal',
     title: 'SafePal',
-    icon: 'https://zodiacswap.xyz/images/wallets/safepal.png',
+    icon: 'https://pancakeswap.finance/images/wallets/safepal.png',
     get installed() {
       return typeof window !== 'undefined' && Boolean(window.safePal) && Boolean((window.safePal as any)?.sfpPlatform)
     },

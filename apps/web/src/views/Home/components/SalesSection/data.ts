@@ -2,8 +2,8 @@ import { TranslateFunction } from '@pancakeswap/localization'
 import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Trade any token in seconds on Viction Chain.'),
-  bodyText: t('Embark on a celestial voyage - no registration, no hassle, just endless possibilities.'),
+  headingText: t('Trade anything. No registration, no hassle.'),
+  bodyText: t('Trade any token on BNB Smart Chain in seconds, just by connecting your wallet.'),
   reverse: false,
   primaryButton: {
     to: '/swap',
@@ -11,14 +11,16 @@ export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.zodiacswap.finance/',
+    to: 'https://docs.pancakeswap.finance/',
     text: t('Learn'),
     external: true,
   },
   images: {
     path: '/images/home/trade/',
     attributes: [
-      { src: 'Zodiac', alt: t('Zodiac token')},
+      { src: 'BNB', alt: t('BNB token') },
+      { src: 'BTC', alt: t('BTC token') },
+      { src: 'CAKE', alt: t('CAKE token') },
     ],
   },
 })
@@ -33,7 +35,7 @@ export const earnSectionData = (t: TranslateFunction): SalesSectionProps => ({
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.zodiacswap.xyz/products/yield-farming',
+    to: 'https://docs.pancakeswap.finance/products/yield-farming',
     text: t('Learn'),
     external: true,
   },
@@ -54,12 +56,12 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
   ),
   reverse: false,
   primaryButton: {
-    to: '/swap?chain=victionTestnet&outputCurrency=0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
-    text: t('Buy ZODIAC'),
+    to: '/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56',
+    text: t('Buy CAKE'),
     external: false,
   },
   secondaryButton: {
-    to: 'https://docs.zodiacswap.xyz/tokenomics/',
+    to: 'https://docs.pancakeswap.finance/tokenomics/cake',
     text: t('Learn'),
     external: true,
   },

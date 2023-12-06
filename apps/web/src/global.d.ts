@@ -7,13 +7,10 @@ export interface ExtendEthereum extends Ethereum {
   isMathWallet?: true
   isTrustWallet?: true
   isBlocto?: true
-  isViction?: true
-
 }
 
 declare global {
   interface Window {
-    viction?: true
     coin98?: true
     ethereum?: ExtendEthereum
     BinanceChain?: {

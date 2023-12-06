@@ -6,7 +6,7 @@ import { WinRateCalculatorState } from 'views/Pottery/hooks/useWinRateCalculator
 import { CalculatorMode } from '../../types'
 
 const WinRateWrapper = styled(Box)`
-  background: linear-gradient(180deg, #53dee9, #AA14F0);
+  background: linear-gradient(180deg, #53dee9, #7645d9);
   padding: 1px;
   width: 100%;
   border-radius: ${({ theme }) => theme.radii.default};
