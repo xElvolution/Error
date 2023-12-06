@@ -10,7 +10,9 @@ import modWhiteLogo from './mod-white-logo.png'
 import perpetualImage from './perpetual.png'
 import perpetualMobileImage from './perpetualMobile.png'
 import Aptos from './Aptos.png'
-import ZodiacSwapLogo from './AptosXPancakeSwap.png'
+import AptosXPancakeSwap from './AptosXPancakeSwap.png'
+import trustwalletBg from './trustwalletBg.png'
+import trustwalletBunny from './trustwalletBunny.png'
 
 export {
   lotteryImage,
@@ -25,5 +27,7 @@ export {
   perpetualImage,
   perpetualMobileImage,
   Aptos,
-  ZodiacSwapLogo,
+  AptosXPancakeSwap,
+  trustwalletBg,
+  trustwalletBunny,
 }
