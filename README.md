@@ -41,19 +41,20 @@ yarn start
 ```
 </details>
 
-## `apps/aptos`
+## `apps/blog`
 <details>
 <summary>
 How to start
 </summary>
 
 ```sh
-yarn dev:aptos
+yarn dev:blog
 ```
 ```sh
-yarn turbo run build --filter=aptos-web
+yarn turbo run build --filter=blog
 ```
 </details>
+
 
 
 ## Packages
