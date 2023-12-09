@@ -10,10 +10,9 @@ import {
   WBNB,
   ERC20Token,
   WVIC,
-
 } from '@pancakeswap/sdk'
 import { FAST_INTERVAL } from 'config/constants'
-import { BUSD, CAKE, USDC } from '@pancakeswap/tokens'
+import { BUSD, CAKE, USDC, ZODIAC } from '@pancakeswap/tokens'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import useSWRImmutable from 'swr/immutable'
@@ -176,6 +175,16 @@ export const useCakeBusdPrice = (
   // Return bsc testnet cake if chain is testnet
   const cake: Token = isTestnet ? CAKE[ChainId.BSC] : CAKE[ChainId.BSC]
   return usePriceByPairs(BUSD[cake.chainId], cake)
+}
+
+export const useZodiacBusdPrice = (
+  { forceMainnet } = { forceMainnet: false },
+): Price<ERC20Token, ERC20Token> | undefined => {
+  const { chainId } = useActiveChainId()
+  const isTestnet = forceMainnet && isChainTestnet(chainId)
+  // Return bsc testnet cake if chain is testnet
+  const zodiac: Token = isTestnet ? ZODIAC[ChainId.VICTION_TESTNET] : ZODIAC[ChainId.VICTION_TESTNET]
+  return usePriceByPairs(BUSD[zodiac.chainId], zodiac)
 }
 
 // @Note: only fetch from one pair

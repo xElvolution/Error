@@ -18,6 +18,24 @@ export const CAKE_TESTNET = new ERC20Token(
   'https://zodiacswap.xyz/',
 )
 
+export const ZODIAC_MAINNET = new ERC20Token(
+  ChainId.VICTION,
+  '0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
+  18,
+  'ZODIAC',
+  'ZodiacSwap Token',
+  'https://zodiacswap.xyz/',
+)
+
+export const ZODIAC_TESTNET = new ERC20Token(
+  ChainId.VICTION_TESTNET,
+  '0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
+  18,
+  'ZODIAC',
+  'ZodiacSwap Token',
+  'https://zodiacswap.xyz/',
+)
+
 export const USDC_BSC = new ERC20Token(
   ChainId.BSC,
   '0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d',
@@ -163,6 +181,11 @@ export const BUSD: Record<ChainId, ERC20Token> = {
 export const CAKE = {
   [ChainId.BSC]: CAKE_MAINNET,
   [ChainId.BSC_TESTNET]: CAKE_TESTNET,
+}
+
+export const ZODIAC = {
+  [ChainId.VICTION]: ZODIAC_MAINNET,
+  [ChainId.VICTION_TESTNET]: ZODIAC_TESTNET,
 }
 
 export const USDC = {

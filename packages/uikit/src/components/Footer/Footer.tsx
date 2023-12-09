@@ -28,7 +28,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   currentLang,
   langs,
   setLang,
-  cakePriceUsd,
+  zodiacPriceUsd,
   buyCakeLabel,
   buyCakeLink,
   ...props
@@ -98,7 +98,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
           </Flex>
           <Flex order={[1, null, 2]} mb={["24px", null, "0"]} justifyContent="space-between" alignItems="center">
             <Box mr="20px">
-              <CakePrice cakePriceUsd={cakePriceUsd} color="textSubtle" />
+              <CakePrice zodiacPriceUsd={zodiacPriceUsd} color="textSubtle" />
             </Box>
             <Button
               data-theme={isDark ? "dark" : "light"}

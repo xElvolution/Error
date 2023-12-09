@@ -86,7 +86,7 @@ const defaultProps = {
   langs,
   setLang: noop,
   currentLang: "EN",
-  cakePriceUsd: 0.023158668932877668,
+  zodiacPriceUsd: 0.023158668932877668,
   links,
   subLinks: links[0].items,
   footerLinks,
@@ -256,7 +256,7 @@ export const WithSubmenuSelected: React.FC<React.PropsWithChildren> = () => {
         langs={langs}
         setLang={noop}
         currentLang="EN"
-        cakePriceUsd={0.23158668932877668}
+        zodiacPriceUsd={0.23158668932877668}
         links={links}
         subLinks={links[0].items as SubMenuItemsType[]}
         footerLinks={footerLinks}

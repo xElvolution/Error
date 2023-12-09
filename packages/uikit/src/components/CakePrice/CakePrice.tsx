@@ -7,7 +7,7 @@ import { Colors } from "../../theme";
 
 export interface Props {
   color?: keyof Colors;
-  cakePriceUsd?: number;
+  zodiacPriceUsd?: number;
   showSkeleton?: boolean;
 }
 
@@ -25,17 +25,17 @@ const PriceLink = styled.a`
 `;
 
 const CakePrice: React.FC<React.PropsWithChildren<Props>> = ({
-  cakePriceUsd,
+  zodiacPriceUsd,
   color = "textSubtle",
   showSkeleton = true,
 }) => {
-  return cakePriceUsd ? (
+  return zodiacPriceUsd ? (
     <PriceLink
-      href="https://zodiacswap.xyz/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82&chainId=56"
+      href="/swap?chain=victionTestnet&outputCurrency=0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B"
       target="_blank"
     >
-      <LogoRound width="24px" mr="8px" />
-      <Text color={color} bold>{`$${cakePriceUsd.toFixed(3)}`}</Text>
+      <img src='/images/zodiac.png ' style={{ width: "38px", height: "38px" }} />
+      <Text color={color} bold>{`$${zodiacPriceUsd.toFixed(3)}`}</Text>
     </PriceLink>
   ) : showSkeleton ? (
     <Skeleton width={80} height={24} />

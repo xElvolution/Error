@@ -11,14 +11,7 @@
   "keywords": ["zodiac", "default"],
   "tokens": [
 
-    {
-      "name": "USD Coin",
-      "symbol": "USDC",
-      "address": "0x59e2F979f4a302EF56ad7B2225080Cf471336417",
-      "chainId": 89,
-      "decimals": 18,
-      "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdc.png"
-    },
+
 
     {
       "name": "USD Tether",

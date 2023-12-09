@@ -76,7 +76,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
   toggleTheme,
   currentLang,
   setLang,
-  cakePriceUsd,
+  zodiacPriceUsd,
   links,
   subLinks,
   footerLinks,
@@ -152,7 +152,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
               </Flex>
               <Flex alignItems="center" height="100%">
                 <AtomBox mr="12px" display={{ xs: "none", lg: "block" }}>
-                  <CakePrice showSkeleton={false} cakePriceUsd={cakePriceUsd} />
+                  <CakePrice showSkeleton={false} zodiacPriceUsd={zodiacPriceUsd} />
                 </AtomBox>
                 <Box mt="4px">
                   <LangSelector
@@ -200,7 +200,7 @@ const Menu: React.FC<React.PropsWithChildren<NavProps>> = ({
         langs={langs}
         setLang={setLang}
         currentLang={currentLang}
-        cakePriceUsd={cakePriceUsd}
+        zodiacPriceUsd={zodiacPriceUsd}
         buyCakeLabel={buyCakeLabel}
         buyCakeLink={buyCakeLink}
         mb={[`${MOBILE_MENU_HEIGHT}px`, null, "0px"]}

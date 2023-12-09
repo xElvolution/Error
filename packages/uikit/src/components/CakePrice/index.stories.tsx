@@ -17,5 +17,5 @@ const Template: React.FC<React.PropsWithChildren<CakePriceProps>> = ({ ...args }
 
 export const Default = Template.bind({});
 Default.args = {
-  cakePriceUsd: 20.0,
+  zodiacPriceUsd: 20.0,
 };
