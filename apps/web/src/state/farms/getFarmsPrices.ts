@@ -150,11 +150,11 @@ const nativeStableLpMap = {
   [ChainId.VICTION]: {
     address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
     wNative: 'WVIC',
-    stable: 'USDC',
+    stable: 'USDT',
   },
   [ChainId.VICTION_TESTNET]: {
-    address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
+    address: '0x3DA5519039DDe84fde2748Bd05c279c9dA88EA12',
     wNative: 'WVIC',
-    stable: 'USDC',
+    stable: 'USDT',
   },
 }

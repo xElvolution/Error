@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js'
 import { useTranslation } from '@pancakeswap/localization'
 import { Flex, Heading, Text, useMatchBreakpoints, Balance } from '@pancakeswap/uikit'
 import { ActionContainer, ActionContent, ActionTitles } from 'views/Pools/components/PoolsTable/ActionPanel/styles'
-import { usePriceCakeBusd } from 'state/farmsV1/hooks'
+import { usePriceZodiacBusd } from 'state/farmsV1/hooks'
 import { EarnedProps } from '../../../Farm/Cells/Earned'
 
 const Container = styled(ActionContainer)`
@@ -17,7 +17,7 @@ const Earned: React.FC<React.PropsWithChildren<EarnedProps>> = ({ earnings }) =>
   const { isMobile } = useMatchBreakpoints()
 
   const earningsBigNumber = new BigNumber(earnings)
-  const cakePrice = usePriceCakeBusd()
+  const cakePrice = usePriceZodiacBusd()
   let earningsBusd = 0
   let displayBalance = earnings.toLocaleString()
 

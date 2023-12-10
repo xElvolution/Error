@@ -4,7 +4,7 @@ import { useAccount } from 'wagmi'
 import { getFarmApr } from 'utils/apr'
 import { useTranslation } from '@pancakeswap/localization'
 import { CAKE_PER_YEAR } from 'config'
-import { useFarmsV1, usePriceCakeBusd } from 'state/farmsV1/hooks'
+import { useFarmsV1, usePriceZodiacBusd } from 'state/farmsV1/hooks'
 import { DeserializedFarm, FarmWithStakedValue } from '@pancakeswap/farms'
 import MigrationFarmTable from '../../MigrationFarmTable'
 import { DesktopColumnSchema } from '../../types'
@@ -13,7 +13,7 @@ const OldFarmStep1: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
   const { address: account } = useAccount()
   const { data: farmsLP, userDataLoaded } = useFarmsV1()
-  const cakePrice = usePriceCakeBusd()
+  const cakePrice = usePriceZodiacBusd()
 
   const userDataReady = !account || (!!account && userDataLoaded)
 

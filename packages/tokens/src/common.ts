@@ -62,20 +62,20 @@ export const USDC_ETH = new ERC20Token(
   'USD Coin',
 )
 
-export const USDC_VICTION = new ERC20Token(
+export const USDT_VICTION = new ERC20Token(
   ChainId.VICTION,
   '0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B',
   18,
-  'USDC',
-  'USD Coin',
+  'USDT',
+  'Tether USD Coin',
 )
 
-export const USDC_VICTION_TESTNET = new ERC20Token(
+export const USDT_VICTION_TESTNET = new ERC20Token(
   ChainId.VICTION_TESTNET,
-  '0x0cF4071940782b640d0b595Cb17bDf3E90869d70',
+  '0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E',
   18,
-  'tUSDC',
-  'Test USD Coin',
+  'USDT',
+  'Tether USD Coin',
 )
 
 export const USDC_GOERLI = new ERC20Token(
@@ -194,13 +194,13 @@ export const USDC = {
   [ChainId.ETHEREUM]: USDC_ETH,
   [ChainId.GOERLI]: USDC_GOERLI,
   [ChainId.BASE_GOERLI]: USDT_BASE_GOERLI,
-  [ChainId.VICTION]: USDC_VICTION,
-  [ChainId.VICTION_TESTNET]: USDC_VICTION_TESTNET,
 }
 
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
   [ChainId.ETHEREUM]: USDT_ETH,
+  [ChainId.VICTION]: USDT_VICTION,
+  [ChainId.VICTION_TESTNET]: USDT_VICTION_TESTNET,
 }
 
 export const WBTC_ETH = new ERC20Token(

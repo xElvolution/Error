@@ -15,7 +15,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useTranslation } from '@pancakeswap/localization'
 import useAuth from 'hooks/useAuth'
 import useNativeCurrency from 'hooks/useNativeCurrency'
-import useTokenBalance, { useGetCakeBalance } from 'hooks/useTokenBalance'
+import useTokenBalance, { useGetZodiacBalance } from 'hooks/useTokenBalance'
 import { ChainLogo } from 'components/Logo/ChainLogo'
 
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
@@ -25,6 +25,7 @@ import { useBalance } from 'wagmi'
 const COLORS = {
   ETH: '#627EEA',
   BNB: '#14151A',
+  VICTION: '#000000',
 }
 
 interface WalletInfoProps {
@@ -41,7 +42,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
   const native = useNativeCurrency()
   const wNativeToken = !isBSC ? WNATIVE[chainId] : null
   const { balance: wNativeBalance, fetchStatus: wNativeFetchStatus } = useTokenBalance(wNativeToken?.address)
-  // const { balance: cakeBalance, fetchStatus: cakeFetchStatus } = useGetCakeBalance()
+  const { balance: zodiacBalance, fetchStatus: zodiacFetchStatus } = useGetZodiacBalance()
   const { logout } = useAuth()
 
   const handleLogout = () => {
@@ -74,7 +75,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
       {!isBSC && chain && (
         <Box mb="12px">
           <Flex justifyContent="space-between" alignItems="center" mb="8px">
-            <Flex bg={COLORS.ETH} borderRadius="16px" pl="4px" pr="8px" py="2px">
+            <Flex bg={COLORS.VICTION} borderRadius="16px" pl="4px" pr="8px" py="2px">
               <ChainLogo chainId={chain.id} />
               <Text color="white" ml="4px">
                 {chain.name}
@@ -106,14 +107,14 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
               )}
             </Flex>
           )}
-            {/* <Flex alignItems="center" justifyContent="space-between">
-              <Text color="textSubtle">{t('CAKE Balance')}</Text>
-              {cakeFetchStatus !== FetchStatus.Fetched ? (
+            <Flex alignItems="center" justifyContent="space-between">
+              <Text color="textSubtle">{t('ZODIAC Balance')}</Text>
+              {zodiacFetchStatus !== FetchStatus.Fetched ? (
                 <Skeleton height="22px" width="60px" />
               ) : (
-                <Text>{formatBigNumber(cakeBalance, 3)}</Text>
+                <Text>{formatBigNumber(zodiacBalance, 3)}</Text>
               )}
-            </Flex> */}
+            </Flex>
         </Box>
       )}
       <Button variant="secondary" width="100%" minHeight={48} onClick={handleLogout}>

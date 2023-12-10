@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { SLOW_INTERVAL } from 'config/constants'
-import { useCakeBusdPrice } from 'hooks/useBUSDPrice'
+import { useZodiacBusdPrice } from 'hooks/useBUSDPrice'
 import { useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
@@ -80,6 +80,8 @@ export const usePollFarmsWithUserData = () => {
  * 3 = BUSD-BNB LP
  */
 const coreFarmPIDs = {
+  88: [2, 3],
+  89: [34, 3],
   56: [2, 3],
   97: [4, 10],
   5: [13, 11],
@@ -142,7 +144,7 @@ export const useLpTokenPrice = (symbol: string) => {
 /**
  * @deprecated use the BUSD hook in /hooks
  */
-export const usePriceCakeBusd = ({ forceMainnet } = { forceMainnet: false }): BigNumber => {
-  const price = useCakeBusdPrice({ forceMainnet })
+export const usePriceZodiacBusd = ({ forceMainnet } = { forceMainnet: false }): BigNumber => {
+  const price = useZodiacBusdPrice({ forceMainnet })
   return useMemo(() => (price ? new BigNumber(price.toSignificant(6)) : BIG_ZERO), [price])
 }

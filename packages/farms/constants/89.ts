@@ -10,6 +10,14 @@ const farms: SerializedFarmConfig[] = [
     quoteToken: victionTestnetTokens.wvic,
     token: victionTestnetTokens.zodiac,
   },
+  {
+    pid: 35,
+    vaultPid: 3,
+    lpSymbol: 'ZODIAC-USDT LP',
+    lpAddress: '0x83C4949D260915Be5D54B69De888aF37521cEEFa',
+    quoteToken: victionTestnetTokens.zodiac,
+    token: victionTestnetTokens.usdt,
+  },
 
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 

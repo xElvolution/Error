@@ -28,8 +28,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.usdc,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.VICTION]: [victionTokens.wvic, victionTokens.zodiac, victionTokens.usdc],
-  [ChainId.VICTION_TESTNET]: [victionTestnetTokens.wvic, victionTestnetTokens.zodiac, victionTestnetTokens.usdc],
+  [ChainId.VICTION]: [victionTokens.wvic, victionTokens.zodiac, victionTokens.usdt],
+  [ChainId.VICTION_TESTNET]: [victionTestnetTokens.wvic, victionTestnetTokens.zodiac, victionTestnetTokens.usdt],
 }
 
 /**
@@ -70,8 +70,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BASE_GOERLI]: [USDC[ChainId.BASE_GOERLI], WNATIVE[ChainId.BASE_GOERLI]],
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.VICTION]: [victionTokens.wvic, victionTokens.zodiac, victionTokens.usdc],
-  [ChainId.VICTION_TESTNET]: [victionTestnetTokens.wvic, victionTestnetTokens.zodiac, victionTestnetTokens.usdc],
+  [ChainId.VICTION]: [victionTokens.wvic, victionTokens.zodiac, victionTokens.usdt],
+  [ChainId.VICTION_TESTNET]: [victionTestnetTokens.wvic, victionTestnetTokens.zodiac, victionTestnetTokens.usdt],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

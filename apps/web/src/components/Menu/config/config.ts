@@ -89,7 +89,7 @@ const config: (
       items: [
         {
           label: t('Farms'),
-          // href: '/farms',
+          href: '/farms',
           status: {
             text: "Coming Soon",
             color: "warning",
@@ -98,7 +98,6 @@ const config: (
         {
           label: t('Pools'),
           // href: '/pools',
-          supportChainIds: SUPPORT_ONLY_BSC,
           status: {
             text: "Coming Soon",
             color: "warning",
@@ -202,7 +201,7 @@ const config: (
         },
         {
           label: t('Blog'),
-          href: 'https://medium.com/',
+          href: 'https://blog.zodiacswap.xyz/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
         {
