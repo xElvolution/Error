@@ -461,7 +461,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </FinishedTextContainer>
         )}
         {viewMode === ViewMode.TABLE ? (
-          <Table farms={chosenFarmsMemoized} zodiacPrice={zodiacPrice} userDataReady={userDataReady} />
+          <Table farms={chosenFarmsMemoized} cakePrice={zodiacPrice} userDataReady={userDataReady} />
         ) : (
           <FlexLayout>{children}</FlexLayout>
         )}
