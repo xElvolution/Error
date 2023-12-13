@@ -126,8 +126,8 @@ export const fetchChartData = async (
   let timestamp = firstAvailableDayData?.date ?? multiChainStartTime[chainName]
   let latestLiquidityUSD = firstAvailableDayData?.liquidityUSD ?? 0
   const endTimestamp = getUnixTime(new Date())
-  while (timestamp < endTimestamp - ONE_DAY_UNIX) {
-    timestamp += ONE_DAY_UNIX
+  while ((timestamp as number) < (endTimestamp as number) - ONE_DAY_UNIX) {
+    timestamp = Number(timestamp) + ONE_DAY_UNIX;
     const dayOrdinal = parseInt((timestamp / ONE_DAY_UNIX).toFixed(0), 10)
     if (!Object.keys(formattedDayDatas).includes(dayOrdinal.toString())) {
       formattedDayDatas[dayOrdinal] = {
@@ -189,8 +189,8 @@ export const fetchChartDataWithAddress = async (
   let timestamp = firstAvailableDayData?.date ?? multiChainStartTime[chainName]
   let latestLiquidityUSD = firstAvailableDayData?.liquidityUSD ?? 0
   const endTimestamp = getUnixTime(new Date())
-  while (timestamp < endTimestamp - ONE_DAY_UNIX) {
-    timestamp += ONE_DAY_UNIX
+  while ((timestamp as number) < (endTimestamp as number) - ONE_DAY_UNIX) {
+    timestamp = Number(timestamp) + ONE_DAY_UNIX;
     const dayOrdinal = parseInt((timestamp / ONE_DAY_UNIX).toFixed(0), 10)
     if (!Object.keys(formattedDayDatas).includes(dayOrdinal.toString())) {
       formattedDayDatas[dayOrdinal] = {
