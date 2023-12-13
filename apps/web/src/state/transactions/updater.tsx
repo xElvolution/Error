@@ -208,7 +208,7 @@ const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
 
   return (
     <>
-      {showConfetti && (
+      {/* {showConfetti && (
         <Confetti
           width={window.innerWidth}
           height={window.innerHeight}
@@ -220,7 +220,7 @@ const Updater: React.FC<{ chainId: number }> = ({ chainId }) => {
           // run={showConfetti}
           shapes={['star']} 
         />
-      )}
+      )} */}
     </>
   );
 };
