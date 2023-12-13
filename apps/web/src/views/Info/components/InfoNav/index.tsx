@@ -20,7 +20,8 @@ import { multiChainId, multiChainPaths } from 'state/info/constant'
 import { chains } from 'utils/wagmi'
 import { ChainLogo } from 'components/Logo/ChainLogo'
 import { useAccount } from 'wagmi'
-import { bsc, mainnet } from 'wagmi/chains'
+import { bsc, mainnet} from 'wagmi/chains'
+
 
 const NavWrapper = styled(Flex)`
   background: ${({ theme }) => theme.colors.gradientCardHeader};
@@ -75,7 +76,32 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
   )
 }
 
-const targetChains = [mainnet, bsc]
+const victionTestnet = {
+  id: 89, 
+  name: 'Viction Testnet',
+  network: 'viction-testnet',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'Viction Testnet',
+    symbol: 'VIC',
+  },
+  rpcUrls: {
+    public: { http: ['https://rpc.testnet.tomochain.com'] },
+    default: { http: ['https://rpc.testnet.tomochain.com'] },
+  },
+  blockExplorers: {
+    etherscan: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
+    default: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
+  },
+  contracts: {
+    multicall3: {
+      address: '0xFBbb45aa806B0b0ec511dc50F334D9376b14cB3b',
+      blockCreated: 11_907_934,
+    },
+  },
+};
+
+const targetChains = [victionTestnet]
 
 export const NetworkSwitcher: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const { t } = useTranslation()

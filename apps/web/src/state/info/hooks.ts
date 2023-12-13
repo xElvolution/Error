@@ -251,7 +251,8 @@ export const useGetChainName = () => {
 
   const getChain = useCallback(() => {
     if (path.includes('eth')) return 'ETH'
-    return 'BSC'
+    else if (path.includes('vic')) return 'VIC';
+    return 'VIC'
   }, [path])
   const [name, setName] = useState<MultiChainName | null>(getChain())
   const result = useMemo(() => name, [name])

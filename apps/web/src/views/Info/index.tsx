@@ -17,13 +17,17 @@ export const InfoPageLayout = ({ children }) => {
   const isStableSwap = router.query.type === 'stableSwap'
 
   useEffect(() => {
-    if (account && chainId === ChainId.BSC && router.query.chainName === 'eth')
-      router.replace('/info', undefined, { shallow: true })
-    else if (account && chainId === ChainId.ETHEREUM && router.query.chainName !== 'eth')
+    if (account && chainId === ChainId.BSC && router.query.chainName === 'vic')
+      router.replace('/info/bsc', undefined, { shallow: true })
+    else if (account && chainId === ChainId.ETHEREUM && router.query.chainName !== 'vic')
       router.replace('/info/eth', undefined, { shallow: true })
+    else if (account && chainId === ChainId.VICTION_TESTNET && router.query.chainName !== 'vic')
+      router.replace('/info/vic', undefined, { shallow: true })
     else if (isStableSwap && router.query.chainName) {
       if (router.query.chainName === 'eth') {
         router.replace('/info/eth', undefined, { shallow: true })
+      } else if (router.query.chainName === 'vic') {
+        router.replace('/info/vic', undefined, { shallow: true });
       } else {
         router.replace('/info?type=stableSwap', undefined, { shallow: true })
       }
@@ -37,7 +41,7 @@ export const InfoPageLayout = ({ children }) => {
           items={[
             {
               label: t('Swap'),
-              href: '/info',
+              href: '/info/bsc',
             },
             {
               label: t('StableSwap'),

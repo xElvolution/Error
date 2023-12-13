@@ -166,7 +166,7 @@ const config: (
       items: [
         {
           label: t('Info'),
-          // href: '/info',
+          href: '/info',
           status: {
             text: "Coming Soon",
             color: "warning",
@@ -174,7 +174,7 @@ const config: (
         },
         {
           label: t('IFO'),
-          href: '',
+          href: '/ifo',
           // image: '/images/ifos/ifo-bunny.png',
           status: {
             text: "Coming Soon",
