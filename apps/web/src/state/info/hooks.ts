@@ -251,7 +251,7 @@ export const useGetChainName = () => {
 
   const getChain = useCallback(() => {
     if (path.includes('eth')) return 'ETH'
-    else if (path.includes('vic')) return 'VIC';
+    if (path.includes('vic')) return 'VIC';
     return 'VIC'
   }, [path])
   const [name, setName] = useState<MultiChainName | null>(getChain())

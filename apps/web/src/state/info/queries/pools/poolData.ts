@@ -103,7 +103,7 @@ export const fetchPoolData = async (
   block7d: number,
   block14d: number,
   poolAddresses: string[],
-  chainName: 'ETH' | 'BSC' = 'BSC',
+  chainName: 'ETH' | 'BSC' | 'VIC' = 'VIC',
 ) => {
   try {
     const query = gql`
@@ -169,8 +169,8 @@ const usePoolDatas = (poolAddresses: string[]): PoolDatas => {
         block7d.number,
         block14d.number,
         poolAddresses,
-        chainName,
-      )
+        chainName, 
+        )
       if (error) {
         setFetchState({ error: true })
       } else {
