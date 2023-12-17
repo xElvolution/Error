@@ -3,7 +3,7 @@ import { Pool } from '@pancakeswap/uikit'
 import { SerializedWrappedToken } from '@pancakeswap/token-lists'
 import Trans from 'components/Trans'
 import { VaultKey } from 'state/types'
-import { bscTokens } from '@pancakeswap/tokens'
+import { bscTokens, victionTestnetTokens, victionTokens } from '@pancakeswap/tokens'
 import { PoolCategory } from './types'
 
 export const MAX_LOCK_DURATION = 31536000
@@ -24,12 +24,12 @@ export const vaultPoolConfig = {
     },
   },
   [VaultKey.CakeVault]: {
-    name: <Trans>Stake CAKE</Trans>,
+    name: <Trans>Stake Zodiac</Trans>,
     description: <Trans>Stake, Earn – And more!</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${victionTokens.zodiac.address}.png`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -45,11 +45,11 @@ export const vaultPoolConfig = {
   },
   [VaultKey.IfoPool]: {
     name: 'IFO CAKE',
-    description: <Trans>Stake CAKE to participate in IFOs</Trans>,
+    description: <Trans>Stake Zodiac to participate in IFOs</Trans>,
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${bscTokens.cake.address}.svg`,
+      primarySrc: `/images/tokens/${victionTestnetTokens.zodiac.address}.svg`,
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
   },

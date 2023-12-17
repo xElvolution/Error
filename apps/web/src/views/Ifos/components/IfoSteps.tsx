@@ -216,7 +216,7 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
               {t('Activate your Profile')}
             </Heading>
             <Text color="textSubtle" small mb="16px">
-              {t('You’ll need an active PancakeSwap Profile to take part in an IFO!')}
+              {t('You’ll need an active ZodiacSwap Profile to take part in an IFO!')}
             </Text>
             {renderAccountStatus()}
           </CardBody>
@@ -233,7 +233,7 @@ const IfoSteps: React.FC<React.PropsWithChildren<TypeProps>> = ({
             </Heading>
             <Text color="textSubtle" small>
               {t(
-                'After the IFO sales finish, you can claim any IFO tokens that you bought, and any unspent CAKE tokens will be returned to your wallet.',
+                'After the IFO sales finish, you can claim any IFO tokens that you bought, and any unspent Zodiac tokens will be returned to your wallet.',
               )}
             </Text>
           </CardBody>

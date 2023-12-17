@@ -88,7 +88,7 @@ const victionTestnet: Chain = {
 };
 
 const CHAINS = [
-  // bsc, 
+  bsc, 
   // mainnet, 
   // bscTestnet, 
   // baseGoerli,

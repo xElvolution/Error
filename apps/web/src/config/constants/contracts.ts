@@ -4,6 +4,9 @@ export default {
   masterChef: {
     97: '0xB4A466911556e39210a6bB2FaECBB59E4eB7E43d',
     56: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
+    89: '0xa5f8C5Dbd5F286960b9d90548680aE5ebFf07652',
+
+
   },
   masterChefV1: {
     97: '0x1d32c2945C8FDCBc7156c553B7cEa4325a17f4f9',
@@ -12,6 +15,8 @@ export default {
   sousChef: {
     97: '0xd3af5fe61dbaf8f73149bfcfa9fb653ff096029a',
     56: '0x6ab8463a4185b80905e05a9ff80a2d6b714b9e95',
+    89: '0x6ab8463a4185b80905e05a9ff80a2d6b714b9e95',
+
   },
   lotteryV2: {
     97: '0x5790c3534F30437641541a0FA04C992799602998',
@@ -21,10 +26,13 @@ export default {
   pancakeProfile: {
     56: '0xDf4dBf6536201370F95e06A0F8a7a70fE40E388a',
     97: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
+    89: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
   },
   pancakeBunnies: {
     56: '0xDf7952B35f24aCF7fC0487D01c8d5690a60DBa07',
     97: '0x60935F36e4631F73f0f407e68642144e07aC7f5E',
+    89: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
+
   },
   bunnyFactory: {
     56: '0xfa249Caa1D16f75fa159F7DFBAc0cC5EaB48CeFf',
@@ -37,6 +45,9 @@ export default {
   pointCenterIfo: {
     56: '0x3C6919b132462C1FEc572c6300E83191f4F0012a',
     97: '0xd2Ac1B1728Bb1C11ae02AB6e75B76Ae41A2997e3',
+    89: '0x4B683C7E13B6d5D7fd1FeA9530F451954c1A7c8A',
+
+    
   },
   bunnySpecial: {
     56: '0xFee8A195570a18461146F401d6033f5ab3380849',
