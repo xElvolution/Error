@@ -3,10 +3,10 @@ import { SerializedFarmConfig } from '@pancakeswap/farms'
 
 const farms: SerializedFarmConfig[] = [
   {
-    pid: 34,
+    pid: 0,
     vaultPid: 3,
     lpSymbol: 'ZODIAC-WVIC LP',
-    lpAddress: '0x8813D6BB24798468A9eDA5De4DabD68B625229b5',
+    lpAddress: '0xbf0395D168AE8A1a73572158D25e8C94565f3cE1',
     quoteToken: victionTokens.wvic,
     token: victionTokens.zodiac,
   },
