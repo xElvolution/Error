@@ -12,30 +12,6 @@ import { LedgerConnector } from 'wagmi/connectors/ledger'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from './safeConnector'
 
-const baseGoerli: Chain = {
-  id: 84531, // Replace with the actual ID of Base Goerli
-  name: 'Base Goerli',
-  network: 'base-goerli',
-  nativeCurrency: {
-    decimals: 18,
-    name: 'Base Goerli',
-    symbol: 'ETH',
-  },
-  rpcUrls: {
-    public: { http: ['https://goerli.base.org'] },
-    default: { http: ['https://goerli.base.org'] },
-  },
-  blockExplorers: {
-    etherscan: { name: 'Base Goerli Explorer', url: 'https://goerli.basescan.org' },
-    default: { name: 'Base Goerli Explorer', url: 'https://goerli.basescan.org' },
-  },
-  contracts: {
-    multicall3: {
-      address: '0x24bfc6eB2F4679217aD4cA77f7C0AA210A6c831D',
-      blockCreated: 11_907_934,
-    },
-  },
-};
 
 const viction: Chain = {
   id: 88, 
@@ -88,7 +64,7 @@ const victionTestnet: Chain = {
 };
 
 const CHAINS = [
-  bsc, 
+  // bsc, 
   // mainnet, 
   // bscTestnet, 
   // baseGoerli,

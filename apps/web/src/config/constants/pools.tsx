@@ -24,7 +24,7 @@ export const vaultPoolConfig = {
     },
   },
   [VaultKey.CakeVault]: {
-    name: <Trans>Stake Zodiac</Trans>,
+    name: <Trans>Stake ZODIAC</Trans>,
     description: <Trans>Stake, Earn – And more!</Trans>,
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
@@ -45,7 +45,7 @@ export const vaultPoolConfig = {
   },
   [VaultKey.IfoPool]: {
     name: 'IFO CAKE',
-    description: <Trans>Stake Zodiac to participate in IFOs</Trans>,
+    description: <Trans>Stake ZODIAC to participate in IFOs</Trans>,
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {
