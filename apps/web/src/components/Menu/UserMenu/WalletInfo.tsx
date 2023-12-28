@@ -37,10 +37,11 @@ interface WalletInfoProps {
 const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss }) => {
   const { t } = useTranslation()
   const { account, chainId, chain } = useActiveWeb3React()
-  const isBSC = chainId === ChainId.BSC
-  const nativeBalance = useBalance({ address: account, enabled: !isBSC })
+  // const isBSC = chainId === ChainId.BSC
+  const nativeBalance = useBalance({ address: account})
   const native = useNativeCurrency()
-  const wNativeToken = !isBSC ? WNATIVE[chainId] : null
+  const wNativeToken = WNATIVE[chainId]//  const wNativeToken = !isBSC ? WNATIVE[chainId] : null
+
   const { balance: wNativeBalance, fetchStatus: wNativeFetchStatus } = useTokenBalance(wNativeToken?.address)
   const { balance: zodiacBalance, fetchStatus: zodiacFetchStatus } = useGetZodiacBalance()
   const { logout } = useAuth()
@@ -72,7 +73,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
           </Box>
         </Message>
       )}
-      {!isBSC && chain && (
+      {chain && (
         <Box mb="12px">
           <Flex justifyContent="space-between" alignItems="center" mb="8px">
             <Flex bg={COLORS.VICTION} borderRadius="16px" pl="4px" pr="8px" py="2px">

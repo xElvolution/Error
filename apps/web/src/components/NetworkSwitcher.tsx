@@ -74,8 +74,8 @@ const WrongNetworkSelect = ({ switchNetwork, chainId }) => {
     },
   )
   const { chain } = useNetwork()
-  const localChainId = useLocalNetworkChain() || ChainId.BSC
-  const [, setSessionChainId] = useSessionChainId()
+  const localChainId = useLocalNetworkChain() || ChainId.VICTION
+  const [, setSessionChainId] = useSessionChainId() 
 
   const localChainName = chains.find((c) => c.id === localChainId)?.name ?? 'BSC'
 
