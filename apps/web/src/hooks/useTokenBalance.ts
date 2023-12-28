@@ -8,12 +8,12 @@ import { ChainId } from '@pancakeswap/sdk'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { bscRpcProvider } from 'utils/providers'
+import { victionTestnetRpcProvider, bscRpcProvider } from 'utils/providers'
 import { useWeb3React } from '@pancakeswap/wagmi'
 import { useTokenContract } from './useContract'
 import { useSWRContract } from './useSWRContract'
 
-const useTokenBalance = (tokenAddress: string, forceBSC?: boolean) => {
+const useTokenBalance = (tokenAddress: string, forceVictionTestnet?: boolean) => {
   const { address: account } = useAccount()
 
   const contract = useTokenContract(tokenAddress, false)
@@ -22,12 +22,12 @@ const useTokenBalance = (tokenAddress: string, forceBSC?: boolean) => {
     () =>
       account
         ? {
-            contract: forceBSC ? contract.connect(bscRpcProvider) : contract,
+            contract: forceVictionTestnet ? contract.connect(victionTestnetRpcProvider) : contract,
             methodName: 'balanceOf',
             params: [account],
           }
         : null,
-    [account, contract, forceBSC],
+    [account, contract, forceVictionTestnet],
   )
 
   const { data, status, ...rest } = useSWRContract(key as any, {
