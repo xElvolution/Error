@@ -109,7 +109,7 @@ export const useERC721 = (address: string, withSignerIfPossible = true) => {
 }
 
 export const useCake = (): { reader: Cake; signer: Cake } => {
-  const providerOrSigner = useProviderOrSigner(true, true)
+  const providerOrSigner = useProviderOrSigner(true)
   return useMemo(
     () => ({
       reader: getCakeContract(null),
@@ -130,12 +130,12 @@ export const usePancakeBunnies = () => {
 }
 
 export const useProfileContract = (withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getProfileContract(providerOrSigner), [providerOrSigner])
 }
 
 export const useLotteryV2Contract = () => {
-  const providerOrSigner = useProviderOrSigner(true, true)
+  const providerOrSigner = useProviderOrSigner(true)
   return useMemo(() => getLotteryV2Contract(providerOrSigner), [providerOrSigner])
 }
 
@@ -171,22 +171,22 @@ export const useClaimRefundContract = () => {
 }
 
 export const useTradingCompetitionContractEaster = (withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getTradingCompetitionContractEaster(providerOrSigner), [providerOrSigner])
 }
 
 export const useTradingCompetitionContractFanToken = (withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getTradingCompetitionContractFanToken(providerOrSigner), [providerOrSigner])
 }
 
 export const useTradingCompetitionContractMobox = (withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getTradingCompetitionContractMobox(providerOrSigner), [providerOrSigner])
 }
 
 export const useTradingCompetitionContractMoD = (withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getTradingCompetitionContractMoD(providerOrSigner), [providerOrSigner])
 }
 
@@ -230,7 +230,7 @@ export const usePredictionsContract = (address: string, tokenSymbol: string) => 
 }
 
 export const useChainlinkOracleContract = (address, withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getChainlinkOracleContract(address, providerOrSigner), [providerOrSigner, address])
 }
 
@@ -255,7 +255,7 @@ export const useBunnySpecialXmasContract = () => {
 }
 
 export const useAnniversaryAchievementContract = (withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getAnniversaryAchievementContract(providerOrSigner), [providerOrSigner])
 }
 
@@ -270,7 +270,7 @@ export const usePancakeSquadContract = () => {
 }
 
 export const useFarmAuctionContract = (withSignerIfPossible = true) => {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getFarmAuctionContract(providerOrSigner), [providerOrSigner])
 }
 
@@ -353,17 +353,17 @@ export function useZapContract(withSignerIfPossible = true) {
 }
 
 export function useBCakeFarmBoosterContract(withSignerIfPossible = true) {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getBCakeFarmBoosterContract(providerOrSigner), [providerOrSigner])
 }
 
 export function useBCakeFarmBoosterProxyFactoryContract(withSignerIfPossible = true) {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getBCakeFarmBoosterProxyFactoryContract(providerOrSigner), [providerOrSigner])
 }
 
 export function useBCakeProxyContract(proxyContractAddress: string, withSignerIfPossible = true) {
-  const providerOrSigner = useProviderOrSigner(withSignerIfPossible, true)
+  const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(
     () => proxyContractAddress && getBCakeProxyContract(proxyContractAddress, providerOrSigner),
     [providerOrSigner, proxyContractAddress],
