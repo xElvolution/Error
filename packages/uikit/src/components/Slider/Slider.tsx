@@ -1,10 +1,9 @@
 import React, { ChangeEvent, useCallback } from "react";
 import { Box } from "../Box";
 import {
-  BunnySlider,
+  ZodiacSlider,
   BarBackground,
   BarProgress,
-  BunnyButt,
   StyledInput,
   SliderLabel,
   SliderLabelContainer,
@@ -45,8 +44,7 @@ const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
   const displayValueLabel = isMax ? "MAX" : valueLabel;
   return (
     <Box position="relative" height="48px" {...props}>
-      <BunnyButt disabled={disabled} />
-      <BunnySlider>
+      <ZodiacSlider>
         <BarBackground disabled={disabled} />
         <BarProgress style={{ width: progressWidth }} disabled={disabled} />
         <StyledInput
@@ -60,7 +58,7 @@ const Slider: React.FC<React.PropsWithChildren<SliderProps>> = ({
           isMax={isMax}
           disabled={disabled}
         />
-      </BunnySlider>
+      </ZodiacSlider>
       {valueLabel && (
         <SliderLabelContainer>
           <SliderLabel progress={labelProgress}>{displayValueLabel}</SliderLabel>

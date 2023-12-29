@@ -54,7 +54,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* (bunnyslider): Remove visible box shadow on slider thumb in mobile safari ([#360](https://github.com/pancakeswap/pancake-toolkit/tree/master/packages/pancake-uikit/issues/360)) ([c74da59](https://github.com/pancakeswap/pancake-toolkit/tree/master/packages/pancake-uikit/commit/c74da59e3a0c4be9112b3d2d9cadcea4a892956a))
+* (zodiacSlider): Remove visible box shadow on slider thumb in mobile safari ([#360](https://github.com/pancakeswap/pancake-toolkit/tree/master/packages/pancake-uikit/issues/360)) ([c74da59](https://github.com/pancakeswap/pancake-toolkit/tree/master/packages/pancake-uikit/commit/c74da59e3a0c4be9112b3d2d9cadcea4a892956a))
 
 
 ### Features

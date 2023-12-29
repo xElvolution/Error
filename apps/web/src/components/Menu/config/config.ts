@@ -97,7 +97,6 @@ const config: (
         },
         {
           label: t('Pools'),
-          // href: '/pools',
           status: {
             text: "Coming Soon",
             color: "warning",
@@ -206,7 +205,7 @@ const config: (
         },
         {
           label: t('Docs'),
-          href: '',
+          href: 'https://zodiacswap.gitbook.io/zodiacswap/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
