@@ -11,6 +11,8 @@ import {
   // NftFillIcon,
   MoreIcon,
   DropdownMenuItems,
+  SwapVertIcon,
+  RocketIcon,
 } from '@pancakeswap/uikit'
 import { ContextApi } from '@pancakeswap/localization'
 // import { nftsBaseUrl } from 'views/Nft/market/constants'
@@ -43,9 +45,9 @@ const config: (
 ) => ConfigMenuItemsType[] = (t, isDark, languageCode, chainId) =>
   [
     {
-      label: t('Trade'),
-      icon: SwapIcon,
-      fillIcon: SwapFillIcon,
+      label: t('Exchange'),
+      icon: SwapVertIcon,
+      fillIcon: SwapVertIcon,
       href: '/swap',
       showItemsOnMobile: false,
       items: [
@@ -83,8 +85,8 @@ const config: (
     {
       label: t('Earn'),
       href: '/#',
-      icon: EarnIcon,
-      fillIcon: EarnFillIcon,
+      icon: RocketIcon,
+      fillIcon: RocketIcon,
       image: '/images/decorations/pe2.png',
       items: [
         {
