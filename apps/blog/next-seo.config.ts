@@ -4,16 +4,16 @@ export const SEO: DefaultSeoProps = {
   titleTemplate: '%s | PancakeSwap',
   defaultTitle: 'Blog | PancakeSwap',
   description:
-    'Cheaper and faster than Uniswap? Discover PancakeSwap, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for CAKE.',
+    'Introducing ZodiacSwap: Unleashing Celestial Power in the DeFi Universe!',
   twitter: {
     cardType: 'summary_large_image',
     handle: '@ZodiacSwap',
     site: '@ZodiacSwap',
   },
   openGraph: {
-    title: '🥞 ZodiacSwap - A next evolution DeFi exchange on Viction Chain ',
+    title: '✨ ZodiacSwap - A next evolution DeFi exchange on Viction Chain ',
     description:
-      'The most popular AMM on BSC! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by PancakeSwap), NFTs, and more, on a platform you can trust.',
+      'Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Viction Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨',
     images: [{ url: 'https://zodiacswap.xyz/images/hero.png' }],
   },
 }

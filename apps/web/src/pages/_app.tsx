@@ -75,7 +75,7 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         <meta name="twitter:image" content="https://zodiacswap.xyz/images/hero.png" />
         <meta
           name="twitter:description"
-          content="The most popular AMM on BSC! Earn CAKE through yield farming or win it in the Lottery, then stake it in Syrup Pools to earn more tokens! Initial Farm Offerings (new token launch model pioneered by PancakeSwap), NFTs, and more, on a platform you can trust."
+          content="Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Viction Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="✨ ZodiacSwap - A next evolution DeFi exchange on Viction Chain" />
