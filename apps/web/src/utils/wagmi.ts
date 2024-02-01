@@ -13,22 +13,22 @@ import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from './safeConnector'
 
 
-const viction: Chain = {
-  id: 88, 
-  name: 'Viction Mainnet',
-  network: 'viction-mainnet',
+const areon: Chain = {
+  id: 463, 
+  name: 'Areon Mainnet',
+  network: 'areon-mainnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'Viction Mainnet',
-    symbol: 'VIC',
+    name: 'Areon Mainnet',
+    symbol: 'AREA',
   },
   rpcUrls: {
-    public: { http: ['https://rpc.tomochain.com'] },
-    default: { http: ['https://rpc.tomochain.com'] },
+    public: { http: ['https://mainnet-rpc.areon.network'] },
+    default: { http: ['https://mainnet-rpc.areon.network'] },
   },
   blockExplorers: {
-    etherscan: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io' },
-    default: { name: 'Viction Mainnet Explorer', url: 'https://tomoscan.io' },
+    etherscan: { name: 'Areon Mainnet Explorer', url: 'https://areonscan.com/' },
+    default: { name: 'Areon Mainnet Explorer', url: 'https://areonscan.com/' },
   },
   contracts: {
     multicall3: {
@@ -38,22 +38,22 @@ const viction: Chain = {
   },
 };
 
-const victionTestnet: Chain = {
-  id: 89, 
-  name: 'Viction Testnet',
-  network: 'viction-testnet',
+const areonTestnet: Chain = {
+  id: 462, 
+  name: 'Areon Testnet',
+  network: 'areon-testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'Viction Testnet',
-    symbol: 'VIC',
+    name: 'Areon Testnet',
+    symbol: 'AREA',
   },
   rpcUrls: {
-    public: { http: ['https://rpc.testnet.tomochain.com'] },
-    default: { http: ['https://rpc.testnet.tomochain.com'] },
+    public: { http: ['https://testnet-rpc.areon.network'] },
+    default: { http: ['https://testnet-rpc.areon.network'] },
   },
   blockExplorers: {
-    etherscan: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
-    default: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
+    etherscan: { name: 'Areon Testnet Explorer', url: 'https://areonscan.com' },
+    default: { name: 'Areon Testnet Explorer', url: 'https://areonscan.com' },
   },
   contracts: {
     multicall3: {
@@ -69,8 +69,8 @@ const CHAINS = [
   // bscTestnet, 
   // baseGoerli,
   // goerli,
-  viction,
-  victionTestnet
+  areon,
+  areonTestnet
 ]
 
 const getNodeRealUrl = (networkName: string) => {

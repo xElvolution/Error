@@ -3,7 +3,7 @@ import { Pool } from '@pancakeswap/uikit'
 import { SerializedWrappedToken } from '@pancakeswap/token-lists'
 import Trans from 'components/Trans'
 import { VaultKey } from 'state/types'
-import { bscTokens, victionTestnetTokens, victionTokens } from '@pancakeswap/tokens'
+import { bscTokens, areonTestnetTokens, areonTokens } from '@pancakeswap/tokens'
 import { PoolCategory } from './types'
 
 export const MAX_LOCK_DURATION = 31536000
@@ -29,7 +29,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 5000,
     gasLimit: 600000,
     tokenImage: {
-      primarySrc: `/images/tokens/${victionTokens.zodiac.address}.png`,
+      primarySrc: `/images/tokens/${areonTokens.zodiac.address}.png`,
       secondarySrc: '/images/tokens/autorenew.svg',
     },
   },
@@ -49,7 +49,7 @@ export const vaultPoolConfig = {
     autoCompoundFrequency: 1,
     gasLimit: 500000,
     tokenImage: {
-      primarySrc: `/images/tokens/${victionTestnetTokens.zodiac.address}.svg`,
+      primarySrc: `/images/tokens/${areonTestnetTokens.zodiac.address}.svg`,
       secondarySrc: `/images/tokens/ifo-pool-icon.svg`,
     },
   },

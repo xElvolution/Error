@@ -2,7 +2,7 @@ import { TranslateFunction } from '@pancakeswap/localization'
 import { SalesSectionProps } from '.'
 
 export const swapSectionData = (t: TranslateFunction): SalesSectionProps => ({
-  headingText: t('Trade any token in seconds on Viction Chain.'),
+  headingText: t('Trade any token in seconds on Areon Chain.'),
   bodyText: t('Embark on a celestial voyage - no registration, no hassle, just endless possibilities.'),
   reverse: false,
   primaryButton: {
@@ -54,7 +54,7 @@ export const cakeSectionData = (t: TranslateFunction): SalesSectionProps => ({
   ),
   reverse: false,
   primaryButton: {
-    to: '/swap?chain=victionTestnet&outputCurrency=0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
+    to: '/swap?chain=areonTestnet&outputCurrency=0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
     text: t('Buy ZODIAC'),
     external: false,
   },

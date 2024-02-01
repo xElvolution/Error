@@ -32,18 +32,18 @@ export const baseGoerliProvider = new StaticJsonRpcProvider(
   5,
 )
 
-export const victionProvider = new StaticJsonRpcProvider(
+export const areonProvider = new StaticJsonRpcProvider(
   {
     url: '',
     skipFetchSetup: true,
   },
-  88,
+  463,
 )
 
-export const victionTestnetProvider = new StaticJsonRpcProvider(
+export const areonTestnetProvider = new StaticJsonRpcProvider(
   {
     url: '',
     skipFetchSetup: true,
   },
-  89,
+  462,
 )

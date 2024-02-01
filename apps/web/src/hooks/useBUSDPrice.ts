@@ -9,7 +9,7 @@ import {
   WNATIVE,
   WBNB,
   ERC20Token,
-  WVIC,
+  WAREA,
 } from '@pancakeswap/sdk'
 import { FAST_INTERVAL } from 'config/constants'
 import { BUSD, CAKE, USDT, ZODIAC} from '@pancakeswap/tokens'
@@ -191,7 +191,7 @@ export const useZodiacBusdPrice = (
   const { chainId } = useActiveChainId()
   const isTestnet = forceMainnet && isChainTestnet(chainId)
   // Return bsc testnet cake if chain is testnet
-  const zodiac: Token = isTestnet ? ZODIAC[ChainId.VICTION_TESTNET] : ZODIAC[ChainId.VICTION_TESTNET]
+  const zodiac: Token = isTestnet ? ZODIAC[ChainId.AREON_TESTNET] : ZODIAC[ChainId.AREON_TESTNET]
   return usePriceByPairs(BUSD[zodiac.chainId], zodiac)
 }
 
@@ -202,17 +202,17 @@ export const useBNBBusdPrice = (
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
   // Return bsc testnet wbnb if chain is testnet
-  const wvic: Token = isTestnet ? WVIC[ChainId.VICTION_TESTNET] : WVIC[ChainId.VICTION]
-  return usePriceByPairs(USDT[wvic.chainId], wvic)
+  const warea: Token = isTestnet ? WAREA[ChainId.AREON_TESTNET] : WAREA[ChainId.AREON]
+  return usePriceByPairs(USDT[warea.chainId], warea)
 }
 
 // @Note: only fetch from one pair
-export const useVICUsdtPrice = (
+export const useAREAUsdtPrice = (
   { forceMainnet } = { forceMainnet: false },
 ): Price<ERC20Token, ERC20Token> | undefined => {
   const { chainId } = useActiveChainId()
   const isTestnet = !forceMainnet && isChainTestnet(chainId)
   // Return bsc testnet wbnb if chain is testnet
-  const wvic: Token = isTestnet ? WVIC[ChainId.VICTION_TESTNET] : WVIC[ChainId.VICTION]
-  return usePriceByPairs(USDT[wvic.chainId], wvic)
+  const warea: Token = isTestnet ? WAREA[ChainId.AREON_TESTNET] : WAREA[ChainId.AREON]
+  return usePriceByPairs(USDT[warea.chainId], warea)
 }

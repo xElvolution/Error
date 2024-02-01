@@ -6,8 +6,8 @@ enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   BASE_GOERLI = 84531,
-  VICTION_TESTNET = 89,
-  VICTION = 88,
+  AREON_TESTNET = 462,
+  AREON = 463,
 }
 
 describe('Token', () => {

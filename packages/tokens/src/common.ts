@@ -19,7 +19,7 @@ export const CAKE_TESTNET = new ERC20Token(
 )
 
 export const ZODIAC_MAINNET = new ERC20Token(
-  ChainId.VICTION,
+  ChainId.AREON,
   '0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
   18,
   'ZODIAC',
@@ -28,7 +28,7 @@ export const ZODIAC_MAINNET = new ERC20Token(
 )
 
 export const ZODIAC_TESTNET = new ERC20Token(
-  ChainId.VICTION_TESTNET,
+  ChainId.AREON_TESTNET,
   '0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
   18,
   'ZODIAC',
@@ -62,16 +62,16 @@ export const USDC_ETH = new ERC20Token(
   'USD Coin',
 )
 
-export const USDT_VICTION = new ERC20Token(
-  ChainId.VICTION,
+export const USDT_AREON = new ERC20Token(
+  ChainId.AREON,
   '0x02F9Bebf5E54968D8Cc2562356C91ECDE135801B',
   18,
   'USDT',
   'Tether USD Coin',
 )
 
-export const USDT_VICTION_TESTNET = new ERC20Token(
-  ChainId.VICTION_TESTNET,
+export const USDT_AREON_TESTNET = new ERC20Token(
+  ChainId.AREON_TESTNET,
   '0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E',
   18,
   'USDT',
@@ -122,7 +122,7 @@ export const BUSD_BSC = new ERC20Token(
 )
 
 export const BUSD_M = new ERC20Token(
-  ChainId.VICTION,
+  ChainId.AREON,
   '0x381B31409e4D220919B2cFF012ED94d70135A59e',
   18,
   'BUSD',
@@ -158,8 +158,8 @@ export const BUSD_GOERLI = new ERC20Token(
 )
 
 
-export const BUSD_VICTION_TESTNET = new ERC20Token(
-  ChainId.VICTION_TESTNET,
+export const BUSD_AREON_TESTNET = new ERC20Token(
+  ChainId.AREON_TESTNET,
   '0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E',
   18,
   'BUSD',
@@ -173,8 +173,8 @@ export const BUSD: Record<ChainId, ERC20Token> = {
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
   [ChainId.BASE_GOERLI]: BUSD_GOERLI,
-  [ChainId.VICTION]: BUSD_M,
-  [ChainId.VICTION_TESTNET]: BUSD_VICTION_TESTNET,
+  [ChainId.AREON]: BUSD_M,
+  [ChainId.AREON_TESTNET]: BUSD_AREON_TESTNET,
 
 }
 
@@ -184,8 +184,8 @@ export const CAKE = {
 }
 
 export const ZODIAC = {
-  [ChainId.VICTION]: ZODIAC_MAINNET,
-  [ChainId.VICTION_TESTNET]: ZODIAC_TESTNET,
+  [ChainId.AREON]: ZODIAC_MAINNET,
+  [ChainId.AREON_TESTNET]: ZODIAC_TESTNET,
 }
 
 export const USDC = {
@@ -199,8 +199,8 @@ export const USDC = {
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
   [ChainId.ETHEREUM]: USDT_ETH,
-  [ChainId.VICTION]: USDT_VICTION,
-  [ChainId.VICTION_TESTNET]: USDT_VICTION_TESTNET,
+  [ChainId.AREON]: USDT_AREON,
+  [ChainId.AREON_TESTNET]: USDT_AREON_TESTNET,
 }
 
 export const WBTC_ETH = new ERC20Token(

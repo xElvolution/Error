@@ -26,10 +26,7 @@ import Image from 'next/image'
 
 import { ChainLogo } from './Logo/ChainLogo'
 
-const AptosChain = {
-  id: 1,
-  name: 'Aptos',
-}
+
 
 const NetworkSelect = ({ switchNetwork, chainId }) => {
   const { t } = useTranslation()
@@ -74,7 +71,7 @@ const WrongNetworkSelect = ({ switchNetwork, chainId }) => {
     },
   )
   const { chain } = useNetwork()
-  const localChainId = useLocalNetworkChain() || ChainId.VICTION
+  const localChainId = useLocalNetworkChain() || ChainId.AREON
   const [, setSessionChainId] = useSessionChainId() 
 
   const localChainName = chains.find((c) => c.id === localChainId)?.name ?? 'BSC'

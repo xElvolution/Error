@@ -25,7 +25,7 @@ import { useBalance } from 'wagmi'
 const COLORS = {
   ETH: '#627EEA',
   BNB: '#14151A',
-  VICTION: '#000000',
+  AREON: '#000000',
 }
 
 interface WalletInfoProps {
@@ -76,7 +76,7 @@ const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss 
       {chain && (
         <Box mb="12px">
           <Flex justifyContent="space-between" alignItems="center" mb="8px">
-            <Flex bg={COLORS.VICTION} borderRadius="16px" pl="4px" pr="8px" py="2px">
+            <Flex bg={COLORS.AREON} borderRadius="16px" pl="4px" pr="8px" py="2px">
               <ChainLogo chainId={chain.id} />
               <Text color="white" ml="4px">
                 {chain.name}

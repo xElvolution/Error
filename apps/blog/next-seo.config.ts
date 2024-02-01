@@ -11,9 +11,9 @@ export const SEO: DefaultSeoProps = {
     site: '@ZodiacSwap',
   },
   openGraph: {
-    title: '✨ ZodiacSwap - A next evolution DeFi exchange on Viction Chain ',
+    title: '✨ ZodiacSwap - A next evolution DeFi exchange on Areon Chain ',
     description:
-      'Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Viction Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨',
+      'Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Areon Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨',
     images: [{ url: 'https://zodiacswap.xyz/images/hero.png' }],
   },
 }

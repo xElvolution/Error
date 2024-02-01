@@ -44,8 +44,8 @@ export default function CurrencyLogo({
     if (currency.chainId === ChainId.BSC) {
       return <BinanceIcon width={size} style={style} />
     }
-    if (currency.chainId === ChainId.VICTION) {
-      return <img src="/images/chains/88.png" width={size} style={style} alt="Viction" />
+    if (currency.chainId === ChainId.AREON) {
+      return <img src="/images/chains/465.png" width={size} style={style} alt="Areon" />
     }
     return (
       <StyledLogo

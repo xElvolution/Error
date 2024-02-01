@@ -7,8 +7,8 @@ export enum ChainId {
   BSC = 56,
   BSC_TESTNET = 97,
   BASE_GOERLI = 84531,
-  VICTION = 88,
-  VICTION_TESTNET = 89,
+  AREON = 463,
+  AREON_TESTNET = 462,
 }
 
 export const ZERO_PERCENT = new Percent('0')
@@ -25,8 +25,8 @@ export const FACTORY_ADDRESS_MAP: Record<number, string> = {
   [ChainId.BSC]: FACTORY_ADDRESS,
   [ChainId.BSC_TESTNET]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
   [ChainId.BASE_GOERLI]: '0x0Fe7C8BF49Aa7d1605a92Ee526850A3d850577be',
-  [ChainId.VICTION]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
-  [ChainId.VICTION_TESTNET]: '0x1932C94E65eE132d251d267600542074365AE983',
+  [ChainId.AREON]: '0x6725f303b657a9451d8ba641348b6761a6cc7a17',
+  [ChainId.AREON_TESTNET]: '0x1932C94E65eE132d251d267600542074365AE983',
 
 }
 export const INIT_CODE_HASH = '0x00fb7f630766e6a796048ea87d01acd3068e8ff67d078148a3fa3f4a84f69bd5'
@@ -40,8 +40,8 @@ export const INIT_CODE_HASH_MAP: Record<number, string> = {
   [ChainId.GOERLI]: INIT_CODE_HASH_ETH,
   [ChainId.BSC]: INIT_CODE_HASH,
   [ChainId.BSC_TESTNET]: '0xd0d4c4cd0848c93cb4fd1f498d7013ee6bfb25783ea21593d5834f5d250ece66',
-  [ChainId.VICTION]: INIT_CODE_HASH,
-  [ChainId.VICTION_TESTNET]: '0x2ffa70575b7164927b6b77d1af54d71a4b83000fde6bb94b6f4dd35a27ff14cb',
+  [ChainId.AREON]: INIT_CODE_HASH,
+  [ChainId.AREON_TESTNET]: '0x2ffa70575b7164927b6b77d1af54d71a4b83000fde6bb94b6f4dd35a27ff14cb',
   [ChainId.BASE_GOERLI]: INIT_CODE_HASH_BASE,
 
 }
@@ -100,22 +100,22 @@ export const WBNB = {
   ),
 }
 
-export const WVIC = {
-[ChainId.VICTION]: new ERC20Token(
-  ChainId.VICTION,
+export const WAREA = {
+[ChainId.AREON]: new ERC20Token(
+  ChainId.AREON,
   '0xC054751BdBD24Ae713BA3Dc9Bd9434aBe2abc1ce',
   18,
-  'WVIC',
-  'Wrapped VIC',
-  'https://www.viction.xyz/'
+  'WAREA',
+  'Wrapped AREA',
+  'https://www.areon.network/'
 ),
-[ChainId.VICTION_TESTNET]: new ERC20Token(
-  ChainId.VICTION_TESTNET,
+[ChainId.AREON_TESTNET]: new ERC20Token(
+  ChainId.AREON_TESTNET,
   '0xeD36ca79cD08332553ad11f5905aE759DA008Bc5',
   18,
-  'WVIC',
-  'Wrapped VIC',
-  'https://www.viction.xyz/'
+  'WAREA',
+  'Wrapped AREA',
+  'https://www.areon.network/'
 ),
 }
 
@@ -125,8 +125,8 @@ export const WNATIVE: Record<number, ERC20Token> = {
   [ChainId.BASE_GOERLI]: WETH9[ChainId.BASE_GOERLI],
   [ChainId.BSC]: WBNB[ChainId.BSC],
   [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
-  [ChainId.VICTION]: WVIC[ChainId.VICTION],
-  [ChainId.VICTION_TESTNET]: WVIC[ChainId.VICTION_TESTNET],
+  [ChainId.AREON]: WAREA[ChainId.AREON],
+  [ChainId.AREON_TESTNET]: WAREA[ChainId.AREON_TESTNET],
 }
 
 export const NATIVE: Record<
@@ -150,14 +150,14 @@ export const NATIVE: Record<
     symbol: 'tBNB',
     decimals: 18,
   },
-  [ChainId.VICTION]: {
-    name: 'Viction Network Native Token',
-    symbol: 'VIC',
+  [ChainId.AREON]: {
+    name: 'Areon Network Native Token',
+    symbol: 'AREA',
     decimals: 18,
   },
-  [ChainId.VICTION_TESTNET]: {
-    name: 'Viction Network Native Token',
-    symbol: 'tVIC',
+  [ChainId.AREON_TESTNET]: {
+    name: 'Areon Network Native Token',
+    symbol: 'tAREA',
     decimals: 18,
   },
 }

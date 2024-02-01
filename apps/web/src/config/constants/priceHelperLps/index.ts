@@ -5,8 +5,8 @@ import PoolsGoerliPriceHelper from './pools/5'
 import PoolsBscPriceHelper from './pools/56'
 import PoolsBscTestnetPriceHelper from './pools/97'
 import PoolsBaseGoerliPriceHelper from './pools/84531'
-import PoolsVictionPriceHelper from './pools/88'
-import PoolsVictionTestnetPriceHelper from './pools/89'
+import PoolsAreonPriceHelper from './pools/463'
+import PoolsAreonTestnetPriceHelper from './pools/462'
 
 export { getFarmsPriceHelperLpFiles }
 
@@ -22,10 +22,10 @@ export const getPoolsPriceHelperLpFiles = (chainId: ChainId) => {
       return PoolsGoerliPriceHelper
     case ChainId.BASE_GOERLI:
       return PoolsBaseGoerliPriceHelper
-    case ChainId.VICTION:
-      return PoolsVictionPriceHelper
-    case ChainId.VICTION_TESTNET:
-      return PoolsVictionTestnetPriceHelper
+    case ChainId.AREON:
+      return PoolsAreonPriceHelper
+    case ChainId.AREON_TESTNET:
+      return PoolsAreonTestnetPriceHelper
     default:
       return []
   }

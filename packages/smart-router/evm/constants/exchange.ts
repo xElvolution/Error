@@ -1,5 +1,5 @@
 import { ChainId, Token, WBNB, WNATIVE } from '@pancakeswap/sdk'
-import { bscTokens, bscTestnetTokens, BUSD, USDC, USDT, victionTokens, victionTestnetTokens } from '@pancakeswap/tokens'
+import { bscTokens, bscTestnetTokens, BUSD, USDC, USDT, areonTokens, areonTestnetTokens } from '@pancakeswap/tokens'
 
 import { ChainMap, ChainTokenList } from '../types'
 
@@ -9,8 +9,8 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.BASE_GOERLI]: '0x32dE1Eac390d8D16A67EFf13ddAdEE443dcFb438',
   [ChainId.BSC]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
   [ChainId.BSC_TESTNET]: '0xD99D1c33F9fC3444f8101754aBC46c52416550D1',
-  [ChainId.VICTION]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
-  [ChainId.VICTION_TESTNET]: '0x298a3B9840C2be05f0f91832acdf670aB9a15a37',
+  [ChainId.AREON]: '0x10ED43C718714eb63d5aA57B78B54704E256024E',
+  [ChainId.AREON_TESTNET]: '0x298a3B9840C2be05f0f91832acdf670aB9a15a37',
 }
 
 export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
@@ -19,8 +19,8 @@ export const STABLE_SWAP_INFO_ADDRESS: ChainMap<string> = {
   [ChainId.BASE_GOERLI]: '',
   [ChainId.BSC]: '0xa680d27f63Fa5E213C502d1B3Ca1EB6a3C1b31D6',
   [ChainId.BSC_TESTNET]: '0xaE6C14AAA753B3FCaB96149e1E10Bc4EDF39F546',
-  [ChainId.VICTION]: '',
-  [ChainId.VICTION_TESTNET]: '',
+  [ChainId.AREON]: '',
+  [ChainId.AREON_TESTNET]: '',
 }
 
 // used to construct intermediary pairs for trading
@@ -44,8 +44,8 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.usdt,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.VICTION]: [victionTokens.wvic, victionTokens.zodiac, victionTokens.usdt],
-  [ChainId.VICTION_TESTNET]: [victionTestnetTokens.wvic, victionTestnetTokens.zodiac, victionTestnetTokens.usdt],
+  [ChainId.AREON]: [areonTokens.warea, areonTokens.zodiac, areonTokens.usdt],
+  [ChainId.AREON_TESTNET]: [areonTestnetTokens.warea, areonTestnetTokens.zodiac, areonTestnetTokens.usdt],
 }
 
 /**
@@ -79,8 +79,8 @@ export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.BASE_GOERLI]: [USDC[ChainId.BASE_GOERLI], WNATIVE[ChainId.BASE_GOERLI]],
   [ChainId.BSC]: [bscTokens.busd, bscTokens.cake, bscTokens.btcb],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.VICTION]: [victionTokens.wvic, victionTokens.zodiac, victionTokens.usdt],
-  [ChainId.VICTION_TESTNET]: [victionTestnetTokens.wvic, victionTestnetTokens.zodiac, victionTestnetTokens.usdt],
+  [ChainId.AREON]: [areonTokens.warea, areonTokens.zodiac, areonTokens.usdt],
+  [ChainId.AREON_TESTNET]: [areonTestnetTokens.warea, areonTestnetTokens.zodiac, areonTestnetTokens.usdt],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -96,8 +96,8 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.BASE_GOERLI]: [USDC[ChainId.BASE_GOERLI], WNATIVE[ChainId.BASE_GOERLI]],
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.cake],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.cake, bscTestnetTokens.busd],
-  [ChainId.VICTION]: [victionTokens.wvic, victionTokens.zodiac, victionTokens.usdt],
-  [ChainId.VICTION_TESTNET]: [victionTestnetTokens.wvic, victionTestnetTokens.zodiac, victionTestnetTokens.usdt],
+  [ChainId.AREON]: [areonTokens.warea, areonTokens.zodiac, areonTokens.usdt],
+  [ChainId.AREON_TESTNET]: [areonTestnetTokens.warea, areonTestnetTokens.zodiac, areonTestnetTokens.usdt],
 }
 
 export const PINNED_PAIRS: {

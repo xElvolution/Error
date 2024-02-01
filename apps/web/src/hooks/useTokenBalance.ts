@@ -8,12 +8,12 @@ import { ChainId } from '@pancakeswap/sdk'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import { BIG_ZERO } from '@pancakeswap/utils/bigNumber'
-import { victionTestnetRpcProvider, bscRpcProvider } from 'utils/providers'
+import { areonTestnetRpcProvider, bscRpcProvider } from 'utils/providers'
 import { useWeb3React } from '@pancakeswap/wagmi'
 import { useTokenContract } from './useContract'
 import { useSWRContract } from './useSWRContract'
 
-const useTokenBalance = (tokenAddress: string, forceVictionTestnet?: boolean) => {
+const useTokenBalance = (tokenAddress: string, forceAreonTestnet?: boolean) => {
   const { address: account } = useAccount()
 
   const contract = useTokenContract(tokenAddress, false)
@@ -22,12 +22,12 @@ const useTokenBalance = (tokenAddress: string, forceVictionTestnet?: boolean) =>
     () =>
       account
         ? {
-            contract: forceVictionTestnet ? contract.connect(victionTestnetRpcProvider) : contract,
+            contract: forceAreonTestnet ? contract.connect(areonTestnetRpcProvider) : contract,
             methodName: 'balanceOf',
             params: [account],
           }
         : null,
-    [account, contract, forceVictionTestnet],
+    [account, contract, forceAreonTestnet],
   )
 
   const { data, status, ...rest } = useSWRContract(key as any, {
@@ -60,7 +60,7 @@ export const useGetCakeBalance = () => {
 
 export const useGetZodiacBalance = () => {
   const { chainId } = useWeb3React()
-  const { balance, fetchStatus } = useTokenBalance(ZODIAC[chainId]?.address || ZODIAC[ChainId.VICTION_TESTNET]?.address, true)
+  const { balance, fetchStatus } = useTokenBalance(ZODIAC[chainId]?.address || ZODIAC[ChainId.AREON_TESTNET]?.address, true)
 
   // TODO: Remove ethers conversion once useTokenBalance is converted to ethers.BigNumber
   return { balance: EthersBigNumber.from(balance.toString()), fetchStatus }

@@ -2,18 +2,17 @@ import type { Ethereum } from '@wagmi/core'
 
 export interface ExtendEthereum extends Ethereum {
   isSafePal?: true
+  isAreon?: true
   isCoin98?: true
   isBlocto?: true
   isMathWallet?: true
   isTrustWallet?: true
   isBlocto?: true
-  isViction?: true
-
 }
 
 declare global {
   interface Window {
-    viction?: true
+    areon?: true
     coin98?: true
     ethereum?: ExtendEthereum
     BinanceChain?: {

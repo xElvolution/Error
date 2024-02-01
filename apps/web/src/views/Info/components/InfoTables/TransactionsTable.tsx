@@ -105,8 +105,8 @@ const DataRow: React.FC<React.PropsWithChildren<{ transaction: Transaction }>> =
   return (
     <ResponsiveGrid>
       <LinkExternal
-      isBscScan={chainName !== 'VIC'} 
-        href={getBlockExploreLink(transaction.hash, 'transaction', chainName === 'VIC' && ChainId.VICTION_TESTNET)}
+      isBscScan={chainName !== 'AREA'} 
+        href={getBlockExploreLink(transaction.hash, 'transaction', chainName === 'AREA' && ChainId.AREON_TESTNET)}
       >
         <Text>
           {transaction.type === TransactionType.MINT
@@ -125,8 +125,8 @@ const DataRow: React.FC<React.PropsWithChildren<{ transaction: Transaction }>> =
       </Text>
       <LinkExternal
 
-        isBscScan={chainName !== 'VIC'} 
-        href={getBlockExploreLink(transaction.sender, 'address', chainName === 'VIC' && ChainId.VICTION_TESTNET)}
+        isBscScan={chainName !== 'AREA'} 
+        href={getBlockExploreLink(transaction.sender, 'address', chainName === 'AREA' && ChainId.AREON_TESTNET)}
       >
         {truncateHash(transaction.sender)}
       </LinkExternal>

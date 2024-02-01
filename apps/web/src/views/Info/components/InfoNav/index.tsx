@@ -76,22 +76,22 @@ const InfoNav: React.FC<{ isStableSwap: boolean }> = ({ isStableSwap }) => {
   )
 }
 
-const victionTestnet = {
-  id: 89, 
-  name: 'Viction Testnet',
-  network: 'viction-testnet',
+const areonTestnet = {
+  id: 462, 
+  name: 'Areon Testnet',
+  network: 'areon-testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'Viction Testnet',
-    symbol: 'VIC',
+    name: 'Areon Testnet',
+    symbol: 'AREA',
   },
   rpcUrls: {
-    public: { http: ['https://rpc.testnet.tomochain.com'] },
-    default: { http: ['https://rpc.testnet.tomochain.com'] },
+    public: { http: ['https://testnet-rpc.areon.network'] },
+    default: { http: ['https://testnet-rpc.areon.network'] },
   },
   blockExplorers: {
-    etherscan: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
-    default: { name: 'Viction Testnet Explorer', url: 'https://testnet.tomoscan.io' },
+    etherscan: { name: 'Areon Testnet Explorer', url: 'https://areonscan.com' },
+    default: { name: 'Areon Testnet Explorer', url: 'https://areonscan.com' },
   },
   contracts: {
     multicall3: {
@@ -101,7 +101,7 @@ const victionTestnet = {
   },
 };
 
-const targetChains = [victionTestnet]
+const targetChains = [areonTestnet]
 
 export const NetworkSwitcher: React.FC<{ activeIndex: number }> = ({ activeIndex }) => {
   const { t } = useTranslation()

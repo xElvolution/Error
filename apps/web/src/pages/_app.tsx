@@ -69,16 +69,16 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
         />
         <meta
           name="description"
-          content="Cheaper and faster than Uniswap? Discover ZodiacSwap, the leading DEX on Viction Chain with the best farms in DeFi."
+          content="Cheaper and faster than Uniswap? Discover ZodiacSwap, the leading DEX on Areon Chain with the best farms in DeFi."
         />
         <meta name="theme-color" content="#AA14F0" />
         <meta name="twitter:image" content="https://zodiacswap.xyz/images/hero.png" />
         <meta
           name="twitter:description"
-          content="Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Viction Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨"
+          content="Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Areon Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨"
         />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="✨ ZodiacSwap - A next evolution DeFi exchange on Viction Chain" />
+        <meta name="twitter:title" content="✨ ZodiacSwap - A next evolution DeFi exchange on Areon Chain" />
         <title>ZodiacSwap</title>
         {(Component as NextPageWithLayout).mp && (
           // eslint-disable-next-line @next/next/no-sync-scripts

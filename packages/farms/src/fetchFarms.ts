@@ -35,14 +35,14 @@ const evmNativeStableLpMap = {
     wNative: 'WBNB',
     stable: 'BUSD',
   },
-  [ChainId.VICTION]: {
+  [ChainId.AREON]: {
     address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-    wNative: 'WVIC',
+    wNative: 'WAREA',
     stable: 'USDT',
   },
-  [ChainId.VICTION_TESTNET]: {
+  [ChainId.AREON_TESTNET]: {
     address: '0x3DA5519039DDe84fde2748Bd05c279c9dA88EA12',
-    wNative: 'WVIC',
+    wNative: 'WAREA',
     stable: 'USDT',
   }
 }

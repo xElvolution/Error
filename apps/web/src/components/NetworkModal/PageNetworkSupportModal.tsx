@@ -41,7 +41,7 @@ export function PageNetworkSupportModal() {
   return (
     <Modal title={title || t('Check your network')} hideCloseButton headerBackground="gradientCardHeader">
       <Grid style={{ gap: '16px' }} maxWidth="360px">
-        <Text bold>{t('It’s a Viction Chain only feature')}</Text>
+        <Text bold>{t('It’s a Areon Chain only feature')}</Text>
 
         {image && (
           <Box mx="auto" my="8px" position="relative" width="100%" minHeight="250px">
@@ -50,16 +50,16 @@ export function PageNetworkSupportModal() {
         )}
         <Text small>
           {t(
-            'Our Pools, Limit, Trading Competition, Prediction, Lottery and NFTs features are currently available only on Viction Chain! Come over and join the community in the fun!',
+            'Our Pools, Limit, Trading Competition, Prediction, Lottery and NFTs features are currently available only on Areon Chain! Come over and join the community in the fun!',
           )}
         </Text>
         {canSwitch ? (
           <Button
             variant={foundChain && lastValidPath ? 'secondary' : 'primary'}
             isLoading={isLoading}
-            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.VICTION_TESTNET) : switchNetworkAsync(ChainId.VICTION_TESTNET))}
+            onClick={() => (isWrongNetwork ? switchNetworkLocal(ChainId.AREON_TESTNET) : switchNetworkAsync(ChainId.AREON_TESTNET))}
           >
-            {t('Switch to %chain%', { chain: 'Viction Chain' })}
+            {t('Switch to %chain%', { chain: 'Areon Chain' })}
           </Button>
         ) : (
           <Message variant="danger">

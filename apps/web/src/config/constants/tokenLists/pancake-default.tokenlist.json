@@ -111,16 +111,16 @@
       "logoURI": "https://zodiacswap.netlify.app/images/tokens/Pisces.png"
     },
     {
-      "name": "Wrapped VIC",
-      "symbol": "WVIC",
+      "name": "Wrapped AREA",
+      "symbol": "WAREA",
       "address": "0xeD36ca79cD08332553ad11f5905aE759DA008Bc5",
       "chainId": 89,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/chains/89.png"
+      "logoURI": "https://zodiacswap.xyz/images/chains/462.png"
     },
     {
-      "name": "Wrapped VIC",
-      "symbol": "WVIC",
+      "name": "Wrapped AREA",
+      "symbol": "WAREA",
       "address": "0xC054751BdBD24Ae713BA3Dc9Bd9434aBe2abc1ce",
       "chainId": 88,
       "decimals": 18,

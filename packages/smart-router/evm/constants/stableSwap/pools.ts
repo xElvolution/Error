@@ -15,6 +15,6 @@ export const poolMap: StableSwapPoolMap<ChainId> = {
   [ChainId.BASE_GOERLI]: [],
   [ChainId.BSC]: bscPools,
   [ChainId.BSC_TESTNET]: bscTestnetPools,
-  [ChainId.VICTION]: [],
-  [ChainId.VICTION_TESTNET]: [],
+  [ChainId.AREON]: [],
+  [ChainId.AREON_TESTNET]: [],
 }

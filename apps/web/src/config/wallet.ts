@@ -141,13 +141,13 @@ const walletsConfig = ({
       qrCode,
     },
     {
-      id: 'viction',
-      title: 'Viction Wallet',
-      icon: '/images/wallets/viction.png',
+      id: 'areon',
+      title: 'Areon Wallet',
+      icon: '/images/wallets/areon.png',
       connectorId: ConnectorNames.Injected,
       installed:
         typeof window !== 'undefined' &&
-        (Boolean((window.ethereum as ExtendEthereum)?.isViction) || Boolean(window.viction)),
+        (Boolean((window.ethereum as ExtendEthereum)?.isAreon) || Boolean(window.areon)),
         qrCode,
     },
     // {
