@@ -75,8 +75,8 @@ const config: (
         //   type: DropdownMenuItemType.EXTERNAL_LINK,
         // },
         {
-          label: t('Bridge'),
-          href: 'https://spacegate.coin98.com/',
+          label: t('Faucet'),
+          href: 'https://faucet.areon.network/',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
@@ -207,7 +207,7 @@ const config: (
         },
         {
           label: t('Docs'),
-          href: 'https://zodiacswap.gitbook.io/zodiacswap/',
+          href: '',
           type: DropdownMenuItemType.EXTERNAL_LINK,
         },
       ].map((item) => addMenuItemSupported(item, chainId)),
