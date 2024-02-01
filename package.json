@@ -12,7 +12,7 @@
     "dev:aptos": "yarn turbo run dev --filter=aptos-web...",
     "dev:blog": "yarn turbo run dev --filter=blog...",
     "storybook": "turbo run start --filter=uikit...",
-    "build": "SET NODE_OPTIONS=--max_old_space_size=4096 && turbo run build --filter=web...",
+    "build": "NODE_OPTIONS=--max_old_space_size=4096 turbo run build --filter=web...",
     "start": "turbo run start --filter=web",
     "test:config": "yarn workspace web run test:config",
     "test:ci": "yarn turbo run test --filter=[HEAD^1]",
