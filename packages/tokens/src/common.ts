@@ -20,7 +20,7 @@ export const CAKE_TESTNET = new ERC20Token(
 
 export const ZODIAC_MAINNET = new ERC20Token(
   ChainId.AREON,
-  '0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
+  '0xC86442e74e5A6E26da57425f1FB3a4A37560e935',
   18,
   'ZODIAC',
   'ZodiacSwap Token',
@@ -29,7 +29,7 @@ export const ZODIAC_MAINNET = new ERC20Token(
 
 export const ZODIAC_TESTNET = new ERC20Token(
   ChainId.AREON_TESTNET,
-  '0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B',
+  '0xC86442e74e5A6E26da57425f1FB3a4A37560e935',
   18,
   'ZODIAC',
   'ZodiacSwap Token',
@@ -72,7 +72,7 @@ export const USDT_AREON = new ERC20Token(
 
 export const USDT_AREON_TESTNET = new ERC20Token(
   ChainId.AREON_TESTNET,
-  '0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E',
+  '0xD81B510A63f3CBc1b895E20a012d6D5B6B4C7707',
   18,
   'USDT',
   'Tether USD Coin',
@@ -160,7 +160,7 @@ export const BUSD_GOERLI = new ERC20Token(
 
 export const BUSD_AREON_TESTNET = new ERC20Token(
   ChainId.AREON_TESTNET,
-  '0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E',
+  '0xD81B510A63f3CBc1b895E20a012d6D5B6B4C7707',
   18,
   'BUSD',
   'Binance USD',

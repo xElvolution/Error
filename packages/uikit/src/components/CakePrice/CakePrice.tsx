@@ -31,7 +31,7 @@ const CakePrice: React.FC<React.PropsWithChildren<Props>> = ({
 }) => {
   return zodiacPriceUsd ? (
     <PriceLink
-      href="/swap?chain=areonTestnet&outputCurrency=0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B"
+      href="/swap?chain=areonTestnet&outputCurrency=0xC86442e74e5A6E26da57425f1FB3a4A37560e935"
       target="_blank"
     >
       <img src='/images/zodiac.png ' style={{ width: "38px", height: "38px" }} />

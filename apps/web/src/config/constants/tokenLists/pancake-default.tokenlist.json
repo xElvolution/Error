@@ -16,8 +16,8 @@
     {
       "name": "USD Tether",
       "symbol": "USDT",
-      "address": "0xB311c4fcFB4789AC18dde294D12E7B9c5F50378E",
-      "chainId": 89,
+      "address": "0xD81B510A63f3CBc1b895E20a012d6D5B6B4C7707",
+      "chainId": 462,
       "decimals": 18,
       "logoURI": "https://tokens.pancakeswap.finance/images/symbol/usdt.png"
     },
@@ -113,8 +113,8 @@
     {
       "name": "Wrapped AREA",
       "symbol": "WAREA",
-      "address": "0xeD36ca79cD08332553ad11f5905aE759DA008Bc5",
-      "chainId": 89,
+      "address": "0xad1594De7aEE64B298391b60FDd90e0f5937d60D",
+      "chainId": 462,
       "decimals": 18,
       "logoURI": "https://zodiacswap.xyz/images/chains/462.png"
     },
@@ -122,7 +122,7 @@
       "name": "Wrapped AREA",
       "symbol": "WAREA",
       "address": "0xC054751BdBD24Ae713BA3Dc9Bd9434aBe2abc1ce",
-      "chainId": 88,
+      "chainId": 463,
       "decimals": 18,
       "logoURI": "https://zodiacswap.xyz/images/chains/88.png"
     },
@@ -137,8 +137,8 @@
     {
       "name":"Zodiac Token",
       "symbol": "Zodiac",
-      "address": "0x828a9CA1347B3b3525FD94700B78bB048dB1eF8B",
-      "chainId": 89,
+      "address": "0xC86442e74e5A6E26da57425f1FB3a4A37560e935",
+      "chainId": 462,
       "decimals": 18,
       "logoURI": "https://zodiacswap.netlify.app/images/tokens/Zodiac.png"
     }
