@@ -1,6 +1,8 @@
 import {
   MenuItemsType,
   DropdownMenuItemType,
+  TicketIcon,
+  TicketFillIcon,
   SwapIcon,
   SwapFillIcon,
   EarnFillIcon,
@@ -159,6 +161,38 @@ const config: (
     //     },
     //   ],
     // },
+      {
+      label: t('Airdrop'),
+      href: `/airdrop-program`,
+      icon: TicketIcon,
+      fillIcon: TicketFillIcon,
+      items: [
+        {
+          label: t('Overview'),
+          href: `/airdrop-program`,
+        },
+        {
+          label: t('Quest'),
+          href: `/airdrop-program/quest`,
+        },
+        {
+          label: t('Membership NFT'),
+          href: `/airdrop-program/membership`,
+          status: {
+            text: "Coming Soon",
+            color: "warning",
+          }
+        },
+        {
+          label: t('Founders NFT'),
+          href: `/airdrop-program/founders`,
+          status: {
+            text: "Coming Soon",
+            color: "warning",
+          }
+        },
+      ],
+    },
     {
       label: '',
       href: '',
