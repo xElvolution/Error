@@ -28,7 +28,7 @@ const Menu = () => {
           langs={languageList}
           setLang={setLanguage}
         />
-        <Link external href="https://zodiacswap.xyz/">
+        <Link external href="https://zodiacswap.netlify.app/">
           <Button scale="sm">{t('Launch App')}</Button>
         </Link>
       </Flex>

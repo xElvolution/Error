@@ -67,7 +67,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="Cheaper and faster than Uniswap? Discover PancakeSwap, the leading DEX on BNB Smart Chain (BSC) with the best farms in DeFi and a lottery for CAKE."
         />
         <meta name="theme-color" content="#AA14F0" />
-        <meta name="twitter:image" content="https://zodiacswap.xyz/images/hero.png" />
+        <meta name="twitter:image" content="https://zodiacswap.netlify.app/images/hero.png" />
         <meta
           name="twitter:description"
           content="Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Areon Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨"

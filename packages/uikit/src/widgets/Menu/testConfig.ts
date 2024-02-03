@@ -162,7 +162,7 @@ export const userMenulinks: DropdownMenuItems[] = [
   },
   {
     type: DropdownMenuItemType.EXTERNAL_LINK,
-    href: "https://zodiacswap.xyz",
+    href: "https://zodiacswap.netlify.app",
     label: "Link",
   },
   {

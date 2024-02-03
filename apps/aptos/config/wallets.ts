@@ -65,7 +65,7 @@ export const wallets: WalletConfigV2<ConnectorNames>[] = [
   {
     id: 'trustWallet',
     title: 'Trust Wallet',
-    icon: 'https://zodiacswap.xyz/images/wallets/trust.png',
+    icon: 'https://zodiacswap.netlify.app/images/wallets/trust.png',
     get installed() {
       return typeof window !== 'undefined' && Boolean(window.aptos) && Boolean((window.aptos as any)?.isTrust)
     },
@@ -75,7 +75,7 @@ export const wallets: WalletConfigV2<ConnectorNames>[] = [
   {
     id: 'safePal',
     title: 'SafePal',
-    icon: 'https://zodiacswap.xyz/images/wallets/safepal.png',
+    icon: 'https://zodiacswap.netlify.app/images/wallets/safepal.png',
     get installed() {
       return typeof window !== 'undefined' && Boolean(window.safePal) && Boolean((window.safePal as any)?.sfpPlatform)
     },

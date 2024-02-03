@@ -1,6 +1,6 @@
 let swapSound: HTMLAudioElement
 
-const swapSoundURL = 'https://zodiacswap.xyz/swap.mp3'
+const swapSoundURL = 'https://zodiacswap.netlify.app/swap.mp3'
 
 export const getSwapSound = () => {
   if (!swapSound) {

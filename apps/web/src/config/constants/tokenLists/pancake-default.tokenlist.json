@@ -7,7 +7,7 @@
     "patch": 0
   },
   "tags": {},
-  "logoURI": "https://zodiacswap.xyz/logo.png",
+  "logoURI": "https://zodiacswap.netlify.app/logo.png",
   "keywords": ["zodiac", "default"],
   "tokens": [
 
@@ -116,7 +116,7 @@
       "address": "0xad1594De7aEE64B298391b60FDd90e0f5937d60D",
       "chainId": 462,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/chains/462.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/chains/462.png"
     },
     {
       "name": "Wrapped AREA",
@@ -124,7 +124,7 @@
       "address": "0xC054751BdBD24Ae713BA3Dc9Bd9434aBe2abc1ce",
       "chainId": 463,
       "decimals": 18,
-      "logoURI": "https://zodiacswap.xyz/images/chains/88.png"
+      "logoURI": "https://zodiacswap.netlify.app/images/chains/88.png"
     },
     {
       "name":"Aries Token",

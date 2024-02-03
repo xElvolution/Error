@@ -129,7 +129,7 @@ export const coinbaseConnector = new CoinbaseWalletConnector({
   chains,
   options: {
     appName: 'ZodiacSwap',
-    appLogoUrl: 'https://zodiacswap.xyz/logo.png',
+    appLogoUrl: 'https://zodiacswap.netlify.app/logo.png',
   },
 })
 

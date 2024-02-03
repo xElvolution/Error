@@ -6,7 +6,7 @@ export const DEFAULT_META: PageMeta = {
   title: 'ZodiacSwap',
   description:
     'The most unique AMM on Base Chain, guided by the constellations of creativity, inspiration, and discovery and also illuminate the Blockchain with the radiance of our collective brilliance.',
-  image: 'https://zodiacswap.xyz/images/hero.png',
+  image: 'https://zodiacswap.netlify.app/images/hero.png',
 }
 
 interface PathList {

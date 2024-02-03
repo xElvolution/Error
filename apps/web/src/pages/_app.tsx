@@ -72,7 +72,7 @@ function MyApp(props: AppProps<{ initialReduxState: any }>) {
           content="Cheaper and faster than Uniswap? Discover ZodiacSwap, the leading DEX on Areon Chain with the best farms in DeFi."
         />
         <meta name="theme-color" content="#AA14F0" />
-        <meta name="twitter:image" content="https://zodiacswap.xyz/images/hero.png" />
+        <meta name="twitter:image" content="https://zodiacswap.netlify.app/images/hero.png" />
         <meta
           name="twitter:description"
           content="Embark on a cosmic journey with ZodiacSwap, the premier Automated Market Maker (AMM) on Areon Chain. Dive into the enchantment of decentralized finance with our innovative Liquidity Pool Farming, and discover the celestial wonders of our Launchpad—where groundbreaking projects take flight among the stars. 🚀✨"

@@ -1,8 +1,8 @@
 # ✨ Zodiac Frontend
 
 <p align="center">
-  <a href="https://zodiacswap.xyz">
-      <img src="https://zodiacswap.xyz/logo.png" height="128">
+  <a href="https://zodiacswap.netlify.app">
+      <img src="https://zodiacswap.netlify.app/logo.png" height="128">
   </a>
 </p>
 

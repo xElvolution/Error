@@ -73,7 +73,7 @@ router.post('/bsc-exchange', async (request, _, headers: Headers) => {
   const response = await fetch(NODE_REAL_DATA_ENDPOINT, {
     headers: {
       'X-Forwarded-For': ip,
-      origin: isLocalHost ? 'https://zodiacswap.xyz' : headers.get('origin') || '',
+      origin: isLocalHost ? 'https://zodiacswap.netlify.app' : headers.get('origin') || '',
     },
     body,
     method: 'POST',

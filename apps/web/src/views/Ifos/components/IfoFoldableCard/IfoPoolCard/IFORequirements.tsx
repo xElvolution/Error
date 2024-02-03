@@ -22,7 +22,7 @@ const NotOkNFT = ({ admissionProfile }) => {
         <>
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://zodiacswap.xyz/nfts/collections/${admissionProfile}`}
+            href={`https://zodiacswap.netlify.app/nfts/collections/${admissionProfile}`}
           >
             {t('Pancake Squad NFT')}
           </LinkExternal>
@@ -50,7 +50,7 @@ const NotOkProfilePoints = ({ pointThreshold }) => {
           <br />
           <LinkExternal
             style={{ display: 'inline' }}
-            href={`https://zodiacswap.xyz/profile/${account}/achievements/`}
+            href={`https://zodiacswap.netlify.app/profile/${account}/achievements/`}
           >
             {t('Pancake Profile')}
           </LinkExternal>

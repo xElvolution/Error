@@ -36,8 +36,8 @@ class MyDocument extends Document {
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link rel="preconnect" href="https://tokens.zodiacswap.xyz" />
           <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600&amp;display=swap" rel="stylesheet" />
-          <link rel="shortcut icon" href="https://zodiacswap.xyz/favicon.ico" />
-          <link rel="apple-touch-icon" href="https://zodiacswap.xyz/logo.png" />
+          <link rel="shortcut icon" href="https://zodiacswap.netlify.app/favicon.ico" />
+          <link rel="apple-touch-icon" href="https://zodiacswap.netlify.app/logo.png" />
         </Head>
         <body>
           <Main />
