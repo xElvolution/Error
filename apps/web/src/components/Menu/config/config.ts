@@ -89,11 +89,9 @@ const config: (
       href: '/#',
       icon: RocketIcon,
       fillIcon: RocketIcon,
-      image: '/images/decorations/pe2.png',
       items: [
         {
           label: t('Farms'),
-          href: '/farms',
           status: {
             text: "Coming Soon",
             color: "warning",
@@ -164,7 +162,7 @@ const config: (
       {
       label: t('Airdrop'),
       href: `/airdrop-program`,
-      icon: TicketIcon,
+      icon: TicketFillIcon,
       fillIcon: TicketFillIcon,
       items: [
         {
@@ -209,8 +207,7 @@ const config: (
         },
         {
           label: t('IFO'),
-          href: '/ifo',
-          // image: '/images/ifos/ifo-bunny.png',
+          href: '',
           status: {
             text: "Coming Soon",
             color: "warning",
