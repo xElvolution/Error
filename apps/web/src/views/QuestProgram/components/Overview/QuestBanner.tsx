@@ -109,11 +109,11 @@ const AffiliatesBanner = () => {
               {t('Unlock the Power of the Zodiac: Participate in our Celestial Voyage to Fuel the DeFi Revolution!')}
             </Text>
             <Flex>
-              <Link href="/airdrop-program/quest"
+              <Link href="/quest-program/quest"
               >
-                <Button width="fit-content">{t('Join our Airdrop Program')}</Button>
+                <Button width="fit-content">{t('Join our Quest Program')}</Button>
               </Link>
-              <Link href="/airdrop-program/membership">
+              <Link href="/quest-program/membership">
                 <Button ml="12px" variant="secondary" width="fit-content">
                   {t('Mint Community NFT')}
                 </Button>

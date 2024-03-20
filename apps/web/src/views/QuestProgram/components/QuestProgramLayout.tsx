@@ -3,7 +3,7 @@ import { Box, SubMenuItems, DropdownMenuItemType } from '@pancakeswap/uikit'
 import { useTranslation } from '@pancakeswap/localization'
 import { useRouter } from 'next/router'
 
-const AirdropProgramLayout = ({ children }) => {
+const QuestProgramLayout = ({ children }) => {
   const { t } = useTranslation()
   const { pathname } = useRouter()
 
@@ -11,19 +11,19 @@ const AirdropProgramLayout = ({ children }) => {
     const menu = [
       {
         label: t('Overview'),
-        href: '/airdrop-program',
+        href: '/quest-program',
       },
       {
         label: t('Quest'),
-        href: '/airdrop-program/quest',
+        href: '/quest-program/quest',
       },
       {
         label: t('Membership NFT'),
-        href: '/airdrop-program/membership',
+        href: '/quest-program/membership',
       },
       {
         label: t('Founders NFT'),
-        href: '/airdrop-program/founders', 
+        href: '/quest-program/founders', 
       },
     ];
 
@@ -43,4 +43,4 @@ const AirdropProgramLayout = ({ children }) => {
   );
 };
 
-export default AirdropProgramLayout;
+export default QuestProgramLayout;
